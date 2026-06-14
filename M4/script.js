@@ -224,51 +224,61 @@ function calcAccuracyPrecision() {
 
   el.innerHTML = `
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-      <div style="padding:1rem;background:rgba(100,255,218,0.05);border-radius:10px;border:1px solid rgba(100,255,218,0.2)">
-        <div style="color:var(--accent);font-weight:700;margin-bottom:0.5rem">🎯 ความแม่น (Accuracy)</div>
-        <div>ค่าเฉลี่ย x̄ = <strong>${mean.toFixed(4)}</strong></div>
-        <div>% Error = <strong style="color:var(--accent)">${pctError.toFixed(2)}%</strong></div>
+      <div style="padding:1rem;background:#eef2ff;border-radius:10px;border:1.5px solid rgba(99,102,241,0.25)">
+        <div style="color:#4338ca;font-weight:800;margin-bottom:0.5rem">🎯 ความแม่น (Accuracy)</div>
+        <div style="color:#1a1e3c">ค่าเฉลี่ย x̄ = <strong>${mean.toFixed(4)}</strong></div>
+        <div style="color:#1a1e3c">% Error = <strong style="color:#6366f1">${pctError.toFixed(2)}%</strong></div>
         <div style="margin-top:0.4rem">${accRating}</div>
       </div>
-      <div style="padding:1rem;background:rgba(79,195,247,0.05);border-radius:10px;border:1px solid rgba(79,195,247,0.2)">
-        <div style="color:var(--blue);font-weight:700;margin-bottom:0.5rem">🔁 ความเที่ยง (Precision)</div>
-        <div>SD = <strong>${sd.toFixed(4)}</strong></div>
-        <div>%RSD = <strong style="color:var(--blue)">${pctSD.toFixed(2)}%</strong></div>
+      <div style="padding:1rem;background:#f0fdf4;border-radius:10px;border:1.5px solid rgba(13,148,136,0.25)">
+        <div style="color:#0d9488;font-weight:800;margin-bottom:0.5rem">🔁 ความเที่ยง (Precision)</div>
+        <div style="color:#1a1e3c">SD = <strong>${sd.toFixed(4)}</strong></div>
+        <div style="color:#1a1e3c">%RSD = <strong style="color:#0d9488">${pctSD.toFixed(2)}%</strong></div>
         <div style="margin-top:0.4rem">${preRating}</div>
       </div>
     </div>
-    <div style="margin-top:1rem;padding:0.8rem;background:var(--surface);border-radius:8px;font-size:0.9rem;color:var(--text-muted)">
-      <strong style="color:var(--text)">ข้อมูลทั้งหมด:</strong> ${arr.join(', ')} | ค่าจริง: ${trueVal} | ค่าเฉลี่ย: ${mean.toFixed(4)} | SD: ${sd.toFixed(4)}
+    <div style="margin-top:1rem;padding:0.8rem 1rem;background:#f5f8ff;border-radius:8px;font-size:0.9rem;color:#5c6489;border:1px solid rgba(99,102,241,0.15)">
+      <strong style="color:#1a1e3c">ข้อมูลทั้งหมด:</strong> ${arr.join(', ')} | ค่าจริง: ${trueVal} | ค่าเฉลี่ย: ${mean.toFixed(4)} | SD: ${sd.toFixed(4)}
     </div>
   `;
 }
 
 // ===== TARGET DRAWINGS =====
-function drawTarget(id, dots, accurate, precise) {
+function drawTarget(id, dots) {
   const canvas = document.getElementById(id);
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   const cx = 90, cy = 90, r = 80;
 
+  // Background
+  ctx.fillStyle = '#f8faff'; ctx.fillRect(0,0,180,180);
+  ctx.beginPath(); ctx.arc(cx,cy,r+2,0,Math.PI*2);
+  ctx.fillStyle='#f8faff'; ctx.fill();
+
   // Rings
-  const colors = ['#ef4444','#f97316','#eab308','#22c55e','#fff'];
+  const colors = ['#dc2626','#f97316','#eab308','#22c55e','#ffffff'];
   for (let i = 4; i >= 0; i--) {
     ctx.beginPath();
     ctx.arc(cx, cy, r * (i+1)/5, 0, Math.PI*2);
     ctx.fillStyle = colors[4-i];
     ctx.fill();
+    ctx.strokeStyle='rgba(0,0,0,0.08)'; ctx.lineWidth=0.5; ctx.stroke();
   }
-  // Center
-  ctx.beginPath(); ctx.arc(cx, cy, 5, 0, Math.PI*2);
-  ctx.fillStyle = '#000'; ctx.fill();
+  // Crosshair
+  ctx.strokeStyle='rgba(0,0,0,0.15)'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(cx-r,cy); ctx.lineTo(cx+r,cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx,cy-r); ctx.lineTo(cx,cy+r); ctx.stroke();
+  // Center dot
+  ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI*2);
+  ctx.fillStyle='rgba(0,0,0,0.4)'; ctx.fill();
 
-  // Dots
+  // Data dots
   dots.forEach(([dx, dy]) => {
-    ctx.beginPath(); ctx.arc(cx+dx, cy+dy, 7, 0, Math.PI*2);
-    ctx.fillStyle = 'rgba(0,0,0,0.8)'; ctx.fill();
-    ctx.beginPath(); ctx.arc(cx+dx, cy+dy, 5, 0, Math.PI*2);
-    ctx.fillStyle = '#60a5fa'; ctx.fill();
-    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx+dx, cy+dy, 7.5, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(99,102,241,0.25)'; ctx.fill();
+    ctx.beginPath(); ctx.arc(cx+dx, cy+dy, 5.5, 0, Math.PI*2);
+    ctx.fillStyle = '#6366f1'; ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
   });
 }
 
