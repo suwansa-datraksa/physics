@@ -52,7 +52,7 @@ function convertUnits() {
   const toText = document.getElementById('toPrefix').options[document.getElementById('toPrefix').selectedIndex].text;
   document.getElementById('convertResult').value = result.toPrecision(6).replace(/\.?0+$/, '');
   document.getElementById('convertExplain').innerHTML =
-    `${val} (${fromText.split(' ')[0]}) = ${val} × 10^(${from}) / 10^(${to}) = ${val} × 10^(${from-to}) = <strong>${result.toExponential(3)}</strong> (${toText.split(' ')[0]})`;
+    `${val} (${fromText.split(' ')[0]}) = ${val} × 10^(${from}) / 10^(${to}) = ${val} × 10^(${from - to}) = <strong>${result.toExponential(3)}</strong> (${toText.split(' ')[0]})`;
 }
 
 // ===== SCIENTIFIC NOTATION =====
@@ -123,11 +123,11 @@ function countSigFigs() {
 
   // Build explanation
   highlighted = `<div style="font-size:1.3rem;font-family:'Fira Code',monospace;letter-spacing:0.1em;margin:0.5rem 0">`;
-  
+
   const allDigits = raw.replace('.', '').replace(/^[+-]/, '');
   let sigStart = false, sigCount = 0;
   const rawChars = raw.split('');
-  
+
   for (let c of rawChars) {
     if (c === '.' || c === '+' || c === '-') {
       highlighted += `<span style="color:var(--text-muted)">${c}</span>`;
@@ -165,8 +165,8 @@ function calcUncertainty() {
   if (arr.length < 2) { el.innerHTML = '❌ ต้องการอย่างน้อย 2 ค่า'; return; }
 
   const n = arr.length;
-  const mean = arr.reduce((a,b) => a+b, 0) / n;
-  const variance = arr.reduce((s,v) => s + Math.pow(v - mean, 2), 0) / (n - 1);
+  const mean = arr.reduce((a, b) => a + b, 0) / n;
+  const variance = arr.reduce((s, v) => s + Math.pow(v - mean, 2), 0) / (n - 1);
   const sd = Math.sqrt(variance);
   const sem = sd / Math.sqrt(n);
   const range = Math.max(...arr) - Math.min(...arr);
@@ -203,6 +203,20 @@ function showInstrumentDetail(type) {
   `;
 }
 
+// ===== INSTRUMENT TABS (Measuring Instruments Section) =====
+function switchInstTab(type) {
+  // Hide all panels
+  document.querySelectorAll('.inst-panel').forEach(p => p.classList.add('hidden'));
+  // Deactivate all tabs
+  document.querySelectorAll('.inst-tab').forEach(t => t.classList.remove('active'));
+  // Show selected panel
+  const panel = document.getElementById('panel-' + type);
+  if (panel) panel.classList.remove('hidden');
+  // Activate selected tab
+  const tab = document.getElementById('tab-' + type);
+  if (tab) tab.classList.add('active');
+}
+
 // ===== ACCURACY & PRECISION =====
 function calcAccuracyPrecision() {
   const trueVal = parseFloat(document.getElementById('trueValue').value);
@@ -214,8 +228,8 @@ function calcAccuracyPrecision() {
   if (arr.length < 2) { el.innerHTML = '❌ ต้องการอย่างน้อย 2 ค่า'; return; }
 
   const n = arr.length;
-  const mean = arr.reduce((a,b) => a+b, 0) / n;
-  const sd = Math.sqrt(arr.reduce((s,v) => s + Math.pow(v - mean, 2), 0) / (n-1));
+  const mean = arr.reduce((a, b) => a + b, 0) / n;
+  const sd = Math.sqrt(arr.reduce((s, v) => s + Math.pow(v - mean, 2), 0) / (n - 1));
   const pctError = Math.abs((mean - trueVal) / trueVal * 100);
   const pctSD = Math.abs(sd / mean * 100);
 
@@ -251,32 +265,32 @@ function drawTarget(id, dots) {
   const cx = 90, cy = 90, r = 80;
 
   // Background
-  ctx.fillStyle = '#f8faff'; ctx.fillRect(0,0,180,180);
-  ctx.beginPath(); ctx.arc(cx,cy,r+2,0,Math.PI*2);
-  ctx.fillStyle='#f8faff'; ctx.fill();
+  ctx.fillStyle = '#f8faff'; ctx.fillRect(0, 0, 180, 180);
+  ctx.beginPath(); ctx.arc(cx, cy, r + 2, 0, Math.PI * 2);
+  ctx.fillStyle = '#f8faff'; ctx.fill();
 
   // Rings
-  const colors = ['#dc2626','#f97316','#eab308','#22c55e','#ffffff'];
+  const colors = ['#dc2626', '#f97316', '#eab308', '#22c55e', '#ffffff'];
   for (let i = 4; i >= 0; i--) {
     ctx.beginPath();
-    ctx.arc(cx, cy, r * (i+1)/5, 0, Math.PI*2);
-    ctx.fillStyle = colors[4-i];
+    ctx.arc(cx, cy, r * (i + 1) / 5, 0, Math.PI * 2);
+    ctx.fillStyle = colors[4 - i];
     ctx.fill();
-    ctx.strokeStyle='rgba(0,0,0,0.08)'; ctx.lineWidth=0.5; ctx.stroke();
+    ctx.strokeStyle = 'rgba(0,0,0,0.08)'; ctx.lineWidth = 0.5; ctx.stroke();
   }
   // Crosshair
-  ctx.strokeStyle='rgba(0,0,0,0.15)'; ctx.lineWidth=1;
-  ctx.beginPath(); ctx.moveTo(cx-r,cy); ctx.lineTo(cx+r,cy); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(cx,cy-r); ctx.lineTo(cx,cy+r); ctx.stroke();
+  ctx.strokeStyle = 'rgba(0,0,0,0.15)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(cx - r, cy); ctx.lineTo(cx + r, cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx, cy - r); ctx.lineTo(cx, cy + r); ctx.stroke();
   // Center dot
-  ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI*2);
-  ctx.fillStyle='rgba(0,0,0,0.4)'; ctx.fill();
+  ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(0,0,0,0.4)'; ctx.fill();
 
   // Data dots
   dots.forEach(([dx, dy]) => {
-    ctx.beginPath(); ctx.arc(cx+dx, cy+dy, 7.5, 0, Math.PI*2);
+    ctx.beginPath(); ctx.arc(cx + dx, cy + dy, 7.5, 0, Math.PI * 2);
     ctx.fillStyle = 'rgba(99,102,241,0.25)'; ctx.fill();
-    ctx.beginPath(); ctx.arc(cx+dx, cy+dy, 5.5, 0, Math.PI*2);
+    ctx.beginPath(); ctx.arc(cx + dx, cy + dy, 5.5, 0, Math.PI * 2);
     ctx.fillStyle = '#6366f1'; ctx.fill();
     ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
   });
@@ -284,10 +298,10 @@ function drawTarget(id, dots) {
 
 // Target data
 const targets = [
-  { id:'target1', dots:[[-5,3],[3,-4],[-2,6],[4,2],[0,-5]] }, // accurate+precise
-  { id:'target2', dots:[[40,30],[35,38],[42,25],[38,35],[30,28]] }, // precise, not accurate
-  { id:'target3', dots:[[-15,20],[25,-10],[-5,-30],[30,15],[-20,-5]] }, // accurate (avg near center), not precise
-  { id:'target4', dots:[[-40,20],[30,-35],[10,40],[-20,-25],[35,30]] }, // neither
+  { id: 'target1', dots: [[-5, 3], [3, -4], [-2, 6], [4, 2], [0, -5]] }, // accurate+precise
+  { id: 'target2', dots: [[40, 30], [35, 38], [42, 25], [38, 35], [30, 28]] }, // precise, not accurate
+  { id: 'target3', dots: [[-15, 20], [25, -10], [-5, -30], [30, 15], [-20, -5]] }, // accurate (avg near center), not precise
+  { id: 'target4', dots: [[-40, 20], [30, -35], [10, 40], [-20, -25], [35, 30]] }, // neither
 ];
 
 targets.forEach(t => {
@@ -360,7 +374,7 @@ function loadQuestion() {
   const q = quizData[currentQ];
   const pct = (currentQ / quizData.length) * 100;
   document.getElementById('quizProgressBar').style.width = pct + '%';
-  document.getElementById('quizCounter').textContent = `ข้อที่ ${currentQ+1} / ${quizData.length}`;
+  document.getElementById('quizCounter').textContent = `ข้อที่ ${currentQ + 1} / ${quizData.length}`;
   document.getElementById('quizQuestion').textContent = q.q;
   document.getElementById('quizFeedback').className = 'quiz-feedback hidden';
   document.getElementById('quizNext').classList.add('hidden');
@@ -371,7 +385,7 @@ function loadQuestion() {
   q.opts.forEach((opt, i) => {
     const btn = document.createElement('button');
     btn.className = 'quiz-option';
-    btn.textContent = `${['ก','ข','ค','ง'][i]}) ${opt}`;
+    btn.textContent = `${['ก', 'ข', 'ค', 'ง'][i]}) ${opt}`;
     btn.onclick = () => selectAnswer(i);
     optsEl.appendChild(btn);
   });
@@ -431,7 +445,7 @@ function restartQuiz() {
 }
 
 // ===== FORMULA TOOLTIP =====
-(function() {
+(function () {
   const tip = document.getElementById('formula-tooltip');
   if (!tip) return;
   const ttType = tip.querySelector('.tt-type');
