@@ -1,1318 +1,955 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>การวัดและรายงานผลการวัดปริมาณทางฟิสิกส์ | ฟิสิกส์ 1 ม.4</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="สื่อการเรียนการสอนแบบโต้ตอบ เรื่องการเคลื่อนที่แนวตรง รายวิชาฟิสิกส์ 1 ระดับชั้น ม.4 จัดทำโดย ครูสุวรรณษา เดชรักษา" />
+  <title>การเคลื่อนที่แนวตรง | ฟิสิกส์ 1 ม.4</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <!-- MathJax สำหรับแสดงสมการ LaTeX -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+        tags: 'none'
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 </head>
 
 <body>
-  <!-- Navigation -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-brand">
-      <span class="nav-icon">⚛️</span>
-      <span>ฟิสิกส์ 1 | ม.4</span>
-    </div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#hero" class="nav-link active">หน้าแรก</a></li>
-      <li><a href="#si-units" class="nav-link">SI</a></li>
-      <li><a href="#prefixes" class="nav-link">คำนำหน้า</a></li>
-      <li><a href="#scientific-notation" class="nav-link">สัญกรณ์วิทย์</a></li>
-      <li><a href="#uncertainty" class="nav-link">ความไม่แน่นอน</a></li>
-      <li><a href="#instruments" class="nav-link">เครื่องมือวัด</a></li>
-      <li><a href="#sig-figs" class="nav-link">เลขนัยสำคัญ</a></li>
-      <li><a href="#recording" class="nav-link">การบันทึกผล</a></li>
-      <li><a href="#accuracy" class="nav-link">ความแม่น-เที่ยง</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
-  </nav>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="กลับไปหน้าแรก">
+      <span class="brand-mark">x</span>
+      <span>
+        <strong>ฟิสิกส์ 1 ม.4</strong>
+        <small>การเคลื่อนที่แนวตรง</small>
+      </span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">เมนู</button>
+    <nav id="site-nav" class="site-nav" aria-label="หัวข้อบทเรียน">
+      <a href="#position">ตำแหน่ง</a>
+      <a href="#displacement">การกระจัด</a>
+      <a href="#velocity">เร็ว/ความเร็ว</a>
+      <a href="#acceleration">ความเร่ง</a>
+      <a href="#graphs">กราฟ</a>
+      <a href="#equations">สมการ</a>
+      <a href="#freefall">ตกเสรี</a>
+      <a href="#quiz">แบบทดสอบ</a>
+    </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <div class="hero-bg"></div>
-    <div class="floating-particle p1"></div>
-    <div class="floating-particle p2"></div>
-    <div class="floating-particle p3"></div>
-    <div class="floating-particle p4"></div>
-    <div class="hero-content">
-      <div class="hero-badge">ฟิสิกส์ 1 | ชั้นมัธยมศึกษาปีที่ 4<br><br>จัดทำโดย <br> ครูสุวรรณษา เดชรักษา</div>
-      <h1 class="hero-title">การวัดและรายงานผลการวัด<br><span class="gradient-text">ปริมาณทางฟิสิกส์</span></h1>
-      <p class="hero-subtitle">เรียนรู้หลักการพื้นฐานการวัดทางวิทยาศาสตร์ ตั้งแต่ระบบหน่วย SI จนถึงความแม่นและความเที่ยง
-      </p>
-      <div class="hero-buttons">
-        <a href="#si-units" class="btn btn-primary">เริ่มเรียนเลย 🚀</a>
-        <a href="#quiz-section" class="btn btn-outline">ทดสอบความรู้ 📝</a>
+  <main>
+    <section id="home" class="hero section">
+      <div class="hero-copy">
+        <h1>การเคลื่อนที่แนวตรง</h1>
+        <p>
+          สำรวจตำแหน่ง การกระจัด ความเร็ว ความเร่ง กราฟการเคลื่อนที่ สมการการเคลื่อนที่
+          และการตกแบบเสรี ผ่านภาพจำลอง เครื่องคำนวณ และแบบทดสอบที่ตอบโต้ได้ทันที
+        </p>
+        <div class="hero-actions">
+          <a class="primary-action" href="#position">เริ่มเรียน</a>
+          <a class="secondary-action" href="#quiz">ทำแบบทดสอบ</a>
+        </div>
+        <p class="credit">จัดทำโดย ครูสุวรรณษา เดชรักษา</p>
       </div>
-      <div class="topic-cards-mini">
-        <div class="topic-mini-card" onclick="scrollTo('#si-units')">🔬 ระบบ SI</div>
-        <div class="topic-mini-card" onclick="scrollTo('#prefixes')">📏 คำนำหน้า</div>
-        <div class="topic-mini-card" onclick="scrollTo('#scientific-notation')">🔢 สัญกรณ์</div>
-        <div class="topic-mini-card" onclick="scrollTo('#uncertainty')">❓ ความไม่แน่นอน</div>
-        <div class="topic-mini-card" onclick="scrollTo('#sig-figs')">✏️ เลขนัยสำคัญ</div>
-        <div class="topic-mini-card" onclick="scrollTo('#accuracy')">🎯 ความแม่น-เที่ยง</div>
+      <div class="hero-visual" aria-label="ภาพจำลองการเคลื่อนที่แนวตรง">
+        <canvas id="heroCanvas" width="760" height="460"></canvas>
+        <div class="hero-readout">
+          <span>ตำแหน่ง x</span>
+          <strong id="heroX">0.0 m</strong>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 1: SI Units -->
-  <section class="content-section" id="si-units">
-    <div class="section-header">
-      <div class="section-number">01</div>
-      <div>
-        <h2 class="section-title">ระบบหน่วยระหว่างชาติ (SI)</h2>
-        <p class="section-subtitle">The International System of Units</p>
+    <!-- แนวคิดสำคัญ -->
+    <section class="section light-band">
+      <div class="section-heading">
+        <h2>แนวคิดสำคัญของบทเรียน</h2>
+        <p>
+          อ้างอิงจากหนังสือเรียนฟิสิกส์ เล่ม 1 (สสวท.) บทที่ 2: การเคลื่อนที่แนวตรง (Linear Motion)
+          ศึกษาภายใต้กลศาสตร์ สาขา<strong>จลนศาสตร์ (Kinematics)</strong> ซึ่งเน้นลักษณะการเคลื่อนที่
+          โดยยังไม่สนใจแรงที่กระทำ
+        </p>
       </div>
-    </div>
-    <div class="content-grid">
-      <div class="info-card card-blue">
-        <h3>🌍 ทำไมต้องมีระบบ SI?</h3>
-        <p>ระบบ SI ถูกกำหนดขึ้นเพื่อให้นักวิทยาศาสตร์และวิศวกรทั่วโลกใช้หน่วยเดียวกันในการสื่อสารและแลกเปลี่ยนข้อมูล
-          ลดความสับสนจากการใช้หน่วยที่แตกต่างกัน</p>
+      <div class="concept-grid">
+        <article>
+          <span class="icon">x</span>
+          <h3>เวกเตอร์กับสเกลาร์</h3>
+          <p>การกระจัด ความเร็ว และความเร่งมีทิศทาง (เวกเตอร์) ส่วนระยะทางและอัตราเร็วไม่มีทิศทาง (สเกลาร์)
+            ในการเคลื่อนที่แนวตรงใช้เครื่องหมาย + หรือ − แทนทิศทาง</p>
+        </article>
+        <article>
+          <span class="icon">Δ</span>
+          <h3>การเปลี่ยนแปลง</h3>
+          <p>สัญลักษณ์ Δ (เดลตา) หมายถึงการเปลี่ยนแปลง เช่น \(\Delta x = x_f - x_i\) คือการเปลี่ยนตำแหน่ง
+            และ \(\Delta t = t_f - t_i\) คือช่วงเวลา</p>
+        </article>
+        <article>
+          <span class="icon">m/s</span>
+          <h3>กราฟช่วยอ่านฟิสิกส์</h3>
+          <p>ความชันของกราฟ x-t คือความเร็ว ความชันของ v-t คือความเร่ง และพื้นที่ใต้กราฟ v-t คือการกระจัด
+            ส่วนพื้นที่ใต้ a-t คือการเปลี่ยนความเร็ว Δv</p>
+        </article>
       </div>
-      <div class="info-card card-purple">
-        <h3>🔑 หน่วยฐาน 7 หน่วย</h3>
-        <p>ระบบ SI ประกอบด้วยหน่วยฐาน 7 หน่วย ที่เป็นอิสระต่อกัน หน่วยอื่น ๆ ทั้งหมดสามารถอนุมานได้จากหน่วยเหล่านี้</p>
-      </div>
-    </div>
+    </section>
 
-    <div class="si-table-container">
-      <h3 class="table-title">📋 ตารางหน่วยฐาน SI ทั้ง 7 หน่วย</h3>
-      <div class="si-table">
-        <div class="si-table-header">
-          <span>ปริมาณ</span>
-          <span>สัญลักษณ์</span>
-          <span>หน่วย</span>
-          <span>สัญลักษณ์หน่วย</span>
-          <span>ตัวอย่าง</span>
-        </div>
-        <div class="si-table-row" data-aos="fade-up">
-          <span><span class="quantity-icon">📏</span> ความยาว</span>
-          <span class="formula">L</span>
-          <span>เมตร</span>
-          <span class="unit-badge">m</span>
-          <span>ความสูงของคน ~1.7 m</span>
-        </div>
-        <div class="si-table-row" data-aos="fade-up">
-          <span><span class="quantity-icon">⚖️</span> มวล</span>
-          <span class="formula">m</span>
-          <span>กิโลกรัม</span>
-          <span class="unit-badge">kg</span>
-          <span>น้ำหนักสมุด ~0.5 kg</span>
-        </div>
-        <div class="si-table-row" data-aos="fade-up">
-          <span><span class="quantity-icon">⏱️</span> เวลา</span>
-          <span class="formula">t</span>
-          <span>วินาที</span>
-          <span class="unit-badge">s</span>
-          <span>1 นาที = 60 s</span>
-        </div>
-        <div class="si-table-row" data-aos="fade-up">
-          <span><span class="quantity-icon">⚡</span> กระแสไฟฟ้า</span>
-          <span class="formula">I</span>
-          <span>แอมแปร์</span>
-          <span class="unit-badge">A</span>
-          <span>หลอดไฟ ~0.5 A</span>
-        </div>
-        <div class="si-table-row" data-aos="fade-up">
-          <span><span class="quantity-icon">🌡️</span> อุณหภูมิ</span>
-          <span class="formula">T</span>
-          <span>เคลวิน</span>
-          <span class="unit-badge">K</span>
-          <span>น้ำเดือด = 373 K</span>
-        </div>
-        <div class="si-table-row" data-aos="fade-up">
-          <span><span class="quantity-icon">💡</span> ความเข้มแสง</span>
-          <span class="formula">I<sub>v</sub></span>
-          <span>แคนเดลา</span>
-          <span class="unit-badge">cd</span>
-          <span>เทียนไข ~1 cd</span>
-        </div>
-        <div class="si-table-row" data-aos="fade-up">
-          <span><span class="quantity-icon">🧪</span> ปริมาณสาร</span>
-          <span class="formula">n</span>
-          <span>โมล</span>
-          <span class="unit-badge">mol</span>
-          <span>1 mol = 6.02×10²³ อนุภาค</span>
-        </div>
+    <!-- ความเข้าใจคลาดเคลื่อน -->
+    <section class="section misconception-section">
+      <div class="section-heading">
+        <h2>ความเข้าใจคลาดเคลื่อนที่พบบ่อย</h2>
+        <p>ตรวจแนวคิดสำคัญก่อนคำนวณ เพื่อหลีกเลี่ยงข้อผิดพลาดที่เกิดบ่อยในบทการเคลื่อนที่แนวตรง</p>
       </div>
-    </div>
+      <div class="misconception-grid">
+        <article>
+          <h3>ตำแหน่ง</h3>
+          <p>การระบุตำแหน่งต้องมีจุดอ้างอิงเสมอ มิฉะนั้นจะบอกไม่ได้ว่าวัตถุอยู่ที่ใดเมื่อเทียบกับอะไร
+            ในฟิสิกส์ มองวัตถุเป็นจุด (particle model) เพื่อความง่ายในการวิเคราะห์</p>
+        </article>
+        <article>
+          <h3>ความเร็ว vs อัตราเร็ว</h3>
+          <p>อัตราเร็วเฉลี่ย \(\neq\) ขนาดความเร็วเฉลี่ย ยกเว้นเคลื่อนที่แนวตรงโดยไม่กลับทิศ
+            เพราะอัตราเร็วใช้ระยะทาง แต่ความเร็วใช้การกระจัด</p>
+        </article>
+        <article>
+          <h3>ความเร่ง</h3>
+          <p>ความเร่งเป็นลบ <em>ไม่ได้</em>หมายความว่าช้าลงเสมอไป ต้องดูทิศของความเร็วต้นด้วย:
+            ถ้าทิศความเร็วและความเร่งตรงกัน = เร็วขึ้น; ตรงข้ามกัน = ช้าลง</p>
+        </article>
+        <article>
+          <h3>การตกเสรี</h3>
+          <p>วัตถุมวลมากและมวลน้อยที่ตกจากที่สูงเดียวกันจะตกถึงพื้นพร้อมกัน ถ้าไม่มีแรงต้านอากาศ
+            (ทดลองโดยกาลิเลโอ) ทุกวัตถุมีความเร่ง \(g \approx 9.8\) m/s² เท่ากัน</p>
+        </article>
+      </div>
+    </section>
 
-    <div class="interactive-box">
-      <h3>🔄 หน่วยอนุพันธ์ — สร้างจากหน่วยฐาน</h3>
-      <p>หน่วยอนุพันธ์ได้มาจากการคำนวณโดยใช้หน่วยฐาน เช่น</p>
-      <div class="derived-legend">
-        <span class="legend-var">■ ตัวแปรทางฟิสิกส์</span>
-        <span class="legend-unit">■ หน่วย SI</span>
-        <span style="color:var(--text-muted);font-size:0.82rem">👆 ชี้ที่สัญลักษณ์เพื่อดูรายละเอียด</span>
-      </div>
-      <div class="derived-units-grid">
-        <!-- Velocity -->
-        <div class="derived-card">
-          <div class="derived-top">ความเร็ว (Velocity)</div>
-          <div class="derived-formula">
-            <span class="var-token" data-tt-type="ตัวแปรทางฟิสิกส์"
-              data-tt-label="v — ความเร็ว (Velocity)">v</span><span class="unit-token" data-tt-type="หน่วย SI อนุพันธ์"
-              data-tt-label="m/s — เมตรต่อวินาที">(m/s)</span>
-            <span class="op-sign">=</span>
-            <span class="var-token" data-tt-type="ตัวแปรทางฟิสิกส์"
-              data-tt-label="s — ระยะกระจัด (Displacement)">s</span><span class="unit-token" data-tt-type="หน่วย SI ฐาน"
-              data-tt-label="m — เมตร">(m)</span>
-            <span class="op-sign">/</span>
-            <span class="var-token" data-tt-type="ตัวแปรทางฟิสิกส์" data-tt-label="t — เวลา (Time)">t</span><span
-              class="unit-token" data-tt-type="หน่วย SI ฐาน" data-tt-label="s — วินาที">(s)</span>
-          </div>
-          <div class="derived-dim">ความเร็ว หน่วยเต็ม คือ m·s⁻¹</div>
-          <div class="derived-bot">ระยะกระจัด ÷ เวลา</div>
-        </div>
-        <!-- Force -->
-        <div class="derived-card">
-          <div class="derived-top">แรง (Force / Newton)</div>
-          <div class="derived-formula">
-            <span class="var-token" data-tt-type="ตัวแปรทางฟิสิกส์" data-tt-label="F — แรง (Force)">F</span><span
-              class="unit-token" data-tt-type="หน่วย SI อนุพันธ์" data-tt-label="N — นิวตัน = kg·m/s²">(N)</span>
-            <span class="op-sign">=</span>
-            <span class="var-token" data-tt-type="ตัวแปรทางฟิสิกส์" data-tt-label="m — มวล (Mass)">m</span><span
-              class="unit-token" data-tt-type="หน่วย SI ฐาน" data-tt-label="kg — กิโลกรัม">(kg)</span>
-            <span class="op-sign">×</span>
-            <span class="var-token" data-tt-type="ตัวแปรทางฟิสิกส์"
-              data-tt-label="a — ความเร่ง (Acceleration)">a</span><span class="unit-token"
-              data-tt-type="หน่วย SI อนุพันธ์" data-tt-label="m/s² — เมตรต่อวินาทีกำลังสอง">(m/s²)</span>
-          </div>
-          <div class="derived-dim">แรง หน่วยเต็ม ตือ kg·m·s⁻²</div>
-          <div class="derived-bot">มวล × ความเร่ง</div>
-        </div>
-        <!-- Energy -->
-        <div class="derived-card">
-          <div class="derived-top">พลังงาน (Energy / Joule)</div>
-          <div class="derived-formula">
-            <span class="var-token" data-tt-type="ตัวแปรทางฟิสิกส์" data-tt-label="E — พลังงาน (Energy)">E</span><span
-              class="unit-token" data-tt-type="หน่วย SI อนุพันธ์" data-tt-label="J — จูล = kg·m²/s²">(J)</span>
-            <span class="op-sign">=</span>
-            <span class="var-token" data-tt-type="ตัวแปรทางฟิสิกส์" data-tt-label="F — แรง (Force)">F</span><span
-              class="unit-token" data-tt-type="หน่วย SI อนุพันธ์" data-tt-label="N — นิวตัน">(N)</span>
-            <span class="op-sign">×</span>
-            <span class="var-token" data-tt-type="ตัวแปรทางฟิสิกส์" data-tt-label="d — ระยะทาง (Distance)">d</span><span
-              class="unit-token" data-tt-type="หน่วย SI ฐาน" data-tt-label="m — เมตร">(m)</span>
-          </div>
-          <div class="derived-dim">พลังงาน หน่วยเต็ม คือ kg·m²·s⁻²</div>
-          <div class="derived-bot">แรง × ระยะทาง</div>
-        </div>
-        <!-- Pressure -->
-        <div class="derived-card">
-          <div class="derived-top">ความดัน (Pressure / Pascal)</div>
-          <div class="derived-formula">
-            <span class="var-token" data-tt-type="ตัวแปรทางฟิสิกส์" data-tt-label="P — ความดัน (Pressure)">P</span><span
-              class="unit-token" data-tt-type="หน่วย SI อนุพันธ์" data-tt-label="Pa — ปาสกาล = kg/(m·s²)">(Pa)</span>
-            <span class="op-sign">=</span>
-            <span class="var-token" data-tt-type="ตัวแปรทางฟิสิกส์" data-tt-label="F — แรง (Force)">F</span><span
-              class="unit-token" data-tt-type="หน่วย SI อนุพันธ์" data-tt-label="N — นิวตัน">(N)</span>
-            <span class="op-sign">/</span>
-            <span class="var-token" data-tt-type="ตัวแปรทางฟิสิกส์"
-              data-tt-label="A — พื้นที่รับแรง (Area)">A</span><span class="unit-token" data-tt-type="หน่วย SI อนุพันธ์"
-              data-tt-label="m² — ตารางเมตร">(m²)</span>
-          </div>
-          <div class="derived-dim">ความดัน หน่วนเต็มคือ kg·m⁻¹·s⁻²</div>
-          <div class="derived-bot">แรง ÷ พื้นที่</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 2: Prefixes -->
-  <section class="content-section alt-bg" id="prefixes">
-    <div class="section-header">
-      <div class="section-number">02</div>
-      <div>
-        <h2 class="section-title">คำนำหน้าหน่วย (Prefixes)</h2>
-        <p class="section-subtitle">ใช้แทนกำลังของ 10 เพื่อความสะดวก</p>
-      </div>
-    </div>
-
-    <div class="prefix-interactive">
-      <div class="prefix-search-box">
-        <input type="text" id="prefixSearch" placeholder="🔍 ค้นหาคำนำหน้า (เช่น kilo, mega, micro)..."
-          class="search-input">
-      </div>
-      <div class="prefix-scale">
-        <div class="scale-label">ใหญ่กว่า</div>
-        <div class="scale-arrow">⬆</div>
-        <div class="prefix-grid" id="prefixGrid">
-          <div class="prefix-card big" data-name="เทระ" data-symbol="T" data-power="12" data-value="1,000,000,000,000">
-            <div class="prefix-symbol">T</div>
-            <div class="prefix-name">เทระ (Tera)</div>
-            <div class="prefix-power">10<sup>12</sup></div>
-            <div class="prefix-example">1 TB = 10¹² bytes</div>
-          </div>
-          <div class="prefix-card big" data-name="จิกะ" data-symbol="G" data-power="9" data-value="1,000,000,000">
-            <div class="prefix-symbol">G</div>
-            <div class="prefix-name">จิกะ (Giga)</div>
-            <div class="prefix-power">10<sup>9</sup></div>
-            <div class="prefix-example">1 GHz = 10⁹ Hz</div>
-          </div>
-          <div class="prefix-card big" data-name="เมกะ" data-symbol="M" data-power="6" data-value="1,000,000">
-            <div class="prefix-symbol">M</div>
-            <div class="prefix-name">เมกะ (Mega)</div>
-            <div class="prefix-power">10<sup>6</sup></div>
-            <div class="prefix-example">1 MW = 10⁶ W</div>
-          </div>
-          <div class="prefix-card big" data-name="กิโล" data-symbol="k" data-power="3" data-value="1,000">
-            <div class="prefix-symbol">k</div>
-            <div class="prefix-name">กิโล (Kilo)</div>
-            <div class="prefix-power">10<sup>3</sup></div>
-            <div class="prefix-example">1 km = 10³ m</div>
-          </div>
-          <div class="prefix-card neutral" data-name="เฮกโต" data-symbol="h" data-power="2" data-value="100">
-            <div class="prefix-symbol">h</div>
-            <div class="prefix-name">เฮกโต (Hecto)</div>
-            <div class="prefix-power">10<sup>2</sup></div>
-            <div class="prefix-example">1 hPa = 100 Pa</div>
-          </div>
-          <div class="prefix-card neutral" data-name="เดคา" data-symbol="da" data-power="1" data-value="10">
-            <div class="prefix-symbol">da</div>
-            <div class="prefix-name">เดคา (Deca)</div>
-            <div class="prefix-power">10<sup>1</sup></div>
-            <div class="prefix-example">1 dam = 10 m</div>
-          </div>
-          <div class="prefix-card base-unit">
-            <div class="prefix-symbol">—</div>
-            <div class="prefix-name">⭐ หน่วยฐาน</div>
-            <div class="prefix-power">10<sup>0</sup></div>
-            <div class="prefix-example">m, kg, s, A...</div>
-          </div>
-          <div class="prefix-card neutral" data-name="เดซิ" data-symbol="d" data-power="-1" data-value="0.1">
-            <div class="prefix-symbol">d</div>
-            <div class="prefix-name">เดซิ (Deci)</div>
-            <div class="prefix-power">10<sup>-1</sup></div>
-            <div class="prefix-example">1 dm = 0.1 m</div>
-          </div>
-          <div class="prefix-card neutral" data-name="เซนติ" data-symbol="c" data-power="-2" data-value="0.01">
-            <div class="prefix-symbol">c</div>
-            <div class="prefix-name">เซนติ (Centi)</div>
-            <div class="prefix-power">10<sup>-2</sup></div>
-            <div class="prefix-example">1 cm = 0.01 m</div>
-          </div>
-          <div class="prefix-card small" data-name="มิลลิ" data-symbol="m" data-power="-3" data-value="0.001">
-            <div class="prefix-symbol">m</div>
-            <div class="prefix-name">มิลลิ (Milli)</div>
-            <div class="prefix-power">10<sup>-3</sup></div>
-            <div class="prefix-example">1 mm = 10⁻³ m</div>
-          </div>
-          <div class="prefix-card small" data-name="ไมโคร" data-symbol="μ" data-power="-6" data-value="0.000001">
-            <div class="prefix-symbol">μ</div>
-            <div class="prefix-name">ไมโคร (Micro)</div>
-            <div class="prefix-power">10<sup>-6</sup></div>
-            <div class="prefix-example">1 μm = 10⁻⁶ m</div>
-          </div>
-          <div class="prefix-card small" data-name="นาโน" data-symbol="n" data-power="-9" data-value="0.000000001">
-            <div class="prefix-symbol">n</div>
-            <div class="prefix-name">นาโน (Nano)</div>
-            <div class="prefix-power">10<sup>-9</sup></div>
-            <div class="prefix-example">1 nm = 10⁻⁹ m (DNA)</div>
-          </div>
-          <div class="prefix-card small" data-name="พิโก" data-symbol="p" data-power="-12" data-value="0.000000000001">
-            <div class="prefix-symbol">p</div>
-            <div class="prefix-name">พิโก (Pico)</div>
-            <div class="prefix-power">10<sup>-12</sup></div>
-            <div class="prefix-example">1 pm = 10⁻¹² m (อะตอม)</div>
-          </div>
-        </div>
-        <div class="scale-arrow">⬇</div>
-        <div class="scale-label">เล็กกว่า</div>
-      </div>
-    </div>
-
-    <!-- Unit Converter -->
-    <div class="interactive-box converter-box">
-      <h3>🔄 เครื่องมือแปลงหน่วย</h3>
-      <div class="converter-grid">
-        <div class="converter-input-group">
-          <input type="number" id="convertValue" placeholder="ใส่ตัวเลข" class="convert-input">
-          <select id="fromPrefix" class="convert-select">
-            <option value="12">T เทระ (10¹²)</option>
-            <option value="9">G จิกะ (10⁹)</option>
-            <option value="6">M เมกะ (10⁶)</option>
-            <option value="3">k กิโล (10³)</option>
-            <option value="2">h เฮกโต (10²)</option>
-            <option value="1">da เดคา (10¹)</option>
-            <option value="0" selected>— หน่วยฐาน (10⁰)</option>
-            <option value="-1">d เดซิ (10⁻¹)</option>
-            <option value="-2">c เซนติ (10⁻²)</option>
-            <option value="-3">m มิลลิ (10⁻³)</option>
-            <option value="-6">μ ไมโคร (10⁻⁶)</option>
-            <option value="-9">n นาโน (10⁻⁹)</option>
-            <option value="-12">p พิโก (10⁻¹²)</option>
-          </select>
-        </div>
-        <div class="convert-arrow">➡️</div>
-        <div class="converter-input-group">
-          <input type="text" id="convertResult" placeholder="ผลลัพธ์" class="convert-input result-input" readonly>
-          <select id="toPrefix" class="convert-select">
-            <option value="12">T เทระ (10¹²)</option>
-            <option value="9">G จิกะ (10⁹)</option>
-            <option value="6">M เมกะ (10⁶)</option>
-            <option value="3" selected>k กิโล (10³)</option>
-            <option value="2">h เฮกโต (10²)</option>
-            <option value="1">da เดคา (10¹)</option>
-            <option value="0">— หน่วยฐาน (10⁰)</option>
-            <option value="-1">d เดซิ (10⁻¹)</option>
-            <option value="-2">c เซนติ (10⁻²)</option>
-            <option value="-3">m มิลลิ (10⁻³)</option>
-            <option value="-6">μ ไมโคร (10⁻⁶)</option>
-            <option value="-9">n นาโน (10⁻⁹)</option>
-            <option value="-12">p พิโก (10⁻¹²)</option>
-          </select>
-        </div>
-      </div>
-      <button onclick="convertUnits()" class="btn btn-primary" style="margin-top:1rem">แปลงหน่วย</button>
-      <div id="convertExplain" class="convert-explain"></div>
-    </div>
-  </section>
-
-  <!-- Section 3: Scientific Notation -->
-  <section class="content-section" id="scientific-notation">
-    <div class="section-header">
-      <div class="section-number">03</div>
-      <div>
-        <h2 class="section-title">สัญกรณ์วิทยาศาสตร์</h2>
-        <p class="section-subtitle">Scientific Notation</p>
-      </div>
-    </div>
-
-    <div class="content-grid">
-      <div class="info-card card-green">
-        <h3>📖 นิยาม</h3>
-        <p>การเขียนตัวเลขในรูป <strong>a × 10<sup>n</sup></strong> โดยที่ <strong>1 ≤ a &lt; 10</strong> และ n
-          เป็นจำนวนเต็ม ใช้แสดงตัวเลขที่มีค่ามากหรือน้อยมาก ๆ</p>
-      </div>
-      <div class="info-card card-orange">
-        <h3>🎯 วิธีจำ</h3>
-        <p>เลื่อนทศนิยม → นับจำนวนตำแหน่ง → ใส่เป็น n ของ 10<sup>n</sup><br>เลื่อนซ้าย = n บวก | เลื่อนขวา = n ลบ</p>
-      </div>
-    </div>
-
-    <div class="notation-demo">
-      <h3>🔢 ตัวอย่างการแปลง</h3>
-      <div class="example-cards">
-        <div class="example-card">
-          <div class="example-num">299,792,458</div>
-          <div class="example-arrow">↓</div>
-          <div class="example-sci">2.99792458 × 10<sup>8</sup></div>
-          <div class="example-label">ความเร็วแสง (m/s)</div>
-        </div>
-        <div class="example-card">
-          <div class="example-num">0.000000000167</div>
-          <div class="example-arrow">↓</div>
-          <div class="example-sci">1.67 × 10<sup>-10</sup></div>
-          <div class="example-label">รัศมีอะตอม (m)</div>
-        </div>
-        <div class="example-card">
-          <div class="example-num">5,970,000,000,000,000,000,000,000</div>
-          <div class="example-arrow">↓</div>
-          <div class="example-sci">5.97 × 10<sup>24</sup></div>
-          <div class="example-label">มวลโลก (kg)</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Interactive converter -->
-    <div class="interactive-box">
-      <h3>🛠️ แปลงเป็นสัญกรณ์วิทยาศาสตร์</h3>
-      <div class="notation-converter">
-        <input type="text" id="notationInput" placeholder="ใส่ตัวเลข เช่น 0.00045 หรือ 123000" class="full-input">
-        <button onclick="toScientific()" class="btn btn-primary">แปลง</button>
-        <div id="notationResult" class="notation-result"></div>
-      </div>
-
-      <h3 style="margin-top:2rem">📐 การคำนวณด้วยสัญกรณ์วิทยาศาสตร์</h3>
-      <div class="rules-grid">
-        <div class="rule-card">
-          <div class="rule-title">✖️ การคูณ</div>
-          <div class="rule-formula">(a × 10<sup>m</sup>) × (b × 10<sup>n</sup>)<br>= (a×b) × 10<sup>m+n</sup></div>
-          <div class="rule-example">2×10³ × 3×10⁴ = 6×10⁷</div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-title">➗ การหาร</div>
-          <div class="rule-formula">(a × 10<sup>m</sup>) ÷ (b × 10<sup>n</sup>)<br>= (a÷b) × 10<sup>m-n</sup></div>
-          <div class="rule-example">6×10⁸ ÷ 2×10³ = 3×10⁵</div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-title">➕ การบวก/ลบ</div>
-          <div class="rule-formula">ต้องทำเลขยกกำลัง<br>ให้เท่ากันก่อน แล้วจึงบวก/ลบ a</div>
-          <div class="rule-example">2×10³ + 3×10² = 2.3×10³</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 4: Uncertainty -->
-  <section class="content-section alt-bg" id="uncertainty">
-    <div class="section-header">
-      <div class="section-number">04</div>
-      <div>
-        <h2 class="section-title">ความไม่แน่นอนในการวัด</h2>
-        <p class="section-subtitle">Uncertainty in Measurement</p>
-      </div>
-    </div>
-
-    <div class="content-grid">
-      <div class="info-card card-red">
-        <h3>⚠️ ความจริงเกี่ยวกับการวัด</h3>
-        <p>ไม่มีการวัดใดที่สมบูรณ์แบบ ทุกการวัดมีความไม่แน่นอน (uncertainty) เสมอ ไม่ว่าจะใช้เครื่องมือดีแค่ไหนก็ตาม</p>
-      </div>
-      <div class="info-card card-teal">
-        <h3>📊 แหล่งที่มาของความไม่แน่นอน</h3>
-        <ul>
-          <li>ข้อจำกัดของเครื่องมือ</li>
-          <li>ข้อผิดพลาดจากผู้อ่าน</li>
-          <li>สภาพแวดล้อม (อุณหภูมิ ความชื้น)</li>
-          <li>วิธีการวัดที่ไม่สมบูรณ์</li>
+    <!-- ตำแหน่ง -->
+    <section id="position" class="section lesson-layout">
+      <div class="lesson-text">
+        <h2>2.1 ตำแหน่ง (Position)</h2>
+        <p>
+          <strong>ตำแหน่ง</strong> คือ จุดที่วัตถุอยู่ ณ เวลาใดเวลาหนึ่งเมื่อเทียบกับ<strong>จุดอ้างอิง</strong>
+          (reference point) สำหรับการเคลื่อนที่แนวตรง นิยมกำหนด<strong>แกน x</strong> ในแนวระดับ
+          หรือ<strong>แกน y</strong> ในแนวดิ่ง
+        </p>
+        <p>
+          ตำแหน่งเป็น<strong>ปริมาณเวกเตอร์</strong> ต้องระบุทั้งระยะห่างจากจุดอ้างอิงและทิศทาง
+          เครื่องหมายบวก (+) หมายถึงด้านขวาของจุดอ้างอิง และลบ (−) หมายถึงด้านซ้าย
+        </p>
+        <ul class="key-list">
+          <li>ต้องกำหนดจุดอ้างอิงก่อนเสมอ (เช่น ต้นไม้ เสาไฟ จุด O)</li>
+          <li>ตำแหน่งบนแกนเดียวกันอาจเป็นค่าบวก ศูนย์ หรือค่าลบ</li>
+          <li>ใช้สัญลักษณ์ \(x\) แทนเวกเตอร์ตำแหน่ง (ในแนวระดับ)</li>
+          <li>เขียนแบบย่อ: \(x(t=1\,\text{s}) = +8\,\text{m}\) หรือ \(x(1) = +8\,\text{m}\)</li>
         </ul>
-      </div>
-    </div>
-
-    <div class="uncertainty-types">
-      <h3>🔍 ประเภทของความคลาดเคลื่อน</h3>
-      <div class="type-cards">
-        <div class="type-card systematic">
-          <div class="type-icon">📐</div>
-          <h4>ความคลาดเคลื่อนเชิงระบบ<br>(Systematic Error)</h4>
-          <p>เกิดซ้ำในทิศทางเดิมทุกครั้ง ทำให้ผลการวัดคลาดเคลื่อนไปในทิศทางเดียวกันเสมอ</p>
-          <div class="error-examples">
-            <span class="error-tag">นาฬิกาเดินเร็วกว่าปกติ</span>
-            <span class="error-tag">ไม้บรรทัดผิดรูป</span>
-            <span class="error-tag">ตาชั่งไม่ถ่วงศูนย์</span>
-          </div>
-          <div class="error-fix">🔧 แก้ได้: สอบเทียบเครื่องมือ (Calibration)</div>
-        </div>
-        <div class="type-card random">
-          <div class="type-icon">🎲</div>
-          <h4>ความคลาดเคลื่อนสุ่ม<br>(Random Error)</h4>
-          <p>เกิดแบบไม่แน่นอน สลับบวกและลบ ไม่สามารถกำจัดได้หมด แต่ลดได้ด้วยการวัดซ้ำ</p>
-          <div class="error-examples">
-            <span class="error-tag">การสั่นของพื้น</span>
-            <span class="error-tag">การอ่านสายตาคลาด</span>
-            <span class="error-tag">ความผันผวนของอุณหภูมิ</span>
-          </div>
-          <div class="error-fix">📊 แก้ได้: วัดซ้ำหลายครั้งแล้วหาค่าเฉลี่ย</div>
+        <div class="textbook-note">
+          <strong>ตัวอย่าง:</strong> รถยนต์อยู่ห่างจากเสาไฟต้นที่หนึ่ง 4 เมตร ทางขวา
+          → ตำแหน่ง \(x = +4\,\text{m}\) และคนอยู่ทางซ้าย 2 เมตร → \(x = -2\,\text{m}\)
         </div>
       </div>
-    </div>
-
-    <div class="interactive-box">
-      <h3>📏 ความละเอียดของเครื่องมือ</h3>
-      <p>ค่าความไม่แน่นอนขั้นต่ำ = ½ × ค่าที่เล็กที่สุดที่อ่านได้</p>
-      <div class="instruments-demo">
-        <div class="instrument" onclick="showInstrumentDetail('ruler')">
-          <div class="inst-icon">📏</div>
-          <div class="inst-name">ไม้บรรทัด</div>
-          <div class="inst-precision">±0.5 mm</div>
+      <div class="interactive-panel">
+        <div class="panel-header">
+          <h3>ลองเปลี่ยนตำแหน่ง</h3>
+          <output id="positionValue">x = 2.0 m</output>
         </div>
-        <div class="instrument" onclick="showInstrumentDetail('vernier')">
-          <div class="inst-icon">🔧</div>
-          <div class="inst-name">เวอร์เนียร์</div>
-          <div class="inst-precision">±0.05 mm</div>
+        <div class="track" aria-hidden="true">
+          <div class="axis-line"></div>
+          <div class="origin-marker">0</div>
+          <div id="positionCar" class="car"></div>
         </div>
-        <div class="instrument" onclick="showInstrumentDetail('micrometer')">
-          <div class="inst-icon">🔬</div>
-          <div class="inst-name">ไมโครมิเตอร์</div>
-          <div class="inst-precision">±0.005 mm</div>
-        </div>
-        <div class="instrument" onclick="showInstrumentDetail('digital')">
-          <div class="inst-icon">🖥️</div>
-          <div class="inst-name">เครื่องมือดิจิตัล</div>
-          <div class="inst-precision">±1 หน่วยสุดท้าย</div>
-        </div>
+        <label class="control">
+          ตำแหน่งบนแกน x
+          <input id="positionSlider" type="range" min="-10" max="10" value="2" step="0.5" />
+        </label>
       </div>
-      <div id="instrumentDetail" class="instrument-detail hidden"></div>
-    </div>
+    </section>
 
-    <div class="interactive-box" style="margin-top:1.5rem">
-      <h3>🧮 การเขียนผลการวัดพร้อมความไม่แน่นอน</h3>
-      <div class="uncertainty-format">
-        <div class="format-box">
-          <div class="format-title">รูปแบบ: ค่าที่วัดได้ ± ค่าความไม่แน่นอน (หน่วย)</div>
-          <div class="format-examples">
-            <div class="fmt-ex">L = 25.3 ± 0.5 cm</div>
-            <div class="fmt-ex">m = 1.234 ± 0.001 kg</div>
-            <div class="fmt-ex">T = 2.45 ± 0.05 s</div>
+    <!-- การกระจัดและระยะทาง -->
+    <section id="displacement" class="section lesson-layout reversed">
+      <div class="lesson-text">
+        <h2>2.2 การกระจัดและระยะทาง</h2>
+        <p>
+          <strong>ระยะทาง (distance)</strong> คือความยาวตลอดเส้นทางที่วัตถุเคลื่อนที่จริง
+          เป็น<strong>ปริมาณสเกลาร์</strong> มีค่าเป็นบวกเสมอ หน่วย: เมตร (m)
+        </p>
+        <p>
+          <strong>การกระจัด (displacement)</strong> คือการเปลี่ยนตำแหน่งจากจุดเริ่มต้นไปจุดสุดท้าย
+          เป็น<strong>ปริมาณเวกเตอร์</strong> อาจเป็นบวก ลบ หรือศูนย์ก็ได้
+        </p>
+
+        <!-- สมการ LaTeX -->
+        <div class="formula-box">
+          <div class="formula-title">สมการการกระจัด</div>
+          \[
+          \Delta x = x_f - x_i
+          \]
+          <div class="var-desc">
+            <strong>คำอธิบายตัวแปร:</strong>
+            <ul>
+              <li>\(\Delta x\) = การกระจัด (เมตร, m)</li>
+              <li>\(x_f\) = ตำแหน่งสุดท้าย (เมตร, m)</li>
+              <li>\(x_i\) = ตำแหน่งเริ่มต้น (เมตร, m)</li>
+            </ul>
           </div>
         </div>
-      </div>
-      <div class="uncertainty-calc">
-        <h4>คำนวณความไม่แน่นอนจากการวัดซ้ำ</h4>
-        <p>ใส่ค่าที่วัดได้แต่ละครั้ง คั่นด้วยจุลภาค:</p>
-        <input type="text" id="measureInput" placeholder="เช่น 25.1, 25.3, 25.0, 25.2, 25.1" class="full-input">
-        <button onclick="calcUncertainty()" class="btn btn-primary">คำนวณ</button>
-        <div id="uncertaintyResult" class="uncertainty-result"></div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Section 4.5: Measuring Instruments -->
-  <section class="content-section" id="instruments">
-    <div class="section-header">
-      <div class="section-number">📐</div>
-      <div>
-        <h2 class="section-title">เครื่องมือวัดและวิธีอ่านค่า</h2>
-        <p class="section-subtitle">Measuring Instruments &amp; Reading Methods</p>
-      </div>
-    </div>
-
-    <!-- Instrument Tabs -->
-    <div class="inst-tabs">
-      <button class="inst-tab active" onclick="switchInstTab('ruler')" id="tab-ruler">📏 ไม้บรรทัด</button>
-      <button class="inst-tab" onclick="switchInstTab('vernier')" id="tab-vernier">🔧 เวอร์เนียคาลิปเปอร์</button>
-      <button class="inst-tab" onclick="switchInstTab('micrometer')" id="tab-micrometer">🔬 ไมโครมิเตอร์</button>
-      <button class="inst-tab" onclick="switchInstTab('digital')" id="tab-digital">🖥️ เครื่องมือดิจิตัล</button>
-    </div>
-
-    <!-- Ruler Panel -->
-    <div class="inst-panel" id="panel-ruler">
-      <div class="inst-content-grid">
-        <div class="inst-image-col">
-          <div class="inst-img-wrapper">
-            <img src="images/ไม้บรรทัด.jpg" alt="ไม้บรรทัด" class="inst-photo">
-          </div>
-          <div class="inst-img-wrapper" style="margin-top:0.75rem">
-            <img src="images/วิธีอ่านค่าไม้บรรทัด.jfif" alt="วิธีอ่านค่าไม้บรรทัด" class="inst-photo">
-          </div>
-          <div class="inst-specs">
-            <div class="spec-item">
-              <span class="spec-label">ความละเอียด</span>
-              <span class="spec-val">1 mm</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">ความไม่แน่นอน</span>
-              <span class="spec-val">± 0.5 mm</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">ช่วงวัด</span>
-              <span class="spec-val">0 – 30 cm</span>
-            </div>
+        <div class="formula-box">
+          <div class="formula-title">ความสัมพันธ์ระหว่างระยะทางและการกระจัด</div>
+          \[
+          s \geq |\Delta x|
+          \]
+          <div class="var-desc">
+            <ul>
+              <li>\(s\) = ระยะทาง (เมตร, m) — มีค่าไม่ติดลบ</li>
+              <li>\(|\Delta x|\) = ขนาดของการกระจัด (เมตร, m)</li>
+            </ul>
+            เมื่อวัตถุเคลื่อนที่กลับทิศ ระยะทาง > ขนาดการกระจัด
           </div>
         </div>
-        <div class="inst-info-col">
-          <h3 class="inst-name-title">ไม้บรรทัด (Ruler)</h3>
-          <p class="inst-desc">ไม้บรรทัดเป็นเครื่องมือวัดความยาวพื้นฐาน มีขีดบอกความยาวเป็นเซนติเมตรและมิลลิเมตร
-            ใช้สำหรับวัดความยาวในชีวิตประจำวันและงานทดลองทั่วไป</p>
 
-          <div class="reading-steps">
-            <h4>📖 วิธีอ่านค่าไม้บรรทัด</h4>
-            <div class="step-list">
-              <div class="read-step">
-                <div class="read-num">1</div>
-                <div class="read-text"><strong>วางไม้บรรทัดให้ถูกต้อง</strong><br>วางตัวเลข 0
-                  ให้ตรงกับปลายด้านหนึ่งของวัตถุที่ต้องการวัด อย่าวาง "ปลายไม้บรรทัด" เพราะมักสึกกร่อน</div>
-              </div>
-              <div class="read-step">
-                <div class="read-num">2</div>
-                <div class="read-text"><strong>อ่านค่าเซนติเมตร
-                    (cm)</strong><br>อ่านตัวเลขหลักที่ใหญ่กว่าซึ่งอยู่ซ้ายมือของปลายวัตถุ</div>
-              </div>
-              <div class="read-step">
-                <div class="read-num">3</div>
-                <div class="read-text"><strong>อ่านค่ามิลลิเมตร
-                    (mm)</strong><br>นับขีดมิลลิเมตรหลังจากขีดเซนติเมตรสุดท้าย ขีดละ 1 mm</div>
-              </div>
-              <div class="read-step">
-                <div class="read-num">4</div>
-                <div class="read-text">
-                  <strong>ประมาณค่าที่เล็กที่สุด</strong><br>ประมาณค่าระหว่างขีดมิลลิเมตรให้ละเอียดถึง 0.5 mm (ครึ่งขีด)
+        <div class="textbook-note">
+          <strong>ตัวอย่าง 2.1 (จากตำรา):</strong> รถยนต์เริ่มจาก \(x(0) = +4\,\text{m}\)
+          เคลื่อนที่ไป \(x(1) = +8\,\text{m}\) แล้วถอยกลับมา \(x(3) = -8\,\text{m}\)<br>
+          ช่วง t = 0 ถึง t = 3 s: <br>
+          การกระจัด = \((-8) - (+4) = -12\,\text{m}\), ระยะทาง = \(4 + 16 = 20\,\text{m}\)
+        </div>
+      </div>
+      <div class="interactive-panel">
+        <div class="panel-header">
+          <h3>เดินไปแล้วกลับ</h3>
+          <output id="walkOutput">ระยะทาง 10 m, การกระจัด 2 m</output>
+        </div>
+        <canvas id="walkCanvas" width="760" height="280"></canvas>
+        <div class="two-controls">
+          <label class="control">
+            เดินไปทาง +x
+            <input id="walkForward" type="range" min="0" max="14" value="6" step="1" />
+          </label>
+          <label class="control">
+            เดินกลับทาง −x
+            <input id="walkBack" type="range" min="0" max="14" value="4" step="1" />
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- อัตราเร็วและความเร็ว -->
+    <section id="velocity" class="section lesson-layout">
+      <div class="lesson-text">
+        <h2>2.3 อัตราเร็วและความเร็ว</h2>
+
+        <h3 class="sub-heading">อัตราเร็วเฉลี่ย (Average Speed)</h3>
+        <p>อัตราเร็วเฉลี่ยเป็น<strong>ปริมาณสเกลาร์</strong> ไม่มีทิศทาง บอกว่าวัตถุเคลื่อนที่เร็วแค่ไหน</p>
+        <div class="formula-box">
+          \[
+          v_{av} = \frac{s}{\Delta t}
+          \]
+          <div class="var-desc">
+            <ul>
+              <li>\(v_{av}\) = อัตราเร็วเฉลี่ย (m/s)</li>
+              <li>\(s\) = ระยะทางรวม (m)</li>
+              <li>\(\Delta t\) = ช่วงเวลา (s)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="sub-heading">ความเร็วเฉลี่ย (Average Velocity)</h3>
+        <p>ความเร็วเฉลี่ยเป็น<strong>ปริมาณเวกเตอร์</strong> มีทิศทาง บอกทั้งขนาดและทิศการเคลื่อนที่</p>
+        <div class="formula-box">
+          \[
+          \bar{v}_x = \frac{\Delta x}{\Delta t} = \frac{x_f - x_i}{t_f - t_i}
+          \]
+          <div class="var-desc">
+            <ul>
+              <li>\(\bar{v}_x\) = ความเร็วเฉลี่ยในแนวแกน x (m/s)</li>
+              <li>\(\Delta x\) = การกระจัด (m)</li>
+              <li>\(\Delta t\) = ช่วงเวลา (s)</li>
+              <li>\(x_f, x_i\) = ตำแหน่งสุดท้ายและเริ่มต้น (m)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="sub-heading">ความเร็วขณะหนึ่ง (Instantaneous Velocity)</h3>
+        <p>ความเร็วของวัตถุ ณ เวลาขณะหนึ่ง หาจากค่าความชันของเส้นสัมผัสกราฟ x-t ณ จุดนั้น
+          (พิจารณาช่วงเวลา \(\Delta t \to 0\))</p>
+
+        <div class="textbook-note">
+          <strong>ข้อสังเกต:</strong> ในฟิสิกส์ "อัตราเร็ว" และ "ความเร็ว" เป็นคนละปริมาณ
+          อัตราเร็วเฉลี่ย = ระยะทาง/เวลา (สเกลาร์), ความเร็วเฉลี่ย = การกระจัด/เวลา (เวกเตอร์)
+        </div>
+
+        <h3 class="sub-heading">การวัดความเร็วจากแถบกระดาษ (หน้า 62–66)</h3>
+        <p>ในปฏิบัติการจริง เราใช้ <strong>เครื่องเคาะสัญญาณเวลา</strong> (Timer) ที่เคาะ 50 ครั้งต่อวินาที
+          ทำให้ช่วงเวลาระหว่างจุดแต่ละจุดบนแถบกระดาษ = \(\frac{1}{50}\) s = 0.02 s</p>
+        <div class="formula-box">
+          <div class="formula-title">การหาขนาดความเร็วเฉลี่ยจากแถบกระดาษ (ตัวอย่าง 2.3)</div>
+          \[
+          |\bar{v}_{x,AB}| = \frac{|\Delta x_{AB}|}{\Delta t_{AB}}
+          \]
+          <div class="var-desc">
+            <ul>
+              <li>\(|\Delta x_{AB}|\) = ระยะทางระหว่างจุด A ถึง B วัดด้วยไม้บรรทัด (m)</li>
+              <li>\(\Delta t_{AB}\) = จำนวนช่วงจุดระหว่าง A ถึง B × 0.02 s</li>
+            </ul>
+          </div>
+        </div>
+        <div class="textbook-example-box">
+          <strong>ตัวอย่าง 2.3 (หน้า 62):</strong> รถเคลื่อนที่จาก A ถึง B ระยะ 10.00 cm ใน 8 ช่วงจุด<br>
+          \(\Delta t = \frac{8}{50}\) s &nbsp;→&nbsp;
+          \(|\bar{v}_{x,AB}| = \frac{0.1000}{8/50} = 0.6250\) m/s = <strong>62.50 cm/s</strong>
+        </div>
+
+        <h3 class="sub-heading">การหาขนาดความเร็วขณะหนึ่งจากแถบกระดาษ (หน้า 65–66)</h3>
+        <p>เพื่อหาขนาดความเร็วที่จุด b ให้วัดระยะจากจุด a ถึงจุด c (จุดข้างหน้าและข้างหลัง b)
+          ใน 2 ช่วงจุด แล้วคำนวณหาอัตราเร็วเฉลี่ยในช่วงนั้น ค่าที่ได้ถือเป็นขนาดความเร็วขณะหนึ่ง
+          ณ จุดกึ่งกลาง (จุด b)</p>
+        <div class="formula-box">
+          <div class="formula-title">ความเร็วขณะหนึ่ง ณ จุด b (ตัวอย่าง 2.3, หน้า 65)</div>
+          \[
+          v_b = \frac{|\Delta x_{ac}|}{\Delta t_{ac}} = \frac{|\Delta x_{ac}|}{2 \times 0.02\,\text{s}}
+          \]
+          <div class="var-desc">
+            <ul>
+              <li>\(|\Delta x_{ac}|\) = ระยะทางระหว่างจุด a ถึง c (ข้ามจุด b)</li>
+              <li>\(\Delta t_{ac}\) = 2 ช่วงจุด = 2/50 s = 0.04 s</li>
+            </ul>
+          </div>
+        </div>
+        <div class="textbook-example-box">
+          <strong>ตัวอย่าง (หน้า 65):</strong> จุด a ถึง c ระยะ 2.00 cm ใน 2 ช่วงจุด<br>
+          \(v_b = \frac{0.0200}{2/50} = 0.500\) m/s = <strong>50.0 cm/s</strong>
+        </div>
+        <div class="textbook-example-box">
+          <strong>ตัวอย่าง 2.4 (หน้า 66):</strong> หาอัตราเร็วที่จุด A โดยใช้การกระจัดจากจุด O ถึง B
+          (ใช้จุดก่อนหน้า O และหลัง B เพื่อครอบจุด A ไว้ตรงกลาง)
+          ได้อัตราเร็วที่จุด A = <strong>2.500 m/s</strong>
+        </div>
+      </div>
+      <div class="interactive-panel">
+        <div class="panel-header">
+          <h3>คำนวณเร็วเฉลี่ย</h3>
+          <output id="speedOutput">อัตราเร็วเฉลี่ย 2.50 m/s, ความเร็วเฉลี่ย 0.50 m/s</output>
+        </div>
+        <div class="calculator-grid">
+          <label>ระยะทางรวม (m)<input id="distanceInput" type="number" value="20" min="0" step="1" /></label>
+          <label>การกระจัด (m)<input id="dispInput" type="number" value="4" step="1" /></label>
+          <label>เวลา (s)<input id="timeInput" type="number" value="8" min="0.1" step="0.1" /></label>
+        </div>
+        <p class="note">สังเกตว่าเดินวนกลับมาจุดเดิมได้: ระยะทางไม่เป็นศูนย์ แต่การกระจัดอาจเป็นศูนย์</p>
+      </div>
+    </section>
+
+    <!-- ความเร่ง -->
+    <section id="acceleration" class="section lesson-layout reversed">
+      <div class="lesson-text">
+        <h2>2.4 ความเร่ง (Acceleration)</h2>
+        <p>
+          <strong>ความเร่ง</strong> คืออัตราการเปลี่ยนแปลงความเร็วต่อเวลา
+          เนื่องจากความเร็วเป็นเวกเตอร์ การเปลี่ยนแปลงจึงเกิดได้ 3 แบบ:
+        </p>
+        <ul class="key-list">
+          <li><strong>ขนาดความเร็วเปลี่ยน แต่ทิศคงเดิม</strong> เช่น รถเร่งบนทางตรง</li>
+          <li><strong>ทิศเปลี่ยน แต่ขนาดคงเดิม</strong> เช่น รถเลี้ยวโค้งด้วยอัตราเร็วคงตัว</li>
+          <li><strong>ทั้งขนาดและทิศเปลี่ยนพร้อมกัน</strong> เช่น การแกว่งชิงช้า</li>
+        </ul>
+
+        <h3 class="sub-heading">ความเร่งเฉลี่ย (Average Acceleration)</h3>
+        <div class="formula-box">
+          \[
+          a_{x,av} = \frac{\Delta v_x}{\Delta t} = \frac{v_{fx} - v_{ix}}{t_f - t_i}
+          \]
+          <div class="var-desc">
+            <ul>
+              <li>\(a_{x,av}\) = ความเร่งเฉลี่ยในแนวแกน x (m/s²)</li>
+              <li>\(\Delta v_x\) = การเปลี่ยนความเร็วในแนวแกน x (m/s)</li>
+              <li>\(v_{fx}\) = ความเร็วปลายในแนวแกน x (m/s)</li>
+              <li>\(v_{ix}\) = ความเร็วต้นในแนวแกน x (m/s)</li>
+              <li>\(\Delta t = t_f - t_i\) = ช่วงเวลา (s)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="textbook-note">
+          <strong>ข้อสำคัญ:</strong> ในฟิสิกส์ วัตถุที่เคลื่อนที่ช้าลงก็มีความเร่ง (เรียกว่า
+          "มีความเร่งในทิศตรงข้ามกับความเร็ว") ความเร่งเป็นลบไม่ได้หมายถึงช้าลงเสมอ
+          ต้องพิจารณาร่วมกับทิศของความเร็ว:
+          <ul style="margin-top:8px">
+            <li>ความเร็วและความเร่ง <em>ทิศเดียวกัน</em> → วัตถุ<strong>เร็วขึ้น</strong></li>
+            <li>ความเร็วและความเร่ง <em>ทิศตรงข้าม</em> → วัตถุ<strong>ช้าลง</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="interactive-panel">
+        <div class="panel-header">
+          <h3>ความเร่งเฉลี่ย</h3>
+          <output id="accelOutput">a = 1.50 m/s²</output>
+        </div>
+        <div class="calculator-grid">
+          <label>v<sub>i</sub> (m/s)<input id="viInput" type="number" value="2" step="0.5" /></label>
+          <label>v<sub>f</sub> (m/s)<input id="vfInput" type="number" value="14" step="0.5" /></label>
+          <label>Δt (s)<input id="dtInput" type="number" value="8" min="0.1" step="0.1" /></label>
+        </div>
+        <p class="note">ลองใส่ v<sub>f</sub> น้อยกว่า v<sub>i</sub> เพื่อดูความเร่งติดลบ (วัตถุช้าลง)</p>
+      </div>
+    </section>
+
+    <!-- กราฟ -->
+    <section id="graphs" class="section graph-section">
+      <div class="section-heading">
+        <h2>2.5 กราฟของการเคลื่อนที่แนวตรง</h2>
+        <p>
+          กราฟเป็นเครื่องมือสำคัญในการวิเคราะห์การเคลื่อนที่ ช่วยให้เห็นภาพความสัมพันธ์ระหว่างปริมาณต่าง ๆ
+          ได้ชัดเจน โดยเราจะศึกษากราฟ 3 ประเภท ได้แก่ กราฟ x-t, v-t และ a-t
+          (อ้างอิง: หนังสือเรียน ฟิสิกส์ 1 สสวท. หน้า 63–80)
+        </p>
+      </div>
+
+      <!-- 2.5.1 กราฟ x-t -->
+      <div class="graph-topic-block">
+        <div class="graph-topic-header">
+          <span class="graph-type-badge xt-badge">x-t</span>
+          <h3>2.5.1 กราฟระหว่างตำแหน่งกับเวลา (x-t Graph)</h3>
+        </div>
+        <div class="graph-detail-layout">
+          <div class="graph-detail-text">
+            <p>กราฟตำแหน่งกับเวลาแสดงว่าวัตถุอยู่ที่ตำแหน่งใดในแต่ละเวลา การอ่านกราฟนี้ต้องพิจารณา
+              <strong>ความชัน (slope)</strong> ของกราฟ ซึ่งสัมพันธ์กับความเร็ว
+            </p>
+            <div class="graph-rule-cards">
+              <div class="grc grc-blue">
+                <div class="grc-icon">📐</div>
+                <div>
+                  <strong>ความชันระหว่าง 2 จุด = ความเร็วเฉลี่ย</strong>
+                  <p class="grc-desc">\(\bar{v}_x = \dfrac{\Delta x}{\Delta t} = \dfrac{x_2 - x_1}{t_2 - t_1}\)</p>
                 </div>
               </div>
-              <div class="read-step">
-                <div class="read-num">5</div>
-                <div class="read-text"><strong>หลีกเลี่ยง Parallax Error</strong><br>ตาต้องมองตั้งฉากกับไม้บรรทัด
-                  ไม่มองเฉียง ไม่งอไม้บรรทัด</div>
+              <div class="grc grc-teal">
+                <div class="grc-icon">✏️</div>
+                <div>
+                  <strong>ความชันของเส้นสัมผัส ณ จุดหนึ่ง = ความเร็วขณะหนึ่ง</strong>
+                  <p class="grc-desc">ลากเส้นสัมผัสกราฟที่จุดที่ต้องการ → วัดความชันของเส้นนั้น</p>
+                </div>
+              </div>
+              <div class="grc grc-green">
+                <div class="grc-icon">📏</div>
+                <div>
+                  <strong>กราฟเส้นตรง = ความเร็วคงตัว (a = 0)</strong>
+                  <p class="grc-desc">ความชันคงตัวหมายถึงความเร็วไม่เปลี่ยนตลอดการเคลื่อนที่</p>
+                </div>
+              </div>
+              <div class="grc grc-orange">
+                <div class="grc-icon">〰️</div>
+                <div>
+                  <strong>กราฟเส้นโค้ง = มีความเร่ง</strong>
+                  <p class="grc-desc">ความชันเปลี่ยนไปตามเวลา แสดงว่ามีความเร่งเกิดขึ้น</p>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="reading-example">
-            <h4>🔢 ตัวอย่างการอ่านค่า</h4>
-            <div class="example-reading">
-              <div class="ex-reading-row">
-                <span class="ex-label">ขีด cm ที่เห็น:</span>
-                <span class="ex-val">3 cm</span>
-              </div>
-              <div class="ex-reading-row">
-                <span class="ex-label">ขีด mm ที่นับได้:</span>
-                <span class="ex-val">7 ขีด = 7 mm</span>
-              </div>
-              <div class="ex-reading-row">
-                <span class="ex-label">ค่าที่ประมาณ:</span>
-                <span class="ex-val">+ 0.5 mm</span>
-              </div>
-              <div class="ex-reading-row total">
-                <span class="ex-label">ผลการวัด:</span>
-                <span class="ex-val">L = 3.75 ± 0.05 cm</span>
-              </div>
+            <div class="textbook-example-box mt-16">
+              <strong>ตัวอย่างจากตำรา (หน้า 65, รูป 2.13):</strong>
+              รถยนต์มีตำแหน่ง x(0) = +4.0 m, x(1.0) = +8.0 m, x(2.0) = 0 m, x(3.0) = −8.0 m
+              <ul class="tight-list">
+                <li>ช่วง t = 0 ถึง 1.0 s: \(\bar{v}_x = \frac{(+8.0)-(+4.0)}{1.0} = +4.0\) m/s (เคลื่อนทางบวก)</li>
+                <li>ช่วง t = 1.0 ถึง 2.0 s: \(\bar{v}_x = \frac{0-(+8.0)}{1.0} = -8.0\) m/s (เคลื่อนทางลบ)</li>
+                <li>ช่วง t = 2.0 ถึง 3.0 s: \(\bar{v}_x = \frac{(-8.0)-0}{1.0} = -8.0\) m/s (เคลื่อนทางลบ)</li>
+              </ul>
+            </div>
+
+            <div class="graph-summary-box">
+              <strong>สรุปสิ่งที่อ่านได้จากกราฟ x-t</strong>
+              <table class="mini-table">
+                <tr>
+                  <th>ลักษณะกราฟ</th>
+                  <th>ความหมาย</th>
+                </tr>
+                <tr>
+                  <td>เส้นตรงเอียงขึ้น (slope &gt; 0)</td>
+                  <td>เคลื่อนที่ทิศบวก ความเร็วคงตัว</td>
+                </tr>
+                <tr>
+                  <td>เส้นตรงเอียงลง (slope &lt; 0)</td>
+                  <td>เคลื่อนที่ทิศลบ ความเร็วคงตัว</td>
+                </tr>
+                <tr>
+                  <td>เส้นขนานแกนเวลา (slope = 0)</td>
+                  <td>วัตถุอยู่นิ่ง</td>
+                </tr>
+                <tr>
+                  <td>เส้นโค้งขึ้น (cong up)</td>
+                  <td>ความเร็วเพิ่มขึ้น (เร่ง)</td>
+                </tr>
+                <tr>
+                  <td>เส้นโค้งลง (cong down)</td>
+                  <td>ความเร็วลดลง (หน่วง)</td>
+                </tr>
+                <tr>
+                  <td>จุดเปลี่ยนทิศ (ตำแหน่งสูงสุด)</td>
+                  <td>ความเร็วขณะหนึ่ง = 0</td>
+                </tr>
+              </table>
             </div>
           </div>
-
-          <div class="inst-note">
-            <span class="note-icon">⚠️</span>
-            <span>ความไม่แน่นอนของไม้บรรทัด = ครึ่งหนึ่งของค่าที่เล็กที่สุดที่อ่านได้ = ½ × 1 mm = <strong>0.5
-                mm</strong></span>
+          <div class="graph-detail-visual">
+            <canvas id="graphXtDemo" width="480" height="340"></canvas>
+            <p class="graph-caption">กราฟ x-t: แสดงตำแหน่งของรถยนต์ตามเวลา ความชันบ่งบอกความเร็ว</p>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Vernier Caliper Panel -->
-    <div class="inst-panel hidden" id="panel-vernier">
-      <div class="inst-content-grid">
-        <div class="inst-image-col">
-          <div class="inst-img-wrapper">
-            <img src="images/เวอร์เนียคาลิปเปอร์ (Vernier Calipers).jpg" alt="เวอร์เนียคาลิปเปอร์" class="inst-photo">
-          </div>
-          <div class="inst-img-wrapper" style="margin-top:0.75rem">
-            <img src="images/อ่านค่าเวอร์เนียคาลิปเปอร์1.jpg" alt="วิธีอ่านค่าเวอร์เนียคาลิปเปอร์ 1" class="inst-photo">
-          </div>
-          <div class="inst-img-wrapper" style="margin-top:0.75rem">
-            <img src="images/อ่านค่าเวอร์เนียคาลิปเปอร์2.jpg" alt="วิธีอ่านค่าเวอร์เนียคาลิปเปอร์ 2" class="inst-photo">
-          </div>
-          <div class="inst-specs">
-            <div class="spec-item">
-              <span class="spec-label">ความละเอียด</span>
-              <span class="spec-val">0.1 mm</span>
+      <!-- 2.5.2 กราฟ v-t -->
+      <div class="graph-topic-block">
+        <div class="graph-topic-header">
+          <span class="graph-type-badge vt-badge">v-t</span>
+          <h3>2.5.2 กราฟระหว่างความเร็วกับเวลา (v-t Graph)</h3>
+        </div>
+        <div class="graph-detail-layout">
+          <div class="graph-detail-text">
+            <p>กราฟ v-t แสดงว่าวัตถุมีความเร็วเท่าใดในแต่ละเวลา สามารถอ่านได้ทั้ง
+              <strong>ความเร่ง</strong> (จากความชัน) และ <strong>การกระจัด</strong> (จากพื้นที่ใต้กราฟ)
+            </p>
+            <div class="graph-rule-cards">
+              <div class="grc grc-blue">
+                <div class="grc-icon">📐</div>
+                <div>
+                  <strong>ความชันของกราฟ = ความเร่ง</strong>
+                  <p class="grc-desc">\(a_x = \dfrac{\Delta v_x}{\Delta t}\) (สำหรับความเร่งขณะหนึ่ง
+                    ใช้ความชันของเส้นสัมผัส)</p>
+                </div>
+              </div>
+              <div class="grc grc-teal">
+                <div class="grc-icon">▦</div>
+                <div>
+                  <strong>พื้นที่ใต้กราฟ = การกระจัด Δx</strong>
+                  <p class="grc-desc">พื้นที่เหนือแกนเวลา → Δx เป็นบวก, พื้นที่ใต้แกนเวลา → Δx เป็นลบ</p>
+                </div>
+              </div>
+              <div class="grc grc-green">
+                <div class="grc-icon">↔️</div>
+                <div>
+                  <strong>กราฟขนานแกนเวลา = ความเร็วคงตัว (a = 0)</strong>
+                  <p class="grc-desc">\(v_x\) ไม่เปลี่ยนแปลง → ไม่มีความเร่ง</p>
+                </div>
+              </div>
+              <div class="grc grc-orange">
+                <div class="grc-icon">📉</div>
+                <div>
+                  <strong>กราฟเส้นตรงเอียง = ความเร่งคงตัว</strong>
+                  <p class="grc-desc">ความชันคงที่ตลอด แสดงว่าความเร่งไม่เปลี่ยนแปลง</p>
+                </div>
+              </div>
             </div>
-            <div class="spec-item">
-              <span class="spec-label">ความไม่แน่นอน</span>
-              <span class="spec-val">± 0.05 mm</span>
+
+            <div class="textbook-example-box mt-16">
+              <strong>ตัวอย่าง 2.8 (หน้า 72–74, รูป 2.14):</strong>
+              จากกราฟ v-t ที่ v(0 ถึง 1.0 s) = +4.0 m/s และ v(1.0 ถึง 3.0 s) = −8.0 m/s:
+              <ul class="tight-list">
+                <li>ช่วง t = 0 ถึง 1.0 s: พื้นที่ = (+4.0)(1.0) = <strong>+4.0 m</strong> = Δx ช่วงนั้น ✓</li>
+                <li>ช่วง t = 1.0 ถึง 2.0 s: พื้นที่ = (−8.0)(1.0) = <strong>−8.0 m</strong> = Δx ✓</li>
+                <li>ช่วง t = 1.0 ถึง 3.0 s: พื้นที่รวม = −8.0 + (−8.0) = <strong>−16.0 m</strong> ✓</li>
+                <li>ช่วง t = 0 ถึง 3.0 s: พื้นที่รวม = +4.0 + (−16.0) = <strong>−12.0 m</strong> ✓</li>
+              </ul>
+              <em>พื้นที่ใต้กราฟ v-t = การกระจัด เสมอ</em>
             </div>
-            <div class="spec-item">
-              <span class="spec-label">ช่วงวัด</span>
-              <span class="spec-val">0 – 150 mm</span>
+
+            <div class="graph-summary-box">
+              <strong>สรุปสิ่งที่อ่านได้จากกราฟ v-t</strong>
+              <table class="mini-table">
+                <tr>
+                  <th>ลักษณะกราฟ</th>
+                  <th>ความหมาย</th>
+                </tr>
+                <tr>
+                  <td>เส้นตรง slope &gt; 0</td>
+                  <td>ความเร่งคงตัวและเป็นบวก (เร็วขึ้น)</td>
+                </tr>
+                <tr>
+                  <td>เส้นตรง slope &lt; 0</td>
+                  <td>ความเร่งคงตัวและเป็นลบ</td>
+                </tr>
+                <tr>
+                  <td>เส้นขนานแกนเวลา</td>
+                  <td>ความเร็วคงตัว (a = 0)</td>
+                </tr>
+                <tr>
+                  <td>v &gt; 0 (กราฟอยู่เหนือแกน)</td>
+                  <td>เคลื่อนที่ทิศบวก</td>
+                </tr>
+                <tr>
+                  <td>v &lt; 0 (กราฟอยู่ใต้แกน)</td>
+                  <td>เคลื่อนที่ทิศลบ</td>
+                </tr>
+                <tr>
+                  <td>กราฟตัดแกนเวลา (v = 0)</td>
+                  <td>วัตถุหยุดชั่วขณะ แล้วกลับทิศ</td>
+                </tr>
+              </table>
             </div>
+          </div>
+          <div class="graph-detail-visual">
+            <canvas id="graphVtDemo" width="480" height="340"></canvas>
+            <p class="graph-caption">กราฟ v-t: ความชัน = ความเร่ง, พื้นที่ = การกระจัด</p>
           </div>
         </div>
-        <div class="inst-info-col">
-          <h3 class="inst-name-title">เวอร์เนียคาลิปเปอร์ (Vernier Calipers)</h3>
-          <p class="inst-desc">เวอร์เนียคาลิปเปอร์เป็นเครื่องมือวัดขนาดที่แม่นยำกว่าไม้บรรทัดถึง 10 เท่า
-            ประกอบด้วยสเกลหลัก (Main Scale) และสเกลเวอร์เนีย (Vernier Scale) ใช้วัดเส้นผ่านศูนย์กลาง ความลึก และระยะห่าง
+      </div>
+
+      <!-- 2.5.3 กราฟ a-t -->
+      <div class="graph-topic-block">
+        <div class="graph-topic-header">
+          <span class="graph-type-badge at-badge">a-t</span>
+          <h3>2.5.3 กราฟระหว่างความเร่งกับเวลา (a-t Graph)</h3>
+        </div>
+        <div class="graph-detail-layout">
+          <div class="graph-detail-text">
+            <p>กราฟ a-t แสดงความเร่งของวัตถุในแต่ละเวลา ข้อมูลที่ได้จากกราฟนี้คือ
+              <strong>การเปลี่ยนความเร็ว</strong> (จากพื้นที่ใต้กราฟ)
+            </p>
+            <div class="graph-rule-cards">
+              <div class="grc grc-red">
+                <div class="grc-icon">▦</div>
+                <div>
+                  <strong>พื้นที่ใต้กราฟ a-t = การเปลี่ยนความเร็ว Δv<sub>x</sub></strong>
+                  <p class="grc-desc">\(\Delta v_x = a_x \cdot \Delta t\) (เมื่อ \(a_x\) คงตัว)</p>
+                </div>
+              </div>
+              <div class="grc grc-blue">
+                <div class="grc-icon">📏</div>
+                <div>
+                  <strong>เมื่อความเร่งคงตัว → กราฟเป็นเส้นขนานแกนเวลา</strong>
+                  <p class="grc-desc">ค่า \(a_x\) ไม่เปลี่ยนตามเวลา</p>
+                </div>
+              </div>
+              <div class="grc grc-green">
+                <div class="grc-icon">🔢</div>
+                <div>
+                  <strong>หาความเร็วที่เวลาใด ๆ จาก Δv</strong>
+                  <p class="grc-desc">\(v_{fx} = v_{ix} + \Delta v_x\) = \(v_{ix}\) + พื้นที่ใต้กราฟ</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="textbook-example-box mt-16">
+              <strong>ตัวอย่าง 2.9 (หน้า 75–77, รูป 2.15):</strong>
+              วัตถุมีความเร่งคงตัว \(a_x = +8.0\) m/s² ตลอด และ\(v_{ix} = -8.4\) m/s<br>
+              <ul class="tight-list">
+                <li>ช่วง t = 0 ถึง 0.8 s: Δv = (+8.0)(0.8) = +6.4 m/s<br>
+                  \(v_x(0.8) = (-8.4) + 6.4 = \) <strong>−2.0 m/s</strong></li>
+                <li>ช่วง t = 0 ถึง 2.3 s: Δv = (+8.0)(2.3) = +18.4 m/s<br>
+                  \(v_x(2.3) = (-8.4) + 18.4 = \) <strong>+10.0 m/s</strong></li>
+              </ul>
+            </div>
+
+            <div class="textbook-example-box">
+              <strong>ตัวอย่าง 2.10 (หน้า 78–79):</strong>
+              กราฟ a-t เป็นสามเหลี่ยม (a เพิ่มจาก 0 ถึง 64 m/s² ใน 16 s)
+              พื้นที่ = ½ × (16.0)(64.0) = +512 m/s<br>
+              ถ้า \(v_{ix} = +10.0\) m/s → \(v_{fx} = 10.0 + 512 = \) <strong>+522 m/s</strong>
+            </div>
+          </div>
+          <div class="graph-detail-visual">
+            <canvas id="graphAtDemo" width="480" height="340"></canvas>
+            <p class="graph-caption">กราฟ a-t: พื้นที่ใต้กราฟ = การเปลี่ยนความเร็ว Δv</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ความสัมพันธ์ระหว่างกราฟทั้งสาม -->
+      <div class="graph-relationship-section">
+        <h3>ความสัมพันธ์ระหว่างกราฟทั้งสาม</h3>
+        <div class="graph-rel-grid">
+          <div class="graph-rel-item">
+            <div class="graph-rel-from">x-t</div>
+            <div class="graph-rel-arrow">→ ความชัน →</div>
+            <div class="graph-rel-to">v-t</div>
+          </div>
+          <div class="graph-rel-item">
+            <div class="graph-rel-from">v-t</div>
+            <div class="graph-rel-arrow">→ ความชัน →</div>
+            <div class="graph-rel-to">a-t</div>
+          </div>
+          <div class="graph-rel-item">
+            <div class="graph-rel-from">a-t</div>
+            <div class="graph-rel-arrow">→ พื้นที่ →</div>
+            <div class="graph-rel-to">Δv</div>
+          </div>
+          <div class="graph-rel-item">
+            <div class="graph-rel-from">v-t</div>
+            <div class="graph-rel-arrow">→ พื้นที่ →</div>
+            <div class="graph-rel-to">Δx</div>
+          </div>
+        </div>
+        <div class="graph-summary-grid">
+          <article class="graph-info-card">
+            <div class="gic-header">กราฟ x-t (ตำแหน่ง–เวลา)</div>
+            <ul>
+              <li><strong>ความชันของเส้นเชื่อม 2 จุด</strong> = \(\bar{v}_x\) (ความเร็วเฉลี่ย)</li>
+              <li><strong>ความชันเส้นสัมผัส ณ จุด</strong> = \(v_x\) ขณะหนึ่ง</li>
+              <li>เส้นตรง → a = 0 (ความเร็วคงตัว)</li>
+              <li>เส้นโค้ง → มีความเร่ง</li>
+            </ul>
+          </article>
+          <article class="graph-info-card">
+            <div class="gic-header">กราฟ v-t (ความเร็ว–เวลา)</div>
+            <ul>
+              <li><strong>ความชัน</strong> = \(a_x\) (ความเร่ง)</li>
+              <li><strong>พื้นที่ใต้กราฟ</strong> = \(\Delta x\) (การกระจัด)</li>
+              <li>เส้นตรง → ความเร่งคงตัว</li>
+              <li>ตัดแกนเวลา → วัตถุกลับทิศ</li>
+            </ul>
+          </article>
+          <article class="graph-info-card">
+            <div class="gic-header">กราฟ a-t (ความเร่ง–เวลา)</div>
+            <ul>
+              <li><strong>พื้นที่ใต้กราฟ</strong> = \(\Delta v_x\) (การเปลี่ยนความเร็ว)</li>
+              <li>เส้นขนานแกน → ความเร่งคงตัว</li>
+              <li>\(v_{fx} = v_{ix} +\) พื้นที่</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <!-- Interactive Graph Lab -->
+      <div class="graph-lab-section">
+        <h3>🧪 ทดลองเลื่อนค่า — ดูกราฟทั้งสามพร้อมกัน</h3>
+        <div class="graph-lab">
+          <div class="graph-controls">
+            <label class="control">ตำแหน่งต้น x<sub>0</sub> (m)<input id="x0Slider" type="range" min="-8" max="8"
+                value="0" step="0.5" /></label>
+            <label class="control">ความเร็วต้น u (m/s)<input id="uSlider" type="range" min="-8" max="8" value="3"
+                step="0.5" /></label>
+            <label class="control">ความเร่ง a (m/s²)<input id="aSlider" type="range" min="-4" max="4" value="1"
+                step="0.25" /></label>
+            <div class="readout-grid">
+              <span>x<sub>0</sub>: <strong id="x0Readout">0</strong></span>
+              <span>u: <strong id="uReadout">3</strong></span>
+              <span>a: <strong id="aReadout">1</strong></span>
+            </div>
+          </div>
+          <div class="tabs" role="tablist" aria-label="เลือกกราฟ">
+            <button class="tab active" type="button" data-graph="x">ตำแหน่ง-เวลา (x-t)</button>
+            <button class="tab" type="button" data-graph="v">ความเร็ว-เวลา (v-t)</button>
+            <button class="tab" type="button" data-graph="a">ความเร่ง-เวลา (a-t)</button>
+          </div>
+          <canvas id="graphCanvas"></canvas>
+          <p id="graphHint" class="graph-hint">กราฟ x-t: เส้นโค้งเมื่อมีความเร่ง และความชัน ณ
+            จุดหนึ่งคือความเร็วขณะหนึ่ง
           </p>
-
-          <div class="reading-steps">
-            <h4>📖 วิธีอ่านค่าเวอร์เนียคาลิปเปอร์</h4>
-            <div class="step-list">
-              <div class="read-step">
-                <div class="read-num">1</div>
-                <div class="read-text"><strong>อ่าน Main Scale (มิลลิเมตร)</strong><br>อ่านค่าบนสเกลหลักที่อยู่ก่อนเส้น
-                  0 ของสเกลเวอร์เนีย เช่น 23 mm</div>
-              </div>
-              <div class="read-step">
-                <div class="read-num">2</div>
-                <div class="read-text"><strong>หา Vernier Scale
-                    ที่ตรงกัน</strong><br>มองหาขีดบนสเกลเวอร์เนียที่ตรงกับขีดบนสเกลหลักพอดีที่สุด เช่น ขีดที่ 4 ตรง =
-                  0.4 mm</div>
-              </div>
-              <div class="read-step">
-                <div class="read-num">3</div>
-                <div class="read-text"><strong>นำค่ามารวมกัน</strong><br>ผลการวัด = ค่า Main Scale + ค่า Vernier Scale
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="reading-example">
-            <h4>🔢 ตัวอย่างการอ่านค่า</h4>
-            <div class="example-reading">
-              <div class="ex-reading-row">
-                <span class="ex-label">Main Scale:</span>
-                <span class="ex-val">23 mm</span>
-              </div>
-              <div class="ex-reading-row">
-                <span class="ex-label">Vernier Scale (ขีดที่ 4 ตรง):</span>
-                <span class="ex-val">0.4 mm</span>
-              </div>
-              <div class="ex-reading-row total">
-                <span class="ex-label">ผลการวัด:</span>
-                <span class="ex-val">d = 23.40 ± 0.05 mm</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="vernier-parts">
-            <h4>🔩 ส่วนประกอบหลัก</h4>
-            <div class="parts-grid">
-              <div class="part-item"><span class="part-icon">↔️</span><span>ขากานวัดนอก
-                  (ความกว้าง/เส้นผ่านศูนย์กลาง)</span></div>
-              <div class="part-item"><span class="part-icon">↕️</span><span>ขากานวัดใน (เส้นผ่านศูนย์กลางรู)</span>
-              </div>
-              <div class="part-item"><span class="part-icon">📍</span><span>ก้านวัดความลึก (Depth Rod)</span></div>
-              <div class="part-item"><span class="part-icon">🔒</span><span>สกรูล็อก (Lock Screw)</span></div>
-            </div>
-          </div>
-
-          <div class="inst-note">
-            <span class="note-icon">💡</span>
-            <span>สเกลเวอร์เนีย 10 ขีด แทน 9 mm บนสเกลหลัก ดังนั้น 1 ขีด = 0.9 mm ส่วนต่าง = 1 - 0.9 = <strong>0.1
-                mm</strong> (Least Count)</span>
-          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Micrometer Panel -->
-    <div class="inst-panel hidden" id="panel-micrometer">
-      <div class="inst-content-grid">
-        <div class="inst-image-col">
-          <div class="inst-img-wrapper">
-            <img src="images/ไมโครมิเตอร์.jpg" alt="ไมโครมิเตอร์" class="inst-photo">
+    <!-- สมการ -->
+    <section id="equations" class="section equation-section">
+      <div class="section-heading">
+        <h2>2.6 สมการสำหรับการเคลื่อนที่แนวตรง</h2>
+        <p>เลือกกรณีการเคลื่อนที่แล้วใส่ค่าเพื่อคำนวณปริมาณที่เกี่ยวข้อง</p>
+      </div>
+
+      <!-- สรุปสมการ 4 สมการ -->
+      <article class="equation-summary">
+        <h3>สรุปสมการการเคลื่อนที่แนวตรง (ความเร่งคงตัว)</h3>
+        <p>
+          ใช้สัญลักษณ์ตามหนังสือเรียน สสวท. โดย \(u_x\) = ความเร็วต้น, \(v_x\) = ความเร็วปลาย,
+          \(a_x\) = ความเร่งคงตัว, \(t\) = เวลา, \(\Delta x\) = การกระจัด
+          สมการทั้ง 4 นี้ใช้ได้เฉพาะเมื่อ <strong>ความเร่งมีค่าคงตัว</strong> เท่านั้น
+        </p>
+
+        <div class="eq-grid-4">
+          <div class="eq-card">
+            <div class="eq-label">สมการที่ 1 — หา \(v_x\)</div>
+            \[v_x = u_x + a_x t\]
+            <div class="eq-vars">ใช้เมื่อ: รู้ \(u_x, a_x, t\) → หา \(v_x\)</div>
           </div>
-          <div class="inst-img-wrapper" style="margin-top:0.75rem">
-            <img src="images/อ่านค่าไมโครมิเตอร์1.jpg" alt="วิธีอ่านค่าไมโครมิเตอร์ 1" class="inst-photo">
+          <div class="eq-card">
+            <div class="eq-label">สมการที่ 2 — หา \(\Delta x\) จากความเร็วเฉลี่ย</div>
+            \[\Delta x = \left(\frac{u_x + v_x}{2}\right)t\]
+            <div class="eq-vars">ใช้เมื่อ: รู้ \(u_x, v_x, t\) → หา \(\Delta x\)</div>
           </div>
-          <div class="inst-img-wrapper" style="margin-top:0.75rem">
-            <img src="images/อ่านค่าไมโครมิเตอร์2.png" alt="วิธีอ่านค่าไมโครมิเตอร์ 2" class="inst-photo">
+          <div class="eq-card">
+            <div class="eq-label">สมการที่ 3 — หา \(\Delta x\) จากเวลา</div>
+            \[\Delta x = u_x t + \frac{1}{2}a_x t^2\]
+            <div class="eq-vars">ใช้เมื่อ: รู้ \(u_x, a_x, t\) → หา \(\Delta x\)</div>
           </div>
-          <div class="inst-specs">
-            <div class="spec-item">
-              <span class="spec-label">ความละเอียด</span>
-              <span class="spec-val">0.01 mm</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">ความไม่แน่นอน</span>
-              <span class="spec-val">± 0.005 mm</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">ช่วงวัด</span>
-              <span class="spec-val">0 – 25 mm</span>
-            </div>
+          <div class="eq-card">
+            <div class="eq-label">สมการที่ 4 — ไม่มี \(t\)</div>
+            \[v_x^2 = u_x^2 + 2a_x \Delta x\]
+            <div class="eq-vars">ใช้เมื่อ: รู้ \(u_x, a_x, \Delta x\) → หา \(v_x\) (หรือกลับกัน)</div>
           </div>
         </div>
-        <div class="inst-info-col">
-          <h3 class="inst-name-title">ไมโครมิเตอร์ (Micrometer)</h3>
-          <p class="inst-desc">ไมโครมิเตอร์เป็นเครื่องมือวัดที่แม่นยำสูงสุดในสามชนิด ใช้หลักการของสกรู (Screw Principle)
-            วัดได้ละเอียดถึง 0.01 mm เหมาะสำหรับวัดความหนา เส้นผ่านศูนย์กลางลวด หรือชิ้นส่วนขนาดเล็ก</p>
 
-          <div class="reading-steps">
-            <h4>📖 วิธีอ่านค่าไมโครมิเตอร์</h4>
-            <div class="step-list">
-              <div class="read-step">
-                <div class="read-num">1</div>
-                <div class="read-text"><strong>อ่าน Sleeve Scale (สเกลหลัก)</strong><br>อ่านค่าจาก Sleeve
-                  ที่ถูกเปิดเผยโดย Thimble: เส้นบน = mm, เส้นล่าง = 0.5 mm</div>
-              </div>
-              <div class="read-step">
-                <div class="read-num">2</div>
-                <div class="read-text"><strong>อ่าน Thimble Scale (สเกลรอง)</strong><br>อ่านเส้นบน Thimble
-                  ที่ตรงกับเส้นกลาง Sleeve ได้ค่าเป็น 0.01 mm</div>
-              </div>
-              <div class="read-step">
-                <div class="read-num">3</div>
-                <div class="read-text"><strong>รวมค่าทั้งหมด</strong><br>ผลการวัด = Sleeve (mm) + Sleeve (0.5 mm ถ้ามี)
-                  + Thimble (0.01 mm)</div>
-              </div>
-              <div class="read-step">
-                <div class="read-num">4</div>
-                <div class="read-text"><strong>ตรวจสอบ Zero Error</strong><br>ก่อนวัดทุกครั้ง
-                  ควรตรวจสอบว่าเมื่อหน้าตัดชนกัน ค่าบน Thimble ตรงที่ 0 หรือไม่</div>
-              </div>
-            </div>
-          </div>
+        <p class="variable-note">
+          <strong>คำอธิบายตัวแปรทั้งหมด:</strong>
+          \(u_x\) = ความเร็วต้นในแนวแกน x (m/s) &nbsp;|&nbsp;
+          \(v_x\) = ความเร็วปลายในแนวแกน x (m/s) &nbsp;|&nbsp;
+          \(a_x\) = ความเร่งคงตัวในแนวแกน x (m/s²) &nbsp;|&nbsp;
+          \(t\) = เวลา (s) &nbsp;|&nbsp;
+          \(\Delta x\) = การกระจัดในแนวแกน x (m)
+        </p>
+      </article>
 
-          <div class="reading-example">
-            <h4>🔢 ตัวอย่างการอ่านค่า</h4>
-            <div class="example-reading">
-              <div class="ex-reading-row">
-                <span class="ex-label">Sleeve (เส้นหลัก mm):</span>
-                <span class="ex-val">7 mm</span>
-              </div>
-              <div class="ex-reading-row">
-                <span class="ex-label">Sleeve (เส้น 0.5 mm):</span>
-                <span class="ex-val">0.5 mm</span>
-              </div>
-              <div class="ex-reading-row">
-                <span class="ex-label">Thimble (ขีดที่ 28):</span>
-                <span class="ex-val">0.28 mm</span>
-              </div>
-              <div class="ex-reading-row total">
-                <span class="ex-label">ผลการวัด:</span>
-                <span class="ex-val">d = 7.78 ± 0.005 mm</span>
-              </div>
-            </div>
+      <!-- Calculators -->
+      <div class="equation-grid">
+        <article class="equation-card">
+          <h3>ความเร็วคงตัว (\(a = 0\))</h3>
+          <p>เมื่อ \(a = 0\) ความเร็วไม่เปลี่ยนแปลง และ \(\Delta x = v_x \cdot t\)</p>
+          <div class="formula-box compact">
+            \[x = x_0 + v_x t\]
           </div>
+          <p class="variable-note">
+            \(x\) = ตำแหน่ง ณ เวลา \(t\) (m), \(x_0\) = ตำแหน่งเริ่มต้น (m),
+            \(v_x\) = ความเร็วคงตัว (m/s), \(t\) = เวลา (s)
+          </p>
+          <div class="calculator-grid">
+            <label>x<sub>0</sub> (m)<input id="constX0" type="number" value="0" step="1" /></label>
+            <label>v (m/s)<input id="constV" type="number" value="5" step="0.5" /></label>
+            <label>t (s)<input id="constT" type="number" value="6" min="0" step="0.5" /></label>
+          </div>
+          <output id="constOutput" class="answer-box">x = 30.00 m</output>
+        </article>
+        <article class="equation-card">
+          <h3>ความเร่งคงตัว</h3>
+          <p>ใช้เมื่อความเร่งมีค่าคงตัวตลอดช่วงเวลา</p>
+          <div class="formula-box compact">
+            \[v_x = u_x + a_x t\]
+            \[\Delta x = u_x t + \tfrac{1}{2}a_x t^2\]
+          </div>
+          <p class="variable-note">
+            \(u_x\) = ความเร็วต้น (m/s), \(a_x\) = ความเร่ง (m/s²),
+            \(t\) = เวลา (s), \(\Delta x\) = การกระจัด (m)
+          </p>
+          <div class="calculator-grid">
+            <label>u (m/s)<input id="kinU" type="number" value="2" step="0.5" /></label>
+            <label>a (m/s²)<input id="kinA" type="number" value="1.5" step="0.25" /></label>
+            <label>t (s)<input id="kinT" type="number" value="4" min="0" step="0.5" /></label>
+          </div>
+          <output id="kinOutput" class="answer-box">v = 8.00 m/s, Δx = 20.00 m</output>
+        </article>
+      </div>
+    </section>
 
-          <div class="inst-note">
-            <span class="note-icon">⚙️</span>
-            <span>สกรู 1 รอบ = 0.5 mm, Thimble มี 50 ขีด ดังนั้น 1 ขีด = 0.5/50 = <strong>0.01 mm</strong></span>
+    <!-- การตกแบบเสรี -->
+    <section id="freefall" class="section lesson-layout">
+      <div class="lesson-text">
+        <h2>2.7 การตกแบบเสรี (Free Fall)</h2>
+        <p>
+          <strong>การตกแบบเสรี</strong> คือการเคลื่อนที่ภายใต้แรงโน้มถ่วงของโลกเท่านั้น
+          โดยไม่คิดแรงต้านอากาศ วัตถุทุกชนิดจะมีความเร่งลงด้านล่างเท่ากัน
+          ไม่ขึ้นอยู่กับมวล (ทดลองโดยกาลิเลโอ)
+        </p>
+
+        <div class="formula-box">
+          <div class="formula-title">ความเร่งโน้มถ่วง</div>
+          \[g \approx 9.8\,\text{m/s}^2\]
+          <div class="var-desc">
+            <ul>
+              <li>\(g\) = ความเร่งโน้มถ่วงของโลก ≈ 9.8 m/s² (ใช้ค่า 9.80 m/s² ในตำรา สสวท.)</li>
+              <li>ถ้ากำหนดให้ทิศลงเป็นบวก: \(a = +g = +9.8\,\text{m/s}^2\)</li>
+              <li>ถ้ากำหนดให้ทิศขึ้นเป็นบวก: \(a = -g = -9.8\,\text{m/s}^2\)</li>
+            </ul>
           </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">สมการการตกอิสระ (ปล่อยจากหยุดนิ่ง, กำหนดทิศลงเป็นบวก)</div>
+          \[
+          y = \frac{1}{2}g t^2 \qquad v_y = g t \qquad v_y^2 = 2gy
+          \]
+          <div class="var-desc">
+            <ul>
+              <li>\(y\) = ระยะตกในแนวดิ่ง (m)</li>
+              <li>\(v_y\) = ความเร็วในแนวดิ่ง (m/s)</li>
+              <li>\(g\) = ความเร่งโน้มถ่วง = 9.8 m/s²</li>
+              <li>\(t\) = เวลา (s)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">กรณีทั่วไป (โยนขึ้นหรือโยนลงด้วยความเร็วต้น)</div>
+          \[
+          \Delta y = u_y t + \frac{1}{2}(-g)t^2 \qquad v_y = u_y - gt
+          \]
+          <div class="var-desc">
+            <ul>
+              <li>\(u_y\) = ความเร็วต้นในแนวดิ่ง (m/s) — เป็นบวกถ้าโยนขึ้น</li>
+              <li>\(v_y\) = ความเร็วปลาย (m/s)</li>
+              <li>ที่จุดสูงสุด: \(v_y = 0\) แต่ยังคงมีความเร่ง \(g\) ลงอยู่</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="textbook-note">
+          <strong>ข้อสังเกต:</strong> มวลของวัตถุไม่มีผลต่อความเร่งในการตกเสรี
+          วัตถุหนักและเบาตกถึงพื้นพร้อมกัน (ในสุญญากาศ)
         </div>
       </div>
-    </div>
-
-    <!-- Digital Instrument Panel -->
-    <div class="inst-panel hidden" id="panel-digital">
-      <div class="inst-content-grid">
-        <div class="inst-image-col">
-          <div class="inst-img-wrapper">
-            <img src="images/มัลติมิเตอร์แบบดิจิตอล-1.jpg" alt="เครื่องมือดิจิตัล (มัลติมิเตอร์)" class="inst-photo">
-          </div>
-          <div class="inst-specs">
-            <div class="spec-item">
-              <span class="spec-label">ความละเอียด</span>
-              <span class="spec-val">ขึ้นอยู่กับรุ่น</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">ความไม่แน่นอน</span>
-              <span class="spec-val">± 1 หน่วยสุดท้าย</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">การแสดงผล</span>
-              <span class="spec-val">ตัวเลขดิจิตัล</span>
-            </div>
-          </div>
+      <div class="interactive-panel">
+        <div class="panel-header">
+          <h3>ทดลองปล่อยวัตถุ</h3>
+          <output id="fallOutput">t = 2.0 s, ระยะตก 19.60 m, v = 19.60 m/s ลง</output>
         </div>
-        <div class="inst-info-col">
-          <h3 class="inst-name-title">เครื่องมือวัดดิจิตัล (Digital Instrument)</h3>
-          <p class="inst-desc">เครื่องมือวัดดิจิตัล เช่น มัลติมิเตอร์แบบดิจิตัล แสดงผลการวัดเป็นตัวเลขโดยตรง
-            ลดความผิดพลาดจากการอ่านค่า
-            ใช้วัดปริมาณไฟฟ้า เช่น แรงดัน กระแส และความต้านทาน</p>
-
-          <div class="reading-steps">
-            <h4>📖 วิธีอ่านค่าเครื่องมือดิจิตัล</h4>
-            <div class="step-list">
-              <div class="read-step">
-                <div class="read-num">1</div>
-                <div class="read-text">
-                  <strong>ตั้งค่าย่านวัด</strong><br>เลือกย่านการวัดให้เหมาะสมกับปริมาณที่ต้องการวัด เช่น โวลต์ แอมแปร์
-                  หรือโอห์ม</div>
-              </div>
-              <div class="read-step">
-                <div class="read-num">2</div>
-                <div class="read-text">
-                  <strong>อ่านค่าจากหน้าจอ</strong><br>อ่านตัวเลขที่แสดงบนจอดิจิตัลพร้อมหน่วยที่แสดงไว้</div>
-              </div>
-              <div class="read-step">
-                <div class="read-num">3</div>
-                <div class="read-text"><strong>ระบุความไม่แน่นอน</strong><br>ความไม่แน่นอน = ± 1 ของหลักสุดท้ายที่แสดง
-                  เช่น แสดง 12.34 → ± 0.01</div>
-              </div>
-              <div class="read-step">
-                <div class="read-num">4</div>
-                <div class="read-text"><strong>ตรวจสอบแบตเตอรี่</strong><br>ตรวจสอบให้แน่ใจว่าแบตเตอรี่เพียงพอ
-                  เพราะแบตเตอรี่อ่อนอาจทำให้ค่าผิดพลาด</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="reading-example">
-            <h4>🔢 ตัวอย่างการอ่านค่า</h4>
-            <div class="example-reading">
-              <div class="ex-reading-row">
-                <span class="ex-label">ย่านวัดที่ตั้ง:</span>
-                <span class="ex-val">DC 20V</span>
-              </div>
-              <div class="ex-reading-row">
-                <span class="ex-label">ค่าที่แสดงบนจอ:</span>
-                <span class="ex-val">12.34 V</span>
-              </div>
-              <div class="ex-reading-row total">
-                <span class="ex-label">ผลการวัด:</span>
-                <span class="ex-val">V = 12.34 ± 0.01 V</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="inst-note">
-            <span class="note-icon">💡</span>
-            <span>เครื่องมือดิจิตัลอ่านค่าได้ง่ายและแม่นยำ แต่ต้องระวังเรื่องการรบกวนทางไฟฟ้าและการสอบเทียบ
-              (Calibration)</span>
-          </div>
-        </div>
+        <canvas id="fallCanvas" width="760" height="420"></canvas>
+        <label class="control">
+          เวลาในการตก
+          <input id="fallTime" type="range" min="0" max="5" value="2" step="0.1" />
+        </label>
       </div>
-    </div>
+    </section>
 
-    <!-- Comparison Table -->
-    <div class="interactive-box" style="margin-top:2rem">
-      <h3>📊 ตารางเปรียบเทียบเครื่องมือวัด</h3>
-      <div class="compare-table">
-        <div class="compare-header">
-          <span>เครื่องมือ</span>
-          <span>ความละเอียด</span>
-          <span>ความไม่แน่นอน</span>
-          <span>ช่วงวัด</span>
-          <span>การใช้งาน</span>
-        </div>
-        <div class="compare-row">
-          <span><span class="inst-emoji">📏</span> ไม้บรรทัด</span>
-          <span class="precision-badge p1">1 mm</span>
-          <span>± 0.5 mm</span>
-          <span>0 – 30 cm</span>
-          <span>ความยาวทั่วไป</span>
-        </div>
-        <div class="compare-row">
-          <span><span class="inst-emoji">🔧</span> เวอร์เนียคาลิปเปอร์</span>
-          <span class="precision-badge p2">0.1 mm</span>
-          <span>± 0.05 mm</span>
-          <span>0 – 150 mm</span>
-          <span>เส้นผ่านศูนย์กลาง ความลึก</span>
-        </div>
-        <div class="compare-row">
-          <span><span class="inst-emoji">🔬</span> ไมโครมิเตอร์</span>
-          <span class="precision-badge p3">0.01 mm</span>
-          <span>± 0.005 mm</span>
-          <span>0 – 25 mm</span>
-          <span>ชิ้นส่วนขนาดเล็ก</span>
-        </div>
+    <!-- แบบทดสอบ -->
+    <section id="quiz" class="section quiz-section">
+      <div class="section-heading">
+        <h2>แบบทดสอบความรู้</h2>
+        <p>มี 2 ชุด ชุดละ 10 ข้อ — ตอบทีละข้อ เลือกคำตอบแล้วระบบจะเฉลยพร้อมคำอธิบายทันที</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Section 5: Significant Figures -->
-  <section class="content-section" id="sig-figs">
-    <div class="section-header">
-      <div class="section-number">05</div>
-      <div>
-        <h2 class="section-title">เลขนัยสำคัญ</h2>
-        <p class="section-subtitle">Significant Figures</p>
+      <div class="quiz-switch">
+        <button class="quiz-set active" type="button" data-set="0">ชุดที่ 1 — ความรู้พื้นฐาน</button>
+        <button class="quiz-set" type="button" data-set="1">ชุดที่ 2 — การคิดวิเคราะห์</button>
       </div>
-    </div>
 
-    <div class="info-card card-blue" style="max-width:100%">
-      <h3>📖 เลขนัยสำคัญคืออะไร?</h3>
-      <p>เลขนัยสำคัญ คือตัวเลขทุกหลักในผลการวัดที่มีความหมาย โดยสะท้อนความแม่นยำของเครื่องมือวัดและการวัด
-        ตัวเลขที่มีเลขนัยสำคัญมากกว่า แสดงว่าวัดได้ละเอียดกว่า</p>
-    </div>
-
-    <div class="sf-rules">
-      <h3>📜 กฎการนับเลขนัยสำคัญ</h3>
-      <div class="rules-accordion">
-        <div class="accordion-item" onclick="toggleAccordion(this)">
-          <div class="accordion-header">
-            <span class="rule-num">กฎ 1</span>
-            <span>ตัวเลขที่ไม่ใช่ศูนย์ทุกตัว → นัยสำคัญเสมอ</span>
-            <span class="accordion-icon">+</span>
-          </div>
-          <div class="accordion-body">
-            <p>ตัวเลข 1-9 ทุกตัวถือว่าเป็นเลขนัยสำคัญ</p>
-            <div class="sf-examples">
-              <span class="sf-ex">1234 → <strong>4</strong> ตัว</span>
-              <span class="sf-ex">5.67 → <strong>3</strong> ตัว</span>
-              <span class="sf-ex">9 → <strong>1</strong> ตัว</span>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item" onclick="toggleAccordion(this)">
-          <div class="accordion-header">
-            <span class="rule-num">กฎ 2</span>
-            <span>ศูนย์ระหว่างตัวเลขที่ไม่ใช่ศูนย์ → นัยสำคัญ</span>
-            <span class="accordion-icon">+</span>
-          </div>
-          <div class="accordion-body">
-            <p>ศูนย์ที่อยู่ "ขั้นกลาง" ระหว่างเลขอื่น ๆ ถือว่ามีนัยสำคัญ</p>
-            <div class="sf-examples">
-              <span class="sf-ex">1004 → <strong>4</strong> ตัว</span>
-              <span class="sf-ex">20.03 → <strong>4</strong> ตัว</span>
-              <span class="sf-ex">1.001 → <strong>4</strong> ตัว</span>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item" onclick="toggleAccordion(this)">
-          <div class="accordion-header">
-            <span class="rule-num">กฎ 3</span>
-            <span>ศูนย์นำหน้า (ด้านหน้าทศนิยม) → ไม่มีนัยสำคัญ</span>
-            <span class="accordion-icon">+</span>
-          </div>
-          <div class="accordion-body">
-            <p>ศูนย์ที่อยู่ก่อนตัวเลขอื่นทางซ้ายของทศนิยม ไม่มีนัยสำคัญ ทำหน้าที่บอกตำแหน่งเท่านั้น</p>
-            <div class="sf-examples">
-              <span class="sf-ex">0.0045 → <strong>2</strong> ตัว (4,5)</span>
-              <span class="sf-ex">0.12 → <strong>2</strong> ตัว (1,2)</span>
-              <span class="sf-ex">0.007 → <strong>1</strong> ตัว (7)</span>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item" onclick="toggleAccordion(this)">
-          <div class="accordion-header">
-            <span class="rule-num">กฎ 4</span>
-            <span>ศูนย์ท้าย (หลังทศนิยม) → มีนัยสำคัญ</span>
-            <span class="accordion-icon">+</span>
-          </div>
-          <div class="accordion-body">
-            <p>ศูนย์ที่อยู่หลังตัวเลขอื่น และหลังจุดทศนิยมแล้ว ถือว่ามีนัยสำคัญ</p>
-            <div class="sf-examples">
-              <span class="sf-ex">2.50 → <strong>3</strong> ตัว</span>
-              <span class="sf-ex">10.0 → <strong>3</strong> ตัว</span>
-              <span class="sf-ex">1.200 → <strong>4</strong> ตัว</span>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item" onclick="toggleAccordion(this)">
-          <div class="accordion-header">
-            <span class="rule-num">กฎ 5</span>
-            <span>ศูนย์ท้ายจำนวนเต็ม → ไม่แน่นอน (ใช้สัญกรณ์วิทย์)</span>
-            <span class="accordion-icon">+</span>
-          </div>
-          <div class="accordion-body">
-            <p>ศูนย์ท้ายของจำนวนเต็มอาจมีหรือไม่มีนัยสำคัญก็ได้ ต้องใช้สัญกรณ์วิทยาศาสตร์เพื่อระบุชัดเจน</p>
-            <div class="sf-examples">
-              <span class="sf-ex">1000 → ไม่แน่ใจ (1-4 ตัว)</span>
-              <span class="sf-ex">1.0×10³ → <strong>2</strong> ตัว</span>
-              <span class="sf-ex">1.000×10³ → <strong>4</strong> ตัว</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SF Counter Tool -->
-    <div class="interactive-box" style="margin-top:1.5rem">
-      <h3>🔢 นับเลขนัยสำคัญ — ลองด้วยตัวเอง!</h3>
-      <div class="sf-counter">
-        <input type="text" id="sfInput" placeholder="ใส่ตัวเลข เช่น 0.00450" class="full-input">
-        <button onclick="countSigFigs()" class="btn btn-primary">นับเลขนัยสำคัญ</button>
-        <div id="sfResult" class="sf-result"></div>
-      </div>
-    </div>
-
-    <!-- SF Operations -->
-    <div class="interactive-box" style="margin-top:1.5rem">
-      <h3>📐 กฎเลขนัยสำคัญในการคำนวณ</h3>
-      <div class="operation-rules">
-        <div class="op-rule">
-          <div class="op-icon">✖️ ➗</div>
-          <div class="op-title">การคูณและหาร</div>
-          <div class="op-content">ผลลัพธ์มีเลขนัยสำคัญเท่ากับตัวเลขที่มีนัยสำคัญน้อยที่สุด</div>
-          <div class="op-example">2.5 × 3.42 = 8.55 → <strong>8.6</strong> (2 นัยสำคัญ)</div>
-        </div>
-        <div class="op-rule">
-          <div class="op-icon">➕ ➖</div>
-          <div class="op-title">การบวกและลบ</div>
-          <div class="op-content">ผลลัพธ์มีตำแหน่งทศนิยมเท่ากับตัวเลขที่มีตำแหน่งทศนิยมน้อยที่สุด</div>
-          <div class="op-example">12.1 + 0.453 = 12.553 → <strong>12.6</strong> (ทศนิยม 1 ตำแหน่ง)</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 6: Recording Results -->
-  <section class="content-section alt-bg" id="recording">
-    <div class="section-header">
-      <div class="section-number">06</div>
-      <div>
-        <h2 class="section-title">การบันทึกและรายงานผลการวัด</h2>
-        <p class="section-subtitle">Recording & Reporting + Calculation Results</p>
-      </div>
-    </div>
-
-    <div class="content-grid">
-      <div class="info-card card-indigo">
-        <h3>📝 หลักการบันทึกผลการวัด</h3>
-        <ul>
-          <li>บันทึกทุกตัวเลขที่อ่านได้ แม้กระทั่งศูนย์</li>
-          <li>ระบุหน่วยเสมอ</li>
-          <li>แสดงความไม่แน่นอน ± ทุกครั้ง</li>
-          <li>ใส่เลขนัยสำคัญให้เหมาะสม</li>
-        </ul>
-      </div>
-      <div class="info-card card-pink">
-        <h3>📊 หลักการรายงานผล</h3>
-        <ul>
-          <li>ผลการวัด = ค่าที่ได้ ± ความไม่แน่นอน</li>
-          <li>เขียนความไม่แน่นอนเป็น 1-2 นัยสำคัญ</li>
-          <li>ปัดตัวเลขให้ตรงตำแหน่งทศนิยมของ ±</li>
-          <li>ใช้สัญกรณ์วิทยาศาสตร์เมื่อจำเป็น</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="recording-demo">
-      <h3>✅ Do's and Don'ts ในการบันทึกผล</h3>
-      <div class="dos-donts">
-        <div class="dos">
-          <div class="dos-header">✅ ที่ถูกต้อง</div>
-          <div class="good-ex">L = 12.34 ± 0.05 cm</div>
-          <div class="good-ex">m = (1.234 ± 0.001) kg</div>
-          <div class="good-ex">T = (2.5 ± 0.5) × 10² K</div>
-          <div class="good-ex">v = 3.00 × 10⁸ m/s</div>
-        </div>
-        <div class="donts">
-          <div class="donts-header">❌ ที่ไม่ถูกต้อง</div>
-          <div class="bad-ex">L = 12.34567 ± 0.05 cm <span class="why">(ทศนิยมไม่สอดคล้องกับ ±)</span></div>
-          <div class="bad-ex">m = 1.234 kg <span class="why">(ไม่มีค่า ±)</span></div>
-          <div class="bad-ex">T = 250 ± 50 K <span class="why">(ไม่ชัดเจนว่า ± มีนัยสำคัญกี่ตัว)</span></div>
-          <div class="bad-ex">L = 12 cm <span class="why">(สูญเสียความละเอียด)</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="interactive-box" style="margin-top:1.5rem">
-      <h3>🧮 การบันทึกผลการคำนวณ</h3>
-      <div class="calc-rules">
-        <div class="calc-step">
-          <div class="step-num">1</div>
-          <div class="step-content">
-            <strong>คำนวณโดยไม่ปัดตัวเลขระหว่างขั้นตอน</strong><br>
-            เก็บตัวเลขทุกหลักไว้จนกว่าจะได้ผลลัพธ์สุดท้าย
-          </div>
-        </div>
-        <div class="calc-step">
-          <div class="step-num">2</div>
-          <div class="step-content">
-            <strong>พิจารณาเลขนัยสำคัญของผลลัพธ์</strong><br>
-            ใช้กฎ ×÷ หรือ +- ตามประเภทการคำนวณ
-          </div>
-        </div>
-        <div class="calc-step">
-          <div class="step-num">3</div>
-          <div class="step-content">
-            <strong>ปัดเศษผลลัพธ์สุดท้าย</strong><br>
-            ≥5 ปัดขึ้น, &lt;5 ปัดลง ตามจำนวนนัยสำคัญที่ต้องการ
-          </div>
-        </div>
-        <div class="calc-step">
-          <div class="step-num">4</div>
-          <div class="step-content">
-            <strong>ระบุหน่วยและความไม่แน่นอน</strong><br>
-            บันทึกผลในรูป ค่า ± ความไม่แน่นอน (หน่วย)
-          </div>
+      <!-- progress bar -->
+      <div class="quiz-progress-wrap">
+        <span class="quiz-progress-label" id="quizProgressLabel">ข้อ 1 / 10</span>
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quizProgressFill" style="width:10%"></div>
         </div>
       </div>
 
-      <div class="worked-example">
-        <h4>📌 ตัวอย่าง: คำนวณพื้นที่สี่เหลี่ยม</h4>
-        <div class="worked-steps">
-          <div class="ws">กำหนด: ยาว = 4.52 cm, กว้าง = 2.1 cm</div>
-          <div class="ws">A = 4.52 × 2.1 = 9.492 cm²</div>
-          <div class="ws">เลขนัยสำคัญ: 4.52 → 3 ตัว, 2.1 → 2 ตัว → ผลลัพธ์ใช้ <strong>2</strong> ตัว</div>
-          <div class="ws result-ws">∴ A = <strong>9.5 cm²</strong></div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <!-- question card (rendered by JS) -->
+      <div id="quizCard"></div>
 
-  <!-- Section 7: Accuracy and Precision -->
-  <section class="content-section" id="accuracy">
-    <div class="section-header">
-      <div class="section-number">07</div>
-      <div>
-        <h2 class="section-title">ความแม่นและความเที่ยง</h2>
-        <p class="section-subtitle">Accuracy and Precision</p>
+      <!-- navigation -->
+      <div class="quiz-nav">
+        <button class="quiz-nav-btn show" id="quizRestartBtn" type="button">↺ เริ่มใหม่</button>
+        <button class="quiz-nav-btn" id="quizNextBtn" type="button">ถัดไป →</button>
       </div>
-    </div>
 
-    <div class="ap-definitions">
-      <div class="def-card accuracy-card">
-        <div class="def-icon">🎯</div>
-        <h3>ความแม่น (Accuracy)</h3>
-        <p>ความใกล้เคียงของค่าที่วัดได้กับ<strong>ค่าจริง</strong> (true value) หรือค่าอ้างอิง</p>
-        <div class="def-note">ความแม่นสูง = วัดได้ใกล้เคียงค่าจริงมาก</div>
+      <!-- result -->
+      <div class="quiz-result-box" id="quizResult">
+        <div class="result-emoji" id="resultEmoji">🎉</div>
+        <div class="result-score" id="resultScore">10/10</div>
+        <p class="result-label" id="resultLabel">เยี่ยมมาก! ทำได้ถูกทุกข้อ</p>
+        <button class="primary-action" id="quizRetryBtn" type="button" style="margin-top:10px">ทำอีกครั้ง</button>
       </div>
-      <div class="def-card precision-card">
-        <div class="def-icon">🔁</div>
-        <h3>ความเที่ยง (Precision)</h3>
-        <p>ความสม่ำเสมอหรือการทำซ้ำได้ของผลการวัด เมื่อวัด<strong>หลายครั้ง</strong>ได้ผลใกล้เคียงกัน</p>
-        <div class="def-note">ความเที่ยงสูง = ผลวัดซ้ำกระจุกตัวใกล้กัน</div>
-      </div>
-    </div>
+    </section>
 
-    <!-- Target Visualization -->
-    <div class="targets-section">
-      <h3>🎯 ภาพแสดงความแม่นและความเที่ยง</h3>
-      <div class="targets-grid">
-        <div class="target-item">
-          <canvas class="target-canvas" id="target1" width="180" height="180"></canvas>
-          <div class="target-label">
-            <span class="target-good">✅ ความแม่นสูง</span>
-            <span class="target-good">✅ ความเที่ยงสูง</span>
-          </div>
-          <p>วัดได้ใกล้ค่าจริงและสม่ำเสมอ (Best!)</p>
-        </div>
-        <div class="target-item">
-          <canvas class="target-canvas" id="target2" width="180" height="180"></canvas>
-          <div class="target-label">
-            <span class="target-bad">❌ ความแม่นต่ำ</span>
-            <span class="target-good">✅ ความเที่ยงสูง</span>
-          </div>
-          <p>ผลสม่ำเสมอแต่ห่างจากค่าจริง (ความคลาดเคลื่อนเชิงระบบ)</p>
-        </div>
-        <div class="target-item">
-          <canvas class="target-canvas" id="target3" width="180" height="180"></canvas>
-          <div class="target-label">
-            <span class="target-good">✅ ความแม่นสูง</span>
-            <span class="target-bad">❌ ความเที่ยงต่ำ</span>
-          </div>
-          <p>ค่าเฉลี่ยใกล้ค่าจริงแต่กระจายมาก (โชค)</p>
-        </div>
-        <div class="target-item">
-          <canvas class="target-canvas" id="target4" width="180" height="180"></canvas>
-          <div class="target-label">
-            <span class="target-bad">❌ ความแม่นต่ำ</span>
-            <span class="target-bad">❌ ความเที่ยงต่ำ</span>
-          </div>
-          <p>ผลกระจายและห่างจากค่าจริง (แย่ที่สุด)</p>
-        </div>
-      </div>
-    </div>
+  </main>
 
-    <div class="interactive-box" style="margin-top:2rem">
-      <h3>📊 คำนวณความแม่นและความเที่ยง</h3>
-      <p>ใส่ค่าที่วัดได้และค่าจริง แล้วดูผลการวิเคราะห์</p>
-      <div class="ap-calc">
-        <div class="ap-input-group">
-          <label>ค่าจริง (True Value):</label>
-          <input type="number" id="trueValue" placeholder="เช่น 9.8" class="ap-input">
-        </div>
-        <div class="ap-input-group">
-          <label>ค่าที่วัดได้ (คั่นด้วยจุลภาค):</label>
-          <input type="text" id="measuredValues" placeholder="เช่น 9.6, 9.7, 9.5, 9.6" class="ap-input">
-        </div>
-        <button onclick="calcAccuracyPrecision()" class="btn btn-primary">วิเคราะห์</button>
-        <div id="apResult" class="ap-result"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quiz Section -->
-  <section class="content-section alt-bg" id="quiz-section">
-    <div class="section-header">
-      <div class="section-number">🧠</div>
-      <div>
-        <h2 class="section-title">แบบทดสอบความรู้</h2>
-        <p class="section-subtitle">ทดสอบความเข้าใจของคุณ!</p>
-      </div>
-    </div>
-
-    <div class="quiz-container" id="quizContainer">
-      <div class="quiz-progress">
-        <div class="quiz-progress-bar" id="quizProgressBar"></div>
-      </div>
-      <div class="quiz-info">
-        <span id="quizCounter">ข้อที่ 1 / 10</span>
-        <span id="quizScore">คะแนน: 0</span>
-      </div>
-      <div id="quizQuestion" class="quiz-question"></div>
-      <div id="quizOptions" class="quiz-options"></div>
-      <div id="quizFeedback" class="quiz-feedback hidden"></div>
-      <button id="quizNext" class="btn btn-primary hidden" onclick="nextQuestion()">ข้อถัดไป →</button>
-    </div>
-    <div id="quizResult" class="quiz-result hidden"></div>
-  </section>
-
-  <!-- Footer -->
   <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-brand">⚛️ ฟิสิกส์ 1 | ม.4</div>
-      <div class="footer-creator">จัดทำโดย ครูสุวรรณษา เดชรักษา</div>
-      <div class="footer-text">การวัดและรายงานผลการวัดปริมาณทางฟิสิกส์</div>
-      <div class="footer-sub">สื่อการเรียนการสอนแบบ Interactive</div>
-    </div>
+    <p>สื่อการเรียนรู้ รายวิชาฟิสิกส์ 1 ระดับชั้นมัธยมศึกษาปีที่ 4</p>
+    <p>อ้างอิงจาก: หนังสือเรียนฟิสิกส์ เล่ม 1 สถาบันส่งเสริมการสอนวิทยาศาสตร์และเทคโนโลยี (สสวท.)</p>
+    <p>จัดทำโดย ครูสุวรรณษา เดชรักษา</p>
   </footer>
 
-  <div id="formula-tooltip" class="formula-tooltip" role="tooltip">
-    <div class="tt-type"></div>
-    <div class="tt-label"></div>
-  </div>
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
 </body>
 
 </html>
