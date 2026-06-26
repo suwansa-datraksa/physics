@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>แรงและกฎการเคลื่อนที่ | ฟิสิกส์ 1 ม.4</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]], displayMath: [["\\[", "\\]"]] },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="กลับไปหน้าแรก">
+      <span class="brand-mark">F</span>
+      <span>
+        <strong>ฟิสิกส์ 1</strong>
+        <small>แรงและกฎการเคลื่อนที่</small>
+      </span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="เปิดเมนูบทเรียน">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="desktop-nav" aria-label="เมนูหลัก">
+      <a href="#force">แรง</a>
+      <a href="#resultant">แรงลัพธ์</a>
+      <a href="#newton">กฎนิวตัน</a>
+      <a href="#friction">แรงเสียดทาน</a>
+      <a href="#gravity">ความโน้มถ่วง</a>
+      <a href="#quiz">แบบทดสอบ</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="course">รายวิชาฟิสิกส์ 1 ระดับชั้นมัธยมศึกษาปีที่ 4</p>
+        <h1>แรงและกฎการเคลื่อนที่</h1>
+        <p>
+          บทเรียน interactive สำหรับทำความเข้าใจว่าแรงทำให้วัตถุเปลี่ยนสภาพการเคลื่อนที่อย่างไร
+          อ้างอิงแกนเนื้อหาจากหนังสือเรียนฟิสิกส์ 1 บทที่ 3 หน้า 127-208
+        </p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#force">เริ่มเรียน</a>
+          <a class="ghost-btn" href="#quiz">ทำแบบทดสอบ</a>
+        </div>
+        <p class="teacher">จัดทำโดย ครูสุวรรณษา เดชรักษา</p>
+      </div>
+      <div class="hero-lab" aria-label="ภาพจำลองแรงบนวัตถุ">
+        <svg viewBox="0 0 520 360" role="img" aria-labelledby="heroSvgTitle">
+          <title id="heroSvgTitle">กล่องบนพื้นราบพร้อมลูกศรแรง</title>
+          <defs>
+            <marker id="arrowBlue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+              <path d="M2,2 L10,6 L2,10 Z" fill="#2563eb"></path>
+            </marker>
+            <marker id="arrowRed" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+              <path d="M2,2 L10,6 L2,10 Z" fill="#dc2626"></path>
+            </marker>
+            <marker id="arrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+              <path d="M2,2 L10,6 L2,10 Z" fill="#059669"></path>
+            </marker>
+          </defs>
+          <rect x="40" y="256" width="440" height="18" rx="9" fill="#dbeafe"></rect>
+          <rect x="205" y="180" width="110" height="76" rx="10" fill="#f8fafc" stroke="#0f172a" stroke-width="3"></rect>
+          <line x1="260" y1="180" x2="260" y2="78" stroke="#059669" stroke-width="4" marker-end="url(#arrowGreen)">
+          </line>
+          <text x="274" y="100">N</text>
+          <line x1="260" y1="256" x2="260" y2="330" stroke="#dc2626" stroke-width="4" marker-end="url(#arrowRed)">
+          </line>
+          <text x="276" y="314">W=mg</text>
+          <line x1="315" y1="218" x2="436" y2="218" stroke="#2563eb" stroke-width="4" marker-end="url(#arrowBlue)">
+          </line>
+          <text x="365" y="202">F</text>
+          <line x1="205" y1="256" x2="112" y2="256" stroke="#dc2626" stroke-width="4" marker-end="url(#arrowRed)">
+          </line>
+          <text x="124" y="224">f</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="overview section-band">
+      <div class="section-heading">
+        <h2>เป้าหมายการเรียนรู้</h2>
+        <p>เรียนจากภาพเวกเตอร์ สมการ และสถานการณ์จริง แล้วลองคำนวณด้วยตนเอง</p>
+      </div>
+      <div class="overview-grid">
+        <article>
+          <span>01</span>
+          <h3>มองแรงเป็นเวกเตอร์</h3>
+          <p>รู้ว่าแรงต้องมีผู้กระทำ ผู้ถูกกระทำ ขนาด และทิศทาง</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>เขียน FBD ได้ถูกต้อง</h3>
+          <p>แยกวัตถุที่สนใจออกมา แล้วใส่เฉพาะแรงที่กระทำต่อวัตถุนั้น</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>ใช้กฎนิวตันแก้โจทย์</h3>
+          <p>เชื่อมแรงลัพธ์ มวล และความเร่งด้วยสมการที่มีความหมาย</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>ตรวจคำตอบด้วยเหตุผล</h3>
+          <p>ดูทิศทาง หน่วย และขนาดของคำตอบว่าเหมาะกับสถานการณ์หรือไม่</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="lesson" id="force">
+      <div class="section-heading">
+        <h2>แรงและลักษณะของแรง (Force)</h2>
+        <p>แรงคือปริมาณเวกเตอร์ที่อธิบายการผลัก ดึง หรือปฏิสัมพันธ์ซึ่งอาจทำให้วัตถุเปลี่ยนสภาพการเคลื่อนที่</p>
+      </div>
+      <div class="two-col">
+        <article class="content-card">
+          <h3>นิยามของแรง</h3>
+          <p>
+            แรงต้องระบุได้ว่าใครเป็นผู้กระทำแรง กระทำต่อวัตถุใด มีขนาดเท่าใด และมีทิศทางใด
+            การเขียนแรงจึงนิยมใช้ลูกศร โดยหางลูกศรเริ่มที่วัตถุที่ถูกกระทำและหัวลูกศรชี้ไปตามทิศของแรง
+          </p>
+          <ul class="check-list">
+            <li>แรงเป็นปริมาณเวกเตอร์ ใช้หน่วยนิวตัน (N)</li>
+            <li>แรงอาจเป็นแรงสัมผัส เช่น แรงดึง แรงแนวฉาก แรงเสียดทาน</li>
+            <li>แรงอาจเป็นแรงไม่สัมผัส เช่น แรงโน้มถ่วง</li>
+            <li>ถ้าแรงลัพธ์เป็นศูนย์ วัตถุจะไม่เปลี่ยนสภาพการเคลื่อนที่</li>
+          </ul>
+          <div class="formula">
+            <h4>น้ำหนักของวัตถุ</h4>
+            <p class="math">\[W = mg\]</p>
+            <dl>
+              <dt>\(W\)</dt>
+              <dd>น้ำหนักหรือแรงที่โลกดึงดูดวัตถุ หน่วยนิวตัน (N)</dd>
+              <dt>\(m\)</dt>
+              <dd>มวลของวัตถุ หน่วยกิโลกรัม (kg)</dd>
+              <dt>\(g\)</dt>
+              <dd>ความเร่งโน้มถ่วงใกล้ผิวโลก ประมาณ \(9.8\,\text{m/s}^2\)</dd>
+            </dl>
+          </div>
+        </article>
+        <article class="content-card">
+          <h3>แรงที่ควรทราบ</h3>
+          <div class="force-list">
+            <button data-force="weight" class="force-chip active">น้ำหนัก</button>
+            <button data-force="normal" class="force-chip">แรงแนวฉาก</button>
+            <button data-force="tension" class="force-chip">แรงตึงเชือก</button>
+            <button data-force="spring" class="force-chip">แรงสปริง</button>
+            <button data-force="friction" class="force-chip">แรงเสียดทาน</button>
+          </div>
+          <div class="force-detail" id="forceDetail"></div>
+        </article>
+      </div>
+
+      <div class="interactive-panel">
+        <div>
+          <h3>เครื่องมือฝึกเขียนแผนภาพวัตถุอิสระ (FBD)</h3>
+          <p>เลือกสถานการณ์ แล้วดูว่าแรงใดควรอยู่ในแผนภาพวัตถุอิสระของวัตถุที่สนใจ</p>
+          <label class="select-label">
+            สถานการณ์
+            <select id="fbdSelect">
+              <option value="table">กล่องวางบนโต๊ะ</option>
+              <option value="pull">กล่องถูกดึงบนพื้นราบมีความฝืด</option>
+              <option value="slope">กล่องบนพื้นเอียง</option>
+              <option value="air">ลูกบอลลอยในอากาศหลังถูกเตะ</option>
+            </select>
+          </label>
+          <div class="note-box" id="fbdNotes"></div>
+        </div>
+        <svg class="fbd-canvas" id="fbdCanvas" viewBox="0 0 520 360" role="img" aria-label="แผนภาพวัตถุอิสระ"></svg>
+      </div>
+    </section>
+
+    <section class="lesson section-band" id="resultant">
+      <div class="section-heading">
+        <h2>การหาแรงลัพธ์ (Resultant Force)</h2>
+        <p>แรงหลายแรงที่กระทำต่อวัตถุสามารถแทนด้วยแรงลัพธ์แรงเดียว ซึ่งให้ผลต่อการเคลื่อนที่เท่ากัน</p>
+      </div>
+      <div class="two-col">
+        <article class="content-card">
+          <h3>วิธีเขียนเวกเตอร์</h3>
+          <p>
+            การเขียนเวกเตอร์แบบหางต่อหัวทำโดยนำหางของเวกเตอร์ตัวถัดไปมาต่อที่หัวของเวกเตอร์ก่อนหน้า
+            แรงลัพธ์คือเวกเตอร์จากจุดเริ่มต้นไปยังหัวของเวกเตอร์สุดท้าย
+            อีกวิธีคือสร้างรูปสี่เหลี่ยมด้านขนานเมื่อมีแรงสองแรงเริ่มจากจุดเดียวกัน
+          </p>
+          <div class="mini-diagram">
+            <svg viewBox="0 0 420 180">
+              <defs>
+                <marker id="arrowDark" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                  <path d="M1,1 L9,5 L1,9 Z" fill="#0f172a"></path>
+                </marker>
+              </defs>
+              <line x1="40" y1="130" x2="180" y2="130" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowDark)">
+              </line>
+              <line x1="180" y1="130" x2="270" y2="62" stroke="#059669" stroke-width="2" marker-end="url(#arrowDark)">
+              </line>
+              <line x1="40" y1="130" x2="270" y2="62" stroke="#dc2626" stroke-width="3" stroke-dasharray="8 8"
+                marker-end="url(#arrowDark)"></line>
+              <text x="92" y="150">F1</text>
+              <text x="225" y="120">F2</text>
+              <text x="132" y="80">FR</text>
+            </svg>
+          </div>
+        </article>
+        <article class="content-card">
+          <h3>วิธีคำนวณ</h3>
+          <div class="formula">
+            <h4>แรงสองแรงทำมุม \(\theta\)</h4>
+            <p class="math">\[F_R=\sqrt{F_1^2+F_2^2+2F_1F_2\cos\theta}\]</p>
+            <dl>
+              <dt>\(F_R\)</dt>
+              <dd>ขนาดของแรงลัพธ์ หน่วยนิวตัน (N)</dd>
+              <dt>\(F_1,F_2\)</dt>
+              <dd>ขนาดของแรงที่หนึ่งและแรงที่สอง หน่วยนิวตัน (N)</dd>
+              <dt>\(\theta\)</dt>
+              <dd>มุมระหว่างแรงทั้งสอง วัดจากหางเวกเตอร์เดียวกัน</dd>
+            </dl>
+          </div>
+          <div class="formula">
+            <h4>แยกแรงเป็นองค์ประกอบ</h4>
+            <p class="math">\[F_x=F\cos\theta,\qquad F_y=F\sin\theta\]</p>
+            <dl>
+              <dt>\(F_x,F_y\)</dt>
+              <dd>องค์ประกอบของแรงในแนวแกน \(x\) และ \(y\)</dd>
+              <dt>\(F\)</dt>
+              <dd>ขนาดของแรงเดิม</dd>
+              <dt>\(\theta\)</dt>
+              <dd>มุมที่แรงทำกับแกน \(x\) บวก</dd>
+            </dl>
+          </div>
+        </article>
+      </div>
+      <div class="calculator">
+        <div>
+          <h3>ทดลองคำนวณแรงลัพธ์</h3>
+          <p>ปรับค่าแรงสองแรงและมุมระหว่างแรง ระบบจะคำนวณขนาดและวาดเวกเตอร์ให้ทันที</p>
+          <div class="control-grid">
+            <label>แรง \(F_1\) (N)<input id="f1" type="range" min="0" max="100" value="50" /></label>
+            <label>แรง \(F_2\) (N)<input id="f2" type="range" min="0" max="100" value="40" /></label>
+            <label>มุม \(\theta\) (องศา)<input id="angle" type="range" min="0" max="180" value="60" /></label>
+          </div>
+          <div class="result-box" id="resultantOutput"></div>
+        </div>
+        <svg id="vectorCanvas" viewBox="0 0 520 320" class="vector-canvas" role="img"
+          aria-label="กราฟเวกเตอร์แรงลัพธ์"></svg>
+      </div>
+    </section>
+
+    <section class="lesson" id="newton">
+      <div class="section-heading">
+        <h2>กฎการเคลื่อนที่ของนิวตัน</h2>
+        <p>กฎของนิวตันเชื่อมสาเหตุของการเปลี่ยนการเคลื่อนที่เข้ากับแรงลัพธ์ที่กระทำต่อวัตถุ</p>
+      </div>
+      <div class="law-grid">
+        <article class="law-card">
+          <span>กฎข้อที่ 1</span>
+          <h3>กฎความเฉื่อย</h3>
+          <p>ถ้าแรงลัพธ์ที่กระทำต่อวัตถุเป็นศูนย์ วัตถุจะคงสภาพอยู่นิ่งหรือเคลื่อนที่เป็นเส้นตรงด้วยความเร็วคงตัว</p>
+          <div class="formula compact">
+            <p class="math">\[\sum \vec{F}=0 \Rightarrow \vec{v}=\text{constant}\]</p>
+            <dl>
+              <dt>\(\sum \vec{F}\)</dt>
+              <dd>ผลรวมเวกเตอร์ของแรงทั้งหมด</dd>
+              <dt>\(\vec{v}\)</dt>
+              <dd>ความเร็วของวัตถุ</dd>
+            </dl>
+          </div>
+        </article>
+        <article class="law-card">
+          <span>กฎข้อที่ 2</span>
+          <h3>แรงลัพธ์ทำให้เกิดความเร่ง</h3>
+          <p>ความเร่งมีทิศเดียวกับแรงลัพธ์ และมีขนาดแปรผันตรงกับแรงลัพธ์แต่แปรผกผันกับมวล</p>
+          <div class="formula compact">
+            <p class="math">\[\sum \vec{F}=m\vec{a}\]</p>
+            <dl>
+              <dt>\(\sum \vec{F}\)</dt>
+              <dd>แรงลัพธ์ที่กระทำต่อวัตถุ หน่วย N</dd>
+              <dt>\(m\)</dt>
+              <dd>มวลของวัตถุ หน่วย kg</dd>
+              <dt>\(\vec{a}\)</dt>
+              <dd>ความเร่งของวัตถุ หน่วย \(\text{m/s}^2\)</dd>
+            </dl>
+          </div>
+        </article>
+        <article class="law-card">
+          <span>กฎข้อที่ 3</span>
+          <h3>แรงกิริยาและแรงปฏิกิริยา</h3>
+          <p>เมื่อวัตถุ A ออกแรงกระทำต่อวัตถุ B วัตถุ B จะออกแรงขนาดเท่ากัน ทิศตรงข้าม กระทำต่อวัตถุ A</p>
+          <div class="formula compact">
+            <p class="math">\[\vec{F}_{AB}=-\vec{F}_{BA}\]</p>
+            <dl>
+              <dt>\(\vec{F}_{AB}\)</dt>
+              <dd>แรงที่ A กระทำต่อ B</dd>
+              <dt>\(\vec{F}_{BA}\)</dt>
+              <dd>แรงที่ B กระทำต่อ A</dd>
+            </dl>
+          </div>
+        </article>
+      </div>
+      <div class="interactive-panel">
+        <div>
+          <h3>จำลองกฎข้อที่ 2</h3>
+          <p>ดูผลของแรงลัพธ์และมวลต่อความเร่งของวัตถุ</p>
+          <div class="control-grid">
+            <label>แรงลัพธ์ (N)<input id="netForce" type="range" min="0" max="120" value="48" /></label>
+            <label>มวล (kg)<input id="mass" type="range" min="1" max="30" value="8" /></label>
+          </div>
+          <div class="result-box" id="newtonOutput"></div>
+        </div>
+        <div class="motion-track">
+          <div class="motion-cart" id="motionCart"></div>
+          <div class="track-line"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lesson section-band" id="friction">
+      <div class="section-heading">
+        <h2>แรงเสียดทาน (Friction)</h2>
+        <p>แรงเสียดทานเกิดที่ผิวสัมผัส มีทิศต้านแนวโน้มการเคลื่อนที่หรือต้านการเคลื่อนที่สัมพัทธ์</p>
+      </div>
+      <div class="two-col">
+        <article class="content-card">
+          <h3>แรงเสียดทานสถิต</h3>
+          <p>
+            เมื่อวัตถุยังไม่เคลื่อนที่
+            แรงเสียดทานสถิตจะปรับขนาดได้เท่าที่จำเป็นเพื่อต้านแรงที่พยายามทำให้วัตถุเริ่มเคลื่อนที่
+            จนถึงค่าสูงสุด
+          </p>
+          <div class="formula">
+            <p class="math">\[f_s \leq f_{s,\max}=\mu_s N\]</p>
+            <dl>
+              <dt>\(f_s\)</dt>
+              <dd>แรงเสียดทานสถิตที่เกิดจริง</dd>
+              <dt>\(f_{s,\max}\)</dt>
+              <dd>แรงเสียดทานสถิตสูงสุดก่อนวัตถุเริ่มเคลื่อนที่</dd>
+              <dt>\(\mu_s\)</dt>
+              <dd>สัมประสิทธิ์ความเสียดทานสถิต</dd>
+              <dt>\(N\)</dt>
+              <dd>แรงแนวฉากที่พื้นกระทำต่อวัตถุ</dd>
+            </dl>
+          </div>
+        </article>
+        <article class="content-card">
+          <h3>แรงเสียดทานจลน์และข้อสังเกต</h3>
+          <p>
+            เมื่อวัตถุไถลไปบนผิว แรงเสียดทานเป็นแรงเสียดทานจลน์ ซึ่งโดยทั่วไปมีค่าน้อยกว่าแรงเสียดทานสถิตสูงสุด
+          </p>
+          <div class="formula">
+            <p class="math">\[f_k=\mu_k N\]</p>
+            <dl>
+              <dt>\(f_k\)</dt>
+              <dd>แรงเสียดทานจลน์</dd>
+              <dt>\(\mu_k\)</dt>
+              <dd>สัมประสิทธิ์ความเสียดทานจลน์</dd>
+              <dt>\(N\)</dt>
+              <dd>แรงแนวฉากระหว่างผิวสัมผัส</dd>
+            </dl>
+          </div>
+          <ul class="check-list">
+            <li>แรงเสียดทานไม่ได้ขึ้นกับพื้นที่สัมผัสโดยตรงในแบบจำลองพื้นฐาน</li>
+            <li>บนพื้นราบที่ไม่มีแรงกดหรือดึงในแนวดิ่ง มักใช้ \(N=mg\)</li>
+            <li>ต้องตรวจว่าวัตถุเริ่มเคลื่อนที่หรือยัง ก่อนเลือกใช้ \(f_s\) หรือ \(f_k\)</li>
+          </ul>
+        </article>
+      </div>
+      <div class="calculator">
+        <div>
+          <h3>ทดลองแรงเสียดทาน</h3>
+          <p>ปรับแรงดึงแล้วดูว่าวัตถุหยุดนิ่ง กำลังจะเริ่มเคลื่อนที่ หรือเคลื่อนที่แล้ว</p>
+          <div class="control-grid">
+            <label>มวล (kg)<input id="frMass" type="range" min="1" max="20" value="5" /></label>
+            <label>\(\mu_s\)<input id="muS" type="range" min="0.05" max="1.00" step="0.01" value="0.60" /></label>
+            <label>\(\mu_k\)<input id="muK" type="range" min="0.03" max="0.90" step="0.01" value="0.40" /></label>
+            <label>แรงดึง (N)<input id="pullForce" type="range" min="0" max="160" value="20" /></label>
+          </div>
+          <div class="result-box" id="frictionOutput"></div>
+        </div>
+        <div class="friction-scene">
+          <div class="surface"></div>
+          <div class="crate" id="frictionCrate">m</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lesson" id="gravity">
+      <div class="section-heading">
+        <h2>แรงดึงดูดระหว่างมวล (Universal Gravitation)</h2>
+        <p>มวลทุกคู่ดึงดูดกันด้วยแรงที่แปรผันตรงกับผลคูณของมวล และแปรผกผันกับกำลังสองของระยะห่าง</p>
+      </div>
+      <div class="two-col">
+        <article class="content-card">
+          <h3>กฎความโน้มถ่วงสากล</h3>
+          <div class="formula">
+            <p class="math">\[F=G\frac{m_1m_2}{r^2}\]</p>
+            <dl>
+              <dt>\(F\)</dt>
+              <dd>ขนาดแรงดึงดูดระหว่างมวล หน่วย N</dd>
+              <dt>\(G\)</dt>
+              <dd>ค่าคงตัวโน้มถ่วงสากล \(6.67\times10^{-11}\,\text{N m}^2/\text{kg}^2\)</dd>
+              <dt>\(m_1,m_2\)</dt>
+              <dd>มวลของวัตถุทั้งสอง หน่วย kg</dd>
+              <dt>\(r\)</dt>
+              <dd>ระยะห่างระหว่างศูนย์กลางมวลทั้งสอง หน่วย m</dd>
+            </dl>
+          </div>
+          <div class="formula">
+            <h4>สนามโน้มถ่วงและน้ำหนัก</h4>
+            <p class="math">\[g=\frac{GM}{r^2},\qquad W=mg\]</p>
+            <dl>
+              <dt>\(g\)</dt>
+              <dd>สนามโน้มถ่วงหรือความเร่งโน้มถ่วง ณ ตำแหน่งนั้น</dd>
+              <dt>\(M\)</dt>
+              <dd>มวลของดาวหรือวัตถุที่เป็นแหล่งสนาม</dd>
+              <dt>\(r\)</dt>
+              <dd>ระยะจากศูนย์กลางของแหล่งสนามถึงตำแหน่งที่พิจารณา</dd>
+              <dt>\(W\)</dt>
+              <dd>น้ำหนักของมวล \(m\) ในสนามโน้มถ่วง \(g\)</dd>
+            </dl>
+          </div>
+        </article>
+        <article class="content-card">
+          <h3>กราฟระหว่างความเร่งกับเวลา</h3>
+          <p>
+            ใกล้ผิวโลกและไม่คิดแรงต้านอากาศ วัตถุที่ตกอย่างอิสระมีความเร่งเกือบคงตัวเท่ากับ \(g\)
+            กราฟ \(a-t\) จึงเป็นเส้นตรงแนวนอน หากกำหนดทิศขึ้นเป็นบวก ความเร่งจะมีค่า \(-9.8\,\text{m/s}^2\)
+          </p>
+          <svg class="graph" viewBox="0 0 420 260" role="img" aria-label="กราฟความเร่งกับเวลา">
+            <line x1="58" y1="210" x2="370" y2="210" stroke="#0f172a" stroke-width="2"></line>
+            <line x1="58" y1="30" x2="58" y2="210" stroke="#0f172a" stroke-width="2"></line>
+            <line x1="70" y1="82" x2="360" y2="82" stroke="#2563eb" stroke-width="5"></line>
+            <text x="350" y="234">t</text>
+            <text x="24" y="44">a</text>
+            <text x="78" y="70">a = g คงตัว</text>
+          </svg>
+        </article>
+      </div>
+      <div class="interactive-panel">
+        <div>
+          <h3>สำรวจแรงโน้มถ่วง</h3>
+          <p>เพิ่มระยะเป็น 2 เท่า แรงจะเหลือ 1 ใน 4 ลองปรับค่าแล้วสังเกตความสัมพันธ์</p>
+          <div class="control-grid">
+            <label>\(m_1\) (kg)<input id="gM1" type="range" min="1" max="100" value="50" /></label>
+            <label>\(m_2\) (kg)<input id="gM2" type="range" min="1" max="100" value="30" /></label>
+            <label>\(r\) (m)<input id="gR" type="range" min="1" max="50" value="10" /></label>
+          </div>
+          <div class="result-box" id="gravityOutput"></div>
+        </div>
+        <svg id="gravityCanvas" class="gravity-canvas" viewBox="0 0 520 260" role="img"
+          aria-label="ภาพแรงดึงดูดระหว่างมวล"></svg>
+      </div>
+    </section>
+
+    <section class="lesson section-band" id="problem">
+      <div class="section-heading">
+        <h2>การประยุกต์ใช้กฎการเคลื่อนที่</h2>
+        <p>ขั้นตอนแก้โจทย์ช่วยลดความสับสน โดยเริ่มจากภาพ แรง และแกน ก่อนแทนค่าลงสมการ</p>
+      </div>
+      <div class="steps">
+        <article><strong>1</strong>
+          <h3>อ่านสถานการณ์</h3>
+          <p>ระบุวัตถุที่สนใจ ข้อมูลที่ให้ และสิ่งที่ต้องหา</p>
+        </article>
+        <article><strong>2</strong>
+          <h3>วาด FBD</h3>
+          <p>แยกระบบออกมา แล้วใส่เฉพาะแรงที่กระทำต่อวัตถุ</p>
+        </article>
+        <article><strong>3</strong>
+          <h3>เลือกแกน</h3>
+          <p>เลือกแกนให้แรงสำคัญอยู่ตามแกน เช่น แกนขนานพื้นเอียง</p>
+        </article>
+        <article><strong>4</strong>
+          <h3>แตกแรง</h3>
+          <p>ใช้ \(F_x=F\cos\theta\) และ \(F_y=F\sin\theta\) เมื่อแรงเอียงกับแกน</p>
+        </article>
+        <article><strong>5</strong>
+          <h3>เขียนสมการ</h3>
+          <p>ใช้ \(\sum F_x=ma_x\) และ \(\sum F_y=ma_y\) ตามแกนที่เลือก</p>
+        </article>
+        <article><strong>6</strong>
+          <h3>ตรวจคำตอบ</h3>
+          <p>ตรวจหน่วย ทิศทาง เครื่องหมาย และขนาดว่าสมเหตุสมผลหรือไม่</p>
+        </article>
+      </div>
+      <div class="formula wide">
+        <h4>สมการแกนพื้นฐานที่ใช้บ่อย</h4>
+        <p class="math">\[\sum F_x=ma_x,\qquad \sum F_y=ma_y\]</p>
+        <dl>
+          <dt>\(\sum F_x,\sum F_y\)</dt>
+          <dd>แรงลัพธ์ในแนวแกน \(x\) และ \(y\)</dd>
+          <dt>\(m\)</dt>
+          <dd>มวลของวัตถุที่พิจารณา</dd>
+          <dt>\(a_x,a_y\)</dt>
+          <dd>ความเร่งในแนวแกน \(x\) และ \(y\)</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="lesson quiz-section" id="quiz">
+      <div class="section-heading">
+        <h2>แบบทดสอบความรู้</h2>
+        <p>มี 2 ชุด ชุดละ 10 ข้อ แสดงครั้งละ 1 ข้อ ตอบแล้วมีเฉลยและเหตุผลทันที</p>
+      </div>
+      <div class="quiz-shell">
+        <div class="quiz-tabs">
+          <button class="quiz-tab active" data-set="0">ชุดที่ 1</button>
+          <button class="quiz-tab" data-set="1">ชุดที่ 2</button>
+        </div>
+        <div class="quiz-card">
+          <div class="quiz-status" id="quizStatus"></div>
+          <h3 id="quizQuestion"></h3>
+          <div class="quiz-symbols" id="quizSymbols"></div>
+          <div class="quiz-options" id="quizOptions"></div>
+          <div class="quiz-feedback" id="quizFeedback" aria-live="polite"></div>
+          <div class="quiz-actions">
+            <button class="ghost-btn" id="prevQuestion">ข้อก่อนหน้า</button>
+            <button class="primary-btn" id="nextQuestion">ข้อถัดไป</button>
+            <button class="ghost-btn" id="resetQuiz">เริ่มชุดนี้ใหม่</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>สื่อการเรียนการสอน เรื่อง แรงและกฎการเคลื่อนที่ | จัดทำโดย ครูสุวรรณษา เดชรักษา</p>
+    <p>อ้างอิงแกนเนื้อหาจากหนังสือเรียนฟิสิกส์ 1 บทที่ 3 หน้า 127-208 และความรู้ฟิสิกส์ระดับมัธยมศึกษาตอนปลาย</p>
+  </footer>
+</body>
+
+</html>
