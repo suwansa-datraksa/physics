@@ -25,6 +25,7 @@
       <li><a href="#prefixes" class="nav-link">คำนำหน้า</a></li>
       <li><a href="#scientific-notation" class="nav-link">สัญกรณ์วิทย์</a></li>
       <li><a href="#uncertainty" class="nav-link">ความไม่แน่นอน</a></li>
+      <li><a href="#instruments" class="nav-link">เครื่องมือวัด</a></li>
       <li><a href="#sig-figs" class="nav-link">เลขนัยสำคัญ</a></li>
       <li><a href="#recording" class="nav-link">การบันทึกผล</a></li>
       <li><a href="#accuracy" class="nav-link">ความแม่น-เที่ยง</a></li>
@@ -549,6 +550,419 @@
         <input type="text" id="measureInput" placeholder="เช่น 25.1, 25.3, 25.0, 25.2, 25.1" class="full-input">
         <button onclick="calcUncertainty()" class="btn btn-primary">คำนวณ</button>
         <div id="uncertaintyResult" class="uncertainty-result"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4.5: Measuring Instruments -->
+  <section class="content-section" id="instruments">
+    <div class="section-header">
+      <div class="section-number">📐</div>
+      <div>
+        <h2 class="section-title">เครื่องมือวัดและวิธีอ่านค่า</h2>
+        <p class="section-subtitle">Measuring Instruments &amp; Reading Methods</p>
+      </div>
+    </div>
+
+    <!-- Instrument Tabs -->
+    <div class="inst-tabs">
+      <button class="inst-tab active" onclick="switchInstTab('ruler')" id="tab-ruler">📏 ไม้บรรทัด</button>
+      <button class="inst-tab" onclick="switchInstTab('vernier')" id="tab-vernier">🔧 เวอร์เนียคาลิปเปอร์</button>
+      <button class="inst-tab" onclick="switchInstTab('micrometer')" id="tab-micrometer">🔬 ไมโครมิเตอร์</button>
+      <button class="inst-tab" onclick="switchInstTab('digital')" id="tab-digital">🖥️ เครื่องมือดิจิตัล</button>
+    </div>
+
+    <!-- Ruler Panel -->
+    <div class="inst-panel" id="panel-ruler">
+      <div class="inst-content-grid">
+        <div class="inst-image-col">
+          <div class="inst-img-wrapper">
+            <img src="images/ไม้บรรทัด.jpg" alt="ไม้บรรทัด" class="inst-photo">
+          </div>
+          <div class="inst-img-wrapper" style="margin-top:0.75rem">
+            <img src="images/วิธีอ่านค่าไม้บรรทัด.jfif" alt="วิธีอ่านค่าไม้บรรทัด" class="inst-photo">
+          </div>
+          <div class="inst-specs">
+            <div class="spec-item">
+              <span class="spec-label">ความละเอียด</span>
+              <span class="spec-val">1 mm</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">ความไม่แน่นอน</span>
+              <span class="spec-val">± 0.5 mm</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">ช่วงวัด</span>
+              <span class="spec-val">0 – 30 cm</span>
+            </div>
+          </div>
+        </div>
+        <div class="inst-info-col">
+          <h3 class="inst-name-title">ไม้บรรทัด (Ruler)</h3>
+          <p class="inst-desc">ไม้บรรทัดเป็นเครื่องมือวัดความยาวพื้นฐาน มีขีดบอกความยาวเป็นเซนติเมตรและมิลลิเมตร
+            ใช้สำหรับวัดความยาวในชีวิตประจำวันและงานทดลองทั่วไป</p>
+
+          <div class="reading-steps">
+            <h4>📖 วิธีอ่านค่าไม้บรรทัด</h4>
+            <div class="step-list">
+              <div class="read-step">
+                <div class="read-num">1</div>
+                <div class="read-text"><strong>วางไม้บรรทัดให้ถูกต้อง</strong><br>วางตัวเลข 0
+                  ให้ตรงกับปลายด้านหนึ่งของวัตถุที่ต้องการวัด อย่าวาง "ปลายไม้บรรทัด" เพราะมักสึกกร่อน</div>
+              </div>
+              <div class="read-step">
+                <div class="read-num">2</div>
+                <div class="read-text"><strong>อ่านค่าเซนติเมตร
+                    (cm)</strong><br>อ่านตัวเลขหลักที่ใหญ่กว่าซึ่งอยู่ซ้ายมือของปลายวัตถุ</div>
+              </div>
+              <div class="read-step">
+                <div class="read-num">3</div>
+                <div class="read-text"><strong>อ่านค่ามิลลิเมตร
+                    (mm)</strong><br>นับขีดมิลลิเมตรหลังจากขีดเซนติเมตรสุดท้าย ขีดละ 1 mm</div>
+              </div>
+              <div class="read-step">
+                <div class="read-num">4</div>
+                <div class="read-text">
+                  <strong>ประมาณค่าที่เล็กที่สุด</strong><br>ประมาณค่าระหว่างขีดมิลลิเมตรให้ละเอียดถึง 0.5 mm (ครึ่งขีด)
+                </div>
+              </div>
+              <div class="read-step">
+                <div class="read-num">5</div>
+                <div class="read-text"><strong>หลีกเลี่ยง Parallax Error</strong><br>ตาต้องมองตั้งฉากกับไม้บรรทัด
+                  ไม่มองเฉียง ไม่งอไม้บรรทัด</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reading-example">
+            <h4>🔢 ตัวอย่างการอ่านค่า</h4>
+            <div class="example-reading">
+              <div class="ex-reading-row">
+                <span class="ex-label">ขีด cm ที่เห็น:</span>
+                <span class="ex-val">3 cm</span>
+              </div>
+              <div class="ex-reading-row">
+                <span class="ex-label">ขีด mm ที่นับได้:</span>
+                <span class="ex-val">7 ขีด = 7 mm</span>
+              </div>
+              <div class="ex-reading-row">
+                <span class="ex-label">ค่าที่ประมาณ:</span>
+                <span class="ex-val">+ 0.5 mm</span>
+              </div>
+              <div class="ex-reading-row total">
+                <span class="ex-label">ผลการวัด:</span>
+                <span class="ex-val">L = 3.75 ± 0.05 cm</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inst-note">
+            <span class="note-icon">⚠️</span>
+            <span>ความไม่แน่นอนของไม้บรรทัด = ครึ่งหนึ่งของค่าที่เล็กที่สุดที่อ่านได้ = ½ × 1 mm = <strong>0.5
+                mm</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vernier Caliper Panel -->
+    <div class="inst-panel hidden" id="panel-vernier">
+      <div class="inst-content-grid">
+        <div class="inst-image-col">
+          <div class="inst-img-wrapper">
+            <img src="images/เวอร์เนียคาลิปเปอร์ (Vernier Calipers).jpg" alt="เวอร์เนียคาลิปเปอร์" class="inst-photo">
+          </div>
+          <div class="inst-img-wrapper" style="margin-top:0.75rem">
+            <img src="images/อ่านค่าเวอร์เนียคาลิปเปอร์1.jpg" alt="วิธีอ่านค่าเวอร์เนียคาลิปเปอร์ 1" class="inst-photo">
+          </div>
+          <div class="inst-img-wrapper" style="margin-top:0.75rem">
+            <img src="images/อ่านค่าเวอร์เนียคาลิปเปอร์2.jpg" alt="วิธีอ่านค่าเวอร์เนียคาลิปเปอร์ 2" class="inst-photo">
+          </div>
+          <div class="inst-specs">
+            <div class="spec-item">
+              <span class="spec-label">ความละเอียด</span>
+              <span class="spec-val">0.1 mm</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">ความไม่แน่นอน</span>
+              <span class="spec-val">± 0.05 mm</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">ช่วงวัด</span>
+              <span class="spec-val">0 – 150 mm</span>
+            </div>
+          </div>
+        </div>
+        <div class="inst-info-col">
+          <h3 class="inst-name-title">เวอร์เนียคาลิปเปอร์ (Vernier Calipers)</h3>
+          <p class="inst-desc">เวอร์เนียคาลิปเปอร์เป็นเครื่องมือวัดขนาดที่แม่นยำกว่าไม้บรรทัดถึง 10 เท่า
+            ประกอบด้วยสเกลหลัก (Main Scale) และสเกลเวอร์เนีย (Vernier Scale) ใช้วัดเส้นผ่านศูนย์กลาง ความลึก และระยะห่าง
+          </p>
+
+          <div class="reading-steps">
+            <h4>📖 วิธีอ่านค่าเวอร์เนียคาลิปเปอร์</h4>
+            <div class="step-list">
+              <div class="read-step">
+                <div class="read-num">1</div>
+                <div class="read-text"><strong>อ่าน Main Scale (มิลลิเมตร)</strong><br>อ่านค่าบนสเกลหลักที่อยู่ก่อนเส้น
+                  0 ของสเกลเวอร์เนีย เช่น 23 mm</div>
+              </div>
+              <div class="read-step">
+                <div class="read-num">2</div>
+                <div class="read-text"><strong>หา Vernier Scale
+                    ที่ตรงกัน</strong><br>มองหาขีดบนสเกลเวอร์เนียที่ตรงกับขีดบนสเกลหลักพอดีที่สุด เช่น ขีดที่ 4 ตรง =
+                  0.4 mm</div>
+              </div>
+              <div class="read-step">
+                <div class="read-num">3</div>
+                <div class="read-text"><strong>นำค่ามารวมกัน</strong><br>ผลการวัด = ค่า Main Scale + ค่า Vernier Scale
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reading-example">
+            <h4>🔢 ตัวอย่างการอ่านค่า</h4>
+            <div class="example-reading">
+              <div class="ex-reading-row">
+                <span class="ex-label">Main Scale:</span>
+                <span class="ex-val">23 mm</span>
+              </div>
+              <div class="ex-reading-row">
+                <span class="ex-label">Vernier Scale (ขีดที่ 4 ตรง):</span>
+                <span class="ex-val">0.4 mm</span>
+              </div>
+              <div class="ex-reading-row total">
+                <span class="ex-label">ผลการวัด:</span>
+                <span class="ex-val">d = 23.40 ± 0.05 mm</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="vernier-parts">
+            <h4>🔩 ส่วนประกอบหลัก</h4>
+            <div class="parts-grid">
+              <div class="part-item"><span class="part-icon">↔️</span><span>ขากานวัดนอก
+                  (ความกว้าง/เส้นผ่านศูนย์กลาง)</span></div>
+              <div class="part-item"><span class="part-icon">↕️</span><span>ขากานวัดใน (เส้นผ่านศูนย์กลางรู)</span>
+              </div>
+              <div class="part-item"><span class="part-icon">📍</span><span>ก้านวัดความลึก (Depth Rod)</span></div>
+              <div class="part-item"><span class="part-icon">🔒</span><span>สกรูล็อก (Lock Screw)</span></div>
+            </div>
+          </div>
+
+          <div class="inst-note">
+            <span class="note-icon">💡</span>
+            <span>สเกลเวอร์เนีย 10 ขีด แทน 9 mm บนสเกลหลัก ดังนั้น 1 ขีด = 0.9 mm ส่วนต่าง = 1 - 0.9 = <strong>0.1
+                mm</strong> (Least Count)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Micrometer Panel -->
+    <div class="inst-panel hidden" id="panel-micrometer">
+      <div class="inst-content-grid">
+        <div class="inst-image-col">
+          <div class="inst-img-wrapper">
+            <img src="images/ไมโครมิเตอร์.jpg" alt="ไมโครมิเตอร์" class="inst-photo">
+          </div>
+          <div class="inst-img-wrapper" style="margin-top:0.75rem">
+            <img src="images/อ่านค่าไมโครมิเตอร์1.jpg" alt="วิธีอ่านค่าไมโครมิเตอร์ 1" class="inst-photo">
+          </div>
+          <div class="inst-img-wrapper" style="margin-top:0.75rem">
+            <img src="images/อ่านค่าไมโครมิเตอร์2.png" alt="วิธีอ่านค่าไมโครมิเตอร์ 2" class="inst-photo">
+          </div>
+          <div class="inst-specs">
+            <div class="spec-item">
+              <span class="spec-label">ความละเอียด</span>
+              <span class="spec-val">0.01 mm</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">ความไม่แน่นอน</span>
+              <span class="spec-val">± 0.005 mm</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">ช่วงวัด</span>
+              <span class="spec-val">0 – 25 mm</span>
+            </div>
+          </div>
+        </div>
+        <div class="inst-info-col">
+          <h3 class="inst-name-title">ไมโครมิเตอร์ (Micrometer)</h3>
+          <p class="inst-desc">ไมโครมิเตอร์เป็นเครื่องมือวัดที่แม่นยำสูงสุดในสามชนิด ใช้หลักการของสกรู (Screw Principle)
+            วัดได้ละเอียดถึง 0.01 mm เหมาะสำหรับวัดความหนา เส้นผ่านศูนย์กลางลวด หรือชิ้นส่วนขนาดเล็ก</p>
+
+          <div class="reading-steps">
+            <h4>📖 วิธีอ่านค่าไมโครมิเตอร์</h4>
+            <div class="step-list">
+              <div class="read-step">
+                <div class="read-num">1</div>
+                <div class="read-text"><strong>อ่าน Sleeve Scale (สเกลหลัก)</strong><br>อ่านค่าจาก Sleeve
+                  ที่ถูกเปิดเผยโดย Thimble: เส้นบน = mm, เส้นล่าง = 0.5 mm</div>
+              </div>
+              <div class="read-step">
+                <div class="read-num">2</div>
+                <div class="read-text"><strong>อ่าน Thimble Scale (สเกลรอง)</strong><br>อ่านเส้นบน Thimble
+                  ที่ตรงกับเส้นกลาง Sleeve ได้ค่าเป็น 0.01 mm</div>
+              </div>
+              <div class="read-step">
+                <div class="read-num">3</div>
+                <div class="read-text"><strong>รวมค่าทั้งหมด</strong><br>ผลการวัด = Sleeve (mm) + Sleeve (0.5 mm ถ้ามี)
+                  + Thimble (0.01 mm)</div>
+              </div>
+              <div class="read-step">
+                <div class="read-num">4</div>
+                <div class="read-text"><strong>ตรวจสอบ Zero Error</strong><br>ก่อนวัดทุกครั้ง
+                  ควรตรวจสอบว่าเมื่อหน้าตัดชนกัน ค่าบน Thimble ตรงที่ 0 หรือไม่</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reading-example">
+            <h4>🔢 ตัวอย่างการอ่านค่า</h4>
+            <div class="example-reading">
+              <div class="ex-reading-row">
+                <span class="ex-label">Sleeve (เส้นหลัก mm):</span>
+                <span class="ex-val">7 mm</span>
+              </div>
+              <div class="ex-reading-row">
+                <span class="ex-label">Sleeve (เส้น 0.5 mm):</span>
+                <span class="ex-val">0.5 mm</span>
+              </div>
+              <div class="ex-reading-row">
+                <span class="ex-label">Thimble (ขีดที่ 28):</span>
+                <span class="ex-val">0.28 mm</span>
+              </div>
+              <div class="ex-reading-row total">
+                <span class="ex-label">ผลการวัด:</span>
+                <span class="ex-val">d = 7.78 ± 0.005 mm</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inst-note">
+            <span class="note-icon">⚙️</span>
+            <span>สกรู 1 รอบ = 0.5 mm, Thimble มี 50 ขีด ดังนั้น 1 ขีด = 0.5/50 = <strong>0.01 mm</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Digital Instrument Panel -->
+    <div class="inst-panel hidden" id="panel-digital">
+      <div class="inst-content-grid">
+        <div class="inst-image-col">
+          <div class="inst-img-wrapper">
+            <img src="images/มัลติมิเตอร์แบบดิจิตอล-1.jpg" alt="เครื่องมือดิจิตัล (มัลติมิเตอร์)" class="inst-photo">
+          </div>
+          <div class="inst-specs">
+            <div class="spec-item">
+              <span class="spec-label">ความละเอียด</span>
+              <span class="spec-val">ขึ้นอยู่กับรุ่น</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">ความไม่แน่นอน</span>
+              <span class="spec-val">± 1 หน่วยสุดท้าย</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">การแสดงผล</span>
+              <span class="spec-val">ตัวเลขดิจิตัล</span>
+            </div>
+          </div>
+        </div>
+        <div class="inst-info-col">
+          <h3 class="inst-name-title">เครื่องมือวัดดิจิตัล (Digital Instrument)</h3>
+          <p class="inst-desc">เครื่องมือวัดดิจิตัล เช่น มัลติมิเตอร์แบบดิจิตัล แสดงผลการวัดเป็นตัวเลขโดยตรง
+            ลดความผิดพลาดจากการอ่านค่า
+            ใช้วัดปริมาณไฟฟ้า เช่น แรงดัน กระแส และความต้านทาน</p>
+
+          <div class="reading-steps">
+            <h4>📖 วิธีอ่านค่าเครื่องมือดิจิตัล</h4>
+            <div class="step-list">
+              <div class="read-step">
+                <div class="read-num">1</div>
+                <div class="read-text">
+                  <strong>ตั้งค่าย่านวัด</strong><br>เลือกย่านการวัดให้เหมาะสมกับปริมาณที่ต้องการวัด เช่น โวลต์ แอมแปร์
+                  หรือโอห์ม</div>
+              </div>
+              <div class="read-step">
+                <div class="read-num">2</div>
+                <div class="read-text">
+                  <strong>อ่านค่าจากหน้าจอ</strong><br>อ่านตัวเลขที่แสดงบนจอดิจิตัลพร้อมหน่วยที่แสดงไว้</div>
+              </div>
+              <div class="read-step">
+                <div class="read-num">3</div>
+                <div class="read-text"><strong>ระบุความไม่แน่นอน</strong><br>ความไม่แน่นอน = ± 1 ของหลักสุดท้ายที่แสดง
+                  เช่น แสดง 12.34 → ± 0.01</div>
+              </div>
+              <div class="read-step">
+                <div class="read-num">4</div>
+                <div class="read-text"><strong>ตรวจสอบแบตเตอรี่</strong><br>ตรวจสอบให้แน่ใจว่าแบตเตอรี่เพียงพอ
+                  เพราะแบตเตอรี่อ่อนอาจทำให้ค่าผิดพลาด</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reading-example">
+            <h4>🔢 ตัวอย่างการอ่านค่า</h4>
+            <div class="example-reading">
+              <div class="ex-reading-row">
+                <span class="ex-label">ย่านวัดที่ตั้ง:</span>
+                <span class="ex-val">DC 20V</span>
+              </div>
+              <div class="ex-reading-row">
+                <span class="ex-label">ค่าที่แสดงบนจอ:</span>
+                <span class="ex-val">12.34 V</span>
+              </div>
+              <div class="ex-reading-row total">
+                <span class="ex-label">ผลการวัด:</span>
+                <span class="ex-val">V = 12.34 ± 0.01 V</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inst-note">
+            <span class="note-icon">💡</span>
+            <span>เครื่องมือดิจิตัลอ่านค่าได้ง่ายและแม่นยำ แต่ต้องระวังเรื่องการรบกวนทางไฟฟ้าและการสอบเทียบ
+              (Calibration)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="interactive-box" style="margin-top:2rem">
+      <h3>📊 ตารางเปรียบเทียบเครื่องมือวัด</h3>
+      <div class="compare-table">
+        <div class="compare-header">
+          <span>เครื่องมือ</span>
+          <span>ความละเอียด</span>
+          <span>ความไม่แน่นอน</span>
+          <span>ช่วงวัด</span>
+          <span>การใช้งาน</span>
+        </div>
+        <div class="compare-row">
+          <span><span class="inst-emoji">📏</span> ไม้บรรทัด</span>
+          <span class="precision-badge p1">1 mm</span>
+          <span>± 0.5 mm</span>
+          <span>0 – 30 cm</span>
+          <span>ความยาวทั่วไป</span>
+        </div>
+        <div class="compare-row">
+          <span><span class="inst-emoji">🔧</span> เวอร์เนียคาลิปเปอร์</span>
+          <span class="precision-badge p2">0.1 mm</span>
+          <span>± 0.05 mm</span>
+          <span>0 – 150 mm</span>
+          <span>เส้นผ่านศูนย์กลาง ความลึก</span>
+        </div>
+        <div class="compare-row">
+          <span><span class="inst-emoji">🔬</span> ไมโครมิเตอร์</span>
+          <span class="precision-badge p3">0.01 mm</span>
+          <span>± 0.005 mm</span>
+          <span>0 – 25 mm</span>
+          <span>ชิ้นส่วนขนาดเล็ก</span>
+        </div>
       </div>
     </div>
   </section>
