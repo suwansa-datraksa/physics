@@ -640,6 +640,170 @@ body {
 .result-msg  { font-size:1.3rem; font-weight:700; margin:1rem 0; color:var(--text); }
 .result-sub  { color:var(--text-muted); font-weight:600; margin-bottom:2rem; }
 
+/* ===== MEASURING INSTRUMENTS SECTION ===== */
+.inst-tabs {
+  display: flex; gap: 0.6rem; margin-bottom: 2rem; flex-wrap: wrap;
+}
+.inst-tab {
+  padding: 0.75rem 1.6rem; border-radius: 50px;
+  border: 2px solid rgba(99,102,241,0.25);
+  background: var(--surface); color: var(--text-muted);
+  font-family: 'Sarabun', sans-serif; font-size: 0.95rem; font-weight: 700;
+  cursor: pointer; transition: var(--transition); box-shadow: var(--shadow-sm);
+}
+.inst-tab:hover { border-color: var(--indigo); color: var(--indigo); background: #eef2ff; }
+.inst-tab.active {
+  background: linear-gradient(135deg, var(--indigo), var(--violet));
+  color: #fff; border-color: transparent;
+  box-shadow: 0 4px 18px rgba(99,102,241,0.35);
+}
+
+.inst-panel { animation: fadeInUp 0.35s ease; }
+@keyframes fadeInUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+.inst-content-grid {
+  display: grid; grid-template-columns: 380px 1fr; gap: 2.5rem; align-items: start;
+}
+
+.inst-image-col { display: flex; flex-direction: column; gap: 1.2rem; }
+.inst-img-wrapper {
+  border-radius: var(--radius); overflow: hidden;
+  border: 2px solid rgba(99,102,241,0.2);
+  box-shadow: var(--shadow); background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 240px;
+}
+.inst-photo {
+  width: 100%; height: auto; max-height: 320px;
+  object-fit: contain; display: block; padding: 0.5rem;
+}
+
+.inst-specs {
+  background: var(--surface); border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(99,102,241,0.18); overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.spec-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.7rem 1.1rem; border-bottom: 1px solid rgba(99,102,241,0.1);
+  font-size: 0.9rem;
+}
+.spec-item:last-child { border-bottom: none; }
+.spec-label { color: var(--text-muted); font-weight: 600; }
+.spec-val {
+  font-family: 'Fira Code', monospace; font-weight: 800; color: var(--indigo);
+  background: #eef2ff; padding: 0.15rem 0.6rem; border-radius: 6px;
+}
+
+.inst-info-col { display: flex; flex-direction: column; gap: 1.5rem; }
+.inst-name-title { font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 0; }
+.inst-desc { color: var(--text-muted); font-size: 0.97rem; line-height: 1.8; }
+
+.reading-steps h4, .reading-example h4, .vernier-parts h4 {
+  font-size: 1rem; font-weight: 700; color: var(--indigo);
+  margin-bottom: 1rem; padding-bottom: 0.4rem;
+  border-bottom: 2px solid rgba(99,102,241,0.15);
+}
+.step-list { display: flex; flex-direction: column; gap: 0.7rem; }
+.read-step {
+  display: flex; gap: 0.9rem; align-items: flex-start;
+  padding: 0.75rem 1rem; border-radius: var(--radius-sm);
+  background: var(--surface2); border: 1.5px solid rgba(99,102,241,0.12);
+  transition: var(--transition);
+}
+.read-step:hover { border-color: var(--indigo); background: #eef2ff; }
+.read-num {
+  min-width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--indigo), var(--violet));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.82rem; color: #fff; flex-shrink: 0;
+}
+.read-text { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; }
+.read-text strong { color: var(--text); }
+
+.reading-example { margin-top: 0.5rem; }
+.example-reading {
+  background: var(--surface2); border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(99,102,241,0.15); overflow: hidden;
+}
+.ex-reading-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.65rem 1.1rem; border-bottom: 1px solid rgba(99,102,241,0.1);
+  font-size: 0.9rem;
+}
+.ex-reading-row:last-child { border-bottom: none; }
+.ex-reading-row.total {
+  background: linear-gradient(135deg, #eef2ff, #f5f0ff);
+  font-weight: 700;
+}
+.ex-label { color: var(--text-muted); font-weight: 600; }
+.ex-val {
+  font-family: 'Fira Code', monospace; font-weight: 700; color: var(--indigo);
+}
+.ex-reading-row.total .ex-val { font-size: 1rem; color: var(--violet); }
+
+.inst-note {
+  display: flex; gap: 0.8rem; align-items: flex-start;
+  padding: 0.9rem 1.1rem; border-radius: var(--radius-sm);
+  background: rgba(255,243,196,0.6); border: 1.5px solid rgba(212,161,9,0.3);
+  font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;
+}
+.inst-note strong { color: var(--amber); }
+.note-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+
+.vernier-parts { }
+.parts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.part-item {
+  display: flex; gap: 0.6rem; align-items: center;
+  padding: 0.55rem 0.8rem; border-radius: 8px;
+  background: var(--surface2); border: 1.5px solid rgba(99,102,241,0.12);
+  font-size: 0.88rem; color: var(--text-muted); font-weight: 600;
+}
+.part-icon { font-size: 1rem; }
+
+/* Comparison Table */
+.compare-table {
+  border-radius: var(--radius-sm); overflow: hidden;
+  border: 1.5px solid rgba(99,102,241,0.2); margin-top: 1rem;
+}
+.compare-header {
+  display: grid; grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr 2fr;
+  gap: 0.8rem; padding: 0.9rem 1.2rem;
+  background: linear-gradient(90deg, var(--indigo), var(--violet));
+  font-weight: 700; font-size: 0.88rem; color: #fff;
+}
+.compare-row {
+  display: grid; grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr 2fr;
+  gap: 0.8rem; padding: 0.9rem 1.2rem; align-items: center;
+  border-top: 1px solid rgba(99,102,241,0.1);
+  background: var(--surface); transition: var(--transition);
+  font-size: 0.9rem;
+}
+.compare-row:hover { background: #f0f4ff; }
+.inst-emoji { margin-right: 0.3rem; font-size: 1rem; }
+.precision-badge {
+  display: inline-block; padding: 0.2rem 0.65rem; border-radius: 20px;
+  font-family: 'Fira Code', monospace; font-size: 0.82rem; font-weight: 700;
+}
+.precision-badge.p1 { background: var(--blue-light); color: var(--blue); }
+.precision-badge.p2 { background: var(--teal-light); color: var(--teal); }
+.precision-badge.p3 { background: var(--purple-light); color: var(--purple); }
+
+@media (max-width: 900px) {
+  .inst-content-grid { grid-template-columns: 1fr; }
+  .inst-img-wrapper { min-height: 200px; max-height: 280px; }
+}
+@media (max-width: 768px) {
+  .compare-header, .compare-row {
+    grid-template-columns: 1.8fr 1fr 1fr; font-size: 0.82rem;
+  }
+  .compare-header span:nth-child(4), .compare-header span:nth-child(5),
+  .compare-row span:nth-child(4), .compare-row span:nth-child(5) { display: none; }
+  .parts-grid { grid-template-columns: 1fr; }
+  .inst-tabs { gap: 0.4rem; }
+  .inst-tab { padding: 0.6rem 1rem; font-size: 0.85rem; }
+}
+
 /* ===== FOOTER ===== */
 .footer {
   background:linear-gradient(135deg,var(--indigo),var(--violet));
