@@ -45,7 +45,7 @@
         <h1>แรงและกฎการเคลื่อนที่</h1>
         <p>
           บทเรียน interactive สำหรับทำความเข้าใจว่าแรงทำให้วัตถุเปลี่ยนสภาพการเคลื่อนที่อย่างไร
-          อ้างอิงแกนเนื้อหาจากหนังสือเรียนฟิสิกส์ 1 บทที่ 3 หน้า 127-208
+          อ้างอิงแกนเนื้อหาจากหนังสือเรียนฟิสิกส์ 1 บทที่ 3 หน้า 115-196
         </p>
         <div class="hero-actions">
           <a class="primary-btn" href="#force">เริ่มเรียน</a>
@@ -182,37 +182,105 @@
         <h2>การหาแรงลัพธ์ (Resultant Force)</h2>
         <p>แรงหลายแรงที่กระทำต่อวัตถุสามารถแทนด้วยแรงลัพธ์แรงเดียว ซึ่งให้ผลต่อการเคลื่อนที่เท่ากัน</p>
       </div>
+      <!-- วิธีที่ 1: หัวต่อหาง -->
       <div class="two-col">
         <article class="content-card">
-          <h3>วิธีเขียนเวกเตอร์</h3>
+          <h3>วิธีที่ 1 — ต่อหัวต่อหาง (Tip-to-Tail)</h3>
           <p>
-            การเขียนเวกเตอร์แบบหางต่อหัวทำโดยนำหางของเวกเตอร์ตัวถัดไปมาต่อที่หัวของเวกเตอร์ก่อนหน้า
-            แรงลัพธ์คือเวกเตอร์จากจุดเริ่มต้นไปยังหัวของเวกเตอร์สุดท้าย
-            อีกวิธีคือสร้างรูปสี่เหลี่ยมด้านขนานเมื่อมีแรงสองแรงเริ่มจากจุดเดียวกัน
+            นำหางของเวกเตอร์ตัวถัดไปมาต่อที่หัวของเวกเตอร์ก่อนหน้า
+            แรงลัพธ์ <strong>F<sub>R</sub></strong> คือเวกเตอร์ที่ลากจากจุดเริ่มต้น
+            ไปยังหัวของเวกเตอร์ตัวสุดท้าย สามารถใช้ได้กับแรงมากกว่า 2 แรง
           </p>
           <div class="mini-diagram">
-            <svg viewBox="0 0 420 180">
+            <svg viewBox="0 0 420 200">
               <defs>
                 <marker id="arrowDark" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
                   <path d="M1,1 L9,5 L1,9 Z" fill="#0f172a"></path>
                 </marker>
+                <marker id="arrowBlue2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                  <path d="M1,1 L9,5 L1,9 Z" fill="#2563eb"></path>
+                </marker>
+                <marker id="arrowGreen2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                  <path d="M1,1 L9,5 L1,9 Z" fill="#059669"></path>
+                </marker>
+                <marker id="arrowRed2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                  <path d="M1,1 L9,5 L1,9 Z" fill="#dc2626"></path>
+                </marker>
               </defs>
-              <line x1="40" y1="130" x2="180" y2="130" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowDark)">
-              </line>
-              <line x1="180" y1="130" x2="270" y2="62" stroke="#059669" stroke-width="2" marker-end="url(#arrowDark)">
-              </line>
-              <line x1="40" y1="130" x2="270" y2="62" stroke="#dc2626" stroke-width="3" stroke-dasharray="8 8"
-                marker-end="url(#arrowDark)"></line>
-              <text x="92" y="150">F1</text>
-              <text x="225" y="120">F2</text>
-              <text x="132" y="80">FR</text>
+              <!-- F1: จุดเริ่ม (40,150) → (190,150) -->
+              <line x1="40" y1="150" x2="186" y2="150" stroke="#2563eb" stroke-width="2.5"
+                marker-end="url(#arrowBlue2)"></line>
+              <text x="105" y="170" fill="#2563eb" font-weight="bold" font-size="14">F₁</text>
+              <!-- F2: ต่อจาก F1 (190,150) → (280,72) -->
+              <line x1="190" y1="150" x2="276" y2="76" stroke="#059669" stroke-width="2.5"
+                marker-end="url(#arrowGreen2)"></line>
+              <text x="250" y="130" fill="#059669" font-weight="bold" font-size="14">F₂</text>
+              <!-- FR: จากจุดเริ่ม (40,150) → (280,72) -->
+              <line x1="40" y1="150" x2="274" y2="76" stroke="#dc2626" stroke-width="3" stroke-dasharray="8 6"
+                marker-end="url(#arrowRed2)"></line>
+              <text x="120" y="95" fill="#dc2626" font-weight="bold" font-size="14">F<tspan dy="3" font-size="10">R
+                </tspan>
+                <tspan dy="-3" font-size="14"> (แรงลัพธ์)</tspan>
+              </text>
+              <!-- จุดเริ่มต้น -->
+              <circle cx="40" cy="150" r="4" fill="#0f172a"></circle>
+              <text x="16" y="168" font-size="12" fill="#64748b">จุดเริ่ม</text>
             </svg>
           </div>
         </article>
+
         <article class="content-card">
-          <h3>วิธีคำนวณ</h3>
+          <h3>วิธีที่ 2 — รูปสี่เหลี่ยมด้านขนาน (Parallelogram)</h3>
+          <p>
+            นำแรงทั้งสองออกจากจุดเดียวกัน แล้วสร้างสี่เหลี่ยมด้านขนาน
+            แรงลัพธ์ <strong>F<sub>R</sub></strong> คือเส้นทแยงมุมของรูปสี่เหลี่ยมนั้น
+            วิธีนี้ใช้ได้สะดวกเมื่อมีแรงเพียง 2 แรง
+          </p>
+          <div class="mini-diagram">
+            <svg viewBox="0 0 420 200">
+              <defs>
+                <marker id="arrowBlue3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                  <path d="M1,1 L9,5 L1,9 Z" fill="#2563eb"></path>
+                </marker>
+                <marker id="arrowGreen3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                  <path d="M1,1 L9,5 L1,9 Z" fill="#059669"></path>
+                </marker>
+                <marker id="arrowRed3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                  <path d="M1,1 L9,5 L1,9 Z" fill="#dc2626"></path>
+                </marker>
+              </defs>
+              <!-- จุดกำเนิด O -->
+              <circle cx="100" cy="150" r="4" fill="#0f172a"></circle>
+              <text x="82" y="168" font-size="12" fill="#64748b">O</text>
+              <!-- F1: O → A (100,150) → (280,150) -->
+              <line x1="100" y1="150" x2="276" y2="150" stroke="#2563eb" stroke-width="2.5"
+                marker-end="url(#arrowBlue3)"></line>
+              <text x="178" y="170" fill="#2563eb" font-weight="bold" font-size="14">F₁</text>
+              <!-- F2: O → B (100,150) → (190,62) -->
+              <line x1="100" y1="150" x2="186" y2="66" stroke="#059669" stroke-width="2.5"
+                marker-end="url(#arrowGreen3)"></line>
+              <text x="112" y="100" fill="#059669" font-weight="bold" font-size="14">F₂</text>
+              <!-- เส้นประ: A → C (280,150) → (370,62) -->
+              <line x1="280" y1="150" x2="370" y2="66" stroke="#059669" stroke-width="1.5" stroke-dasharray="6 4">
+              </line>
+              <!-- เส้นประ: B → C (190,62) → (370,62) -->
+              <line x1="190" y1="62" x2="366" y2="62" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="6 4"></line>
+              <!-- FR: O → C (100,150) → (370,62) -->
+              <line x1="100" y1="150" x2="364" y2="66" stroke="#dc2626" stroke-width="3" marker-end="url(#arrowRed3)">
+              </line>
+              <text x="210" y="85" fill="#dc2626" font-weight="bold" font-size="14">F<tspan dy="3" font-size="10">R
+                </tspan></text>
+            </svg>
+          </div>
+        </article>
+      </div>
+
+      <!-- สูตรคำนวณ -->
+      <div class="two-col" style="margin-top:1.5rem;">
+        <article class="content-card">
+          <h3>สูตรขนาดของแรงลัพธ์</h3>
           <div class="formula">
-            <h4>แรงสองแรงทำมุม \(\theta\)</h4>
+            <h4>แรงสองแรงทำมุม \(\theta\) ซึ่งกันและกัน</h4>
             <p class="math">\[F_R=\sqrt{F_1^2+F_2^2+2F_1F_2\cos\theta}\]</p>
             <dl>
               <dt>\(F_R\)</dt>
@@ -224,15 +292,38 @@
             </dl>
           </div>
           <div class="formula">
-            <h4>แยกแรงเป็นองค์ประกอบ</h4>
-            <p class="math">\[F_x=F\cos\theta,\qquad F_y=F\sin\theta\]</p>
+            <h4>แยกแรงเป็นองค์ประกอบ แล้วรวม</h4>
+            <p class="math">\[F_x=\sum F\cos\theta,\quad F_y=\sum F\sin\theta\]</p>
+            <p class="math">\[F_R=\sqrt{F_x^2+F_y^2}\]</p>
             <dl>
               <dt>\(F_x,F_y\)</dt>
-              <dd>องค์ประกอบของแรงในแนวแกน \(x\) และ \(y\)</dd>
-              <dt>\(F\)</dt>
-              <dd>ขนาดของแรงเดิม</dd>
+              <dd>ผลรวมองค์ประกอบแรงลัพธ์ในแนวแกน \(x\) และ \(y\)</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="content-card">
+          <h3>สูตรทิศทาง (มุม) ของแรงลัพธ์</h3>
+          <div class="formula">
+            <h4>มุมที่แรงลัพธ์ทำกับแกน \(x\)</h4>
+            <p class="math">\[\alpha = \tan^{-1}\!\left(\frac{F_y}{F_x}\right)\]</p>
+            <dl>
+              <dt>\(\alpha\)</dt>
+              <dd>มุมที่แรงลัพธ์ทำกับแกน \(x\) บวก วัดทวนเข็มนาฬิกา</dd>
+              <dt>\(F_y\)</dt>
+              <dd>องค์ประกอบของแรงลัพธ์ในแนวแกน \(y\)</dd>
+              <dt>\(F_x\)</dt>
+              <dd>องค์ประกอบของแรงลัพธ์ในแนวแกน \(x\)</dd>
+            </dl>
+          </div>
+          <div class="formula">
+            <h4>มุมของแรงลัพธ์จาก \(F_1\) (กฎของไซน์)</h4>
+            <p class="math">\[\frac{\sin\alpha}{F_2}=\frac{\sin\theta}{F_R}\]</p>
+            <dl>
+              <dt>\(\alpha\)</dt>
+              <dd>มุมที่แรงลัพธ์ทำกับแรง \(F_1\)</dd>
               <dt>\(\theta\)</dt>
-              <dd>มุมที่แรงทำกับแกน \(x\) บวก</dd>
+              <dd>มุมระหว่าง \(F_1\) และ \(F_2\)</dd>
             </dl>
           </div>
         </article>
@@ -261,44 +352,47 @@
       <div class="law-grid">
         <article class="law-card">
           <span>กฎข้อที่ 1</span>
-          <h3>กฎความเฉื่อย</h3>
-          <p>ถ้าแรงลัพธ์ที่กระทำต่อวัตถุเป็นศูนย์ วัตถุจะคงสภาพอยู่นิ่งหรือเคลื่อนที่เป็นเส้นตรงด้วยความเร็วคงตัว</p>
+          <h3>กฎของความเฉื่อย (Law of Inertia)</h3>
+          <p>วัตถุจะรักษาสภาพหยุดนิ่ง หรือเคลื่อนที่ด้วยความเร็วคงที่ในแนวเส้นตรง
+            จนกว่าจะมีแรงลัพธ์ภายนอกที่มีค่าไม่เป็นศูนย์มากระทำ</p>
           <div class="formula compact">
-            <p class="math">\[\sum \vec{F}=0 \Rightarrow \vec{v}=\text{constant}\]</p>
+            <p class="math">\[\sum \overset{\rightharpoonup}{F}=0 \Rightarrow
+              \overset{\rightharpoonup}{v}=\text{constant}\]</p>
             <dl>
-              <dt>\(\sum \vec{F}\)</dt>
+              <dt>\(\sum \overset{\rightharpoonup}{F}\)</dt>
               <dd>ผลรวมเวกเตอร์ของแรงทั้งหมด</dd>
-              <dt>\(\vec{v}\)</dt>
+              <dt>\(\overset{\rightharpoonup}{v}\)</dt>
               <dd>ความเร็วของวัตถุ</dd>
             </dl>
           </div>
         </article>
         <article class="law-card">
           <span>กฎข้อที่ 2</span>
-          <h3>แรงลัพธ์ทำให้เกิดความเร่ง</h3>
-          <p>ความเร่งมีทิศเดียวกับแรงลัพธ์ และมีขนาดแปรผันตรงกับแรงลัพธ์แต่แปรผกผันกับมวล</p>
+          <h3>กฎของความเร่ง (Law of Acceleration)</h3>
+          <p>เมื่อมีแรงลัพธ์ที่ไม่เป็นศูนย์มากระทำต่อวัตถุ จะทำให้วัตถุมีความเร่งในทิศทางเดียวกับแรงลัพธ์นั้น
+            โดยความเร่งจะแปรผันตรงกับแรง และแปรผกผันกับมวลของวัตถุ</p>
           <div class="formula compact">
-            <p class="math">\[\sum \vec{F}=m\vec{a}\]</p>
+            <p class="math">\[\sum \overset{\rightharpoonup}{F}=m\overset{\rightharpoonup}{a}\]</p>
             <dl>
-              <dt>\(\sum \vec{F}\)</dt>
+              <dt>\(\sum \overset{\rightharpoonup}{F}\)</dt>
               <dd>แรงลัพธ์ที่กระทำต่อวัตถุ หน่วย N</dd>
               <dt>\(m\)</dt>
               <dd>มวลของวัตถุ หน่วย kg</dd>
-              <dt>\(\vec{a}\)</dt>
+              <dt>\(\overset{\rightharpoonup}{a}\)</dt>
               <dd>ความเร่งของวัตถุ หน่วย \(\text{m/s}^2\)</dd>
             </dl>
           </div>
         </article>
         <article class="law-card">
           <span>กฎข้อที่ 3</span>
-          <h3>แรงกิริยาและแรงปฏิกิริยา</h3>
-          <p>เมื่อวัตถุ A ออกแรงกระทำต่อวัตถุ B วัตถุ B จะออกแรงขนาดเท่ากัน ทิศตรงข้าม กระทำต่อวัตถุ A</p>
+          <h3>กฎแรงกริยาและปฏิกิริยา (Action = Reaction)</h3>
+          <p>ทุกแรงกริยาจะมีแรงปฏิกิริยาขนาดเท่ากันและทิศทางตรงกันข้ามเสมอ โดยกระทำบนวัตถุคนละก้อน</p>
           <div class="formula compact">
-            <p class="math">\[\vec{F}_{AB}=-\vec{F}_{BA}\]</p>
+            <p class="math">\[\overset{\rightharpoonup}{F}_{AB}=-\overset{\rightharpoonup}{F}_{BA}\]</p>
             <dl>
-              <dt>\(\vec{F}_{AB}\)</dt>
+              <dt>\(\overset{\rightharpoonup}{F}_{AB}\)</dt>
               <dd>แรงที่ A กระทำต่อ B</dd>
-              <dt>\(\vec{F}_{BA}\)</dt>
+              <dt>\(\overset{\rightharpoonup}{F}_{BA}\)</dt>
               <dd>แรงที่ B กระทำต่อ A</dd>
             </dl>
           </div>
@@ -430,7 +524,7 @@
           <h3>กราฟระหว่างความเร่งกับเวลา</h3>
           <p>
             ใกล้ผิวโลกและไม่คิดแรงต้านอากาศ วัตถุที่ตกอย่างอิสระมีความเร่งเกือบคงตัวเท่ากับ \(g\)
-            กราฟ \(a-t\) จึงเป็นเส้นตรงแนวนอน หากกำหนดทิศขึ้นเป็นบวก ความเร่งจะมีค่า \(-9.8\,\text{m/s}^2\)
+            กราฟ \(a\) ต่อ \(t\) จึงเป็นเส้นตรงแนวนอน หากกำหนดทิศขึ้นเป็นบวก ความเร่งจะมีค่า \(-9.8\,\text{m/s}^2\)
           </p>
           <svg class="graph" viewBox="0 0 420 260" role="img" aria-label="กราฟความเร่งกับเวลา">
             <line x1="58" y1="210" x2="370" y2="210" stroke="#0f172a" stroke-width="2"></line>
